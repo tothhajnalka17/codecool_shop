@@ -41,5 +41,11 @@ namespace Codecool.CodecoolShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Viewer()
+        {
+            var products = ProductService.GetProductsForCategory(1);
+            return View(products.ToList());
+        }
     }
 }
