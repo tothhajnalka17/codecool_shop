@@ -1,20 +1,21 @@
 ﻿// Add buttons for filtering
 function AddFilters() {
-    // dynamically generate categories
-    let categories = [];
-    let suppliers = [];
+    // TODO fetch the data dynamically from the backend
+    let categories = ["software", "hardware"];
+    let suppliers = ["lenovo", "amazon"];
 
-    let productCards = document.querySelectorAll('.cardData');
+    // Draw buttons
+    // Event listeners for the buttons
+    // parameterized query string to get the data from model file
+    // fetch query for the categories and the suppliers
 
-    productCards.forEach((card) => {
-        categories.push(card.dataset.category);
-        suppliers.push(card.dataset.supplier);
-    });
 }
 
 //Read in the activated filters and hide cards that don't match
-function FilterCards() {
-
+function UpdateCards() {
+    // fetch
+    // cardfactory
+    // attach
 }
 
 AddFilters();
