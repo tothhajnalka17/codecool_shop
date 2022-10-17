@@ -11,6 +11,18 @@ function AddFilters() {
 
 }
 
+function GatherFilters() {
+    let buttons = document.querySelectorAll(".filterButton");
+    
+    buttons.forEach((button) => button.addEventListener("click", (e) => {
+        console.log(button)
+    }))
+    
+    
+    
+
+}
+
 //Read in the activated filters and hide cards that don't match
 function UpdateCards() {
     // fetch
