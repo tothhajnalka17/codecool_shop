@@ -5,6 +5,6 @@ for (var i = 0; i < selected.length; i++) {
 
 
 function Examine() {
-    console.log(this);
-    return '/product/viewer/';
+    var link = `/product/viewer/${this.dataset.id}`;
+    window.location = link;
 }
