@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using System.Web;
+using System.Security.Policy;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -44,8 +48,9 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Viewer()
         {
-            var products = ProductService.GetProductsForCategory(1);
-            return View(products.ToList());
+            
+            var product = ProductService.GetProduct(1);
+            return View(product);
         }
     }
 }
