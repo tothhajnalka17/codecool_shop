@@ -1,4 +1,6 @@
-﻿// Add buttons for filtering
+﻿import { ButtonFactory, CardFactory } from "../View/View.js"
+
+// Add buttons for filtering
 function AddFilters() {
     // TODO fetch the data dynamically from the backend
     let categories = ["software", "hardware"];
