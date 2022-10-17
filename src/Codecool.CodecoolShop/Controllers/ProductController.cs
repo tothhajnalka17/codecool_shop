@@ -48,8 +48,10 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Viewer()
         {
-            
-            var product = ProductService.GetProduct(1);
+            var path = HttpContext.Request.Path.ToString();
+            string[] strings = path.Split('/');
+            int id = Convert.ToInt32(strings[3]);
+            var product = ProductService.GetProduct(id);
             return View(product);
         }
     }
