@@ -27,9 +27,8 @@ namespace Codecool.CodecoolShop.Services
         }
 
         public Product GetProduct(int id)
-        {
-            var product = this.productDao.Get(id);
-            return product;
+        { 
+            return this.productDao.Get(id);
         }
     }
 }
