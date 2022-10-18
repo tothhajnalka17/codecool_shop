@@ -28,20 +28,26 @@ function AddFilters() {
         filterContainer.appendChild(ButtonFactory("supplier", supplier));
     }
 
-    GatherFilters();
+    AddButtonListeners();
     // Event listeners for the buttons
     // parameterized query string to get the data from model file
     // fetch query for the categories and the suppliers
 
 }
 
-function GatherFilters() {
+function AddButtonListeners() {
     let buttons = document.querySelectorAll(".filterButton");
     
     buttons.forEach((button) => button.addEventListener("click", (e) => {
-        console.log(button)
-    }))
-    
+        if (button.getAttribute('toggled') == 'false') {
+            button.setAttribute('toggled', true);
+        }
+        else {
+            button.setAttribute('toggled', false);
+        }
+        GatherToggledButtons();
+    }));
+}
     
     
 
