@@ -1,0 +1,24 @@
+﻿.barContainer{
+    position: relative;
+    width: 95%;
+    display: flex;
+    justify-content:space-between;
+}
+
+.leftBar{
+    width:20%;
+}
+
+.midBar{
+    width:40%;
+}
+
+.rightBar{
+    width:40%;
+}
+
+.bottomBar{
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+}
