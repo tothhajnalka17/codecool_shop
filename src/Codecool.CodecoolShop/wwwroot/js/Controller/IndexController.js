@@ -2,9 +2,10 @@
 import { fetchProducts } from "../Model/Model.js"
 
 // Add buttons for filtering
-function AddFilters() {
+async function AddFilters() {
     let products = await fetchProducts();
     console.log(products);
+    // TODO display products
 
     // TODO fetch the data dynamically from the backend
     let categories = ["software", "hardware"];
@@ -61,7 +62,8 @@ function GatherToggledButtons() {
             else {
                 dict[category] = [value];
             }
-            }
+        }
+        console.log(dict);
         })
 }
 
