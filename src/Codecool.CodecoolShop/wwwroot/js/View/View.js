@@ -3,7 +3,45 @@
 // Create the dom elements that hold the card data
 function CardFactory(name, description, category, supplier, price) {
     let card = document.createElement('div');
+    card.classList.add('col-lg-3', 'card');
 
+    let image = document.createElement('img');
+    image.src = `img/${name}.img`;
+
+    let cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+
+    let cardTitle = document.createElement('h5');
+    cardTitle.classList.add('card-title', 'text-center');
+    cardTitle.innerText = name;
+
+    let cardtext1 = document.createElement('p');
+    cardtext1.classList.add('card-text');
+    cardtext1.innerText = description;
+
+    let cardtext2 = document.createElement('p');
+    cardtext2.classList.add('card-text');
+    cardtext2.innerText = `Category: ${category}`;
+
+    let cardtext3 = document.createElement('p');
+    cardtext3.classList.add('card-text');
+    cardtext3.innerText = `Supplier: ${supplier}`;
+
+    let cardtext4 = document.createElement('p');
+    cardtext4.classList.add('card-text');
+    cardtext4.innerText = `Price: ${price}`;
+
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardtext1);
+    cardBody.appendChild(cardtext2);
+    cardBody.appendChild(cardtext3);
+    cardBody.appendChild(cardtext4);
+
+    card.appendChild(image);
+    card.appendChild(cardBody);
+
+    card.appendChild()
+    return card;
 }
 
 function ButtonFactory(filterType, filterValue) {
