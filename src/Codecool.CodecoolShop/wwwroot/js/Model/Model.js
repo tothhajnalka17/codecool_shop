@@ -2,7 +2,7 @@
 
 async function fetchProducts() {
     try {
-        let url = "https://localhost:44334/Products/";
+        let url = "Products";
         //TODO parameterized query
         //${url}FetchData/?topic=${topic}&page=${page}
         let response = await fetch(`${url}`);

@@ -26,5 +26,24 @@ namespace Codecool.CodecoolShop.Controllers.Api
                 return products;
             }
         }
+
+        [Route("Products")]
+        public async Task<List<Product>> FilteredProducts()
+        {
+            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
+                , "Codecool.CodecoolShop\\Storage\\Products.json");
+
+            List<Product> products = new List<Product>();
+            using (StreamReader r = new StreamReader(path))
+            {
+                var jsonString = await r.ReadToEndAsync();
+                products = JsonConvert.DeserializeObject<List<Product>>(jsonString);
+            }
+
+            // TODO read body and filter results accordingly
+            Dictionary<string, List<string>> filters = new Dictionary<string, List<string>>();
+            return products;
+        }
+
     }
 }
