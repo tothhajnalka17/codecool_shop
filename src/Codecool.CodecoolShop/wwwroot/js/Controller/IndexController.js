@@ -3,9 +3,6 @@ import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
 
 // Add buttons for filtering
 async function AddFilters() {
-    let products = await fetchProducts();
-    console.log(products);
-    // TODO display products
 
     // TODO fetch the data dynamically from the backend
     let categories = ["software", "hardware"];
@@ -46,7 +43,7 @@ function AddButtonListeners() {
             button.classList.remove('btn-danger');
             button.classList.add('btn-primary');
         }
-        GatherToggledButtons();
+        UpdateCards();
     }));
 }
 
