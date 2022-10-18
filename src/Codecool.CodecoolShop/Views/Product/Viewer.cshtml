@@ -31,21 +31,20 @@
             }
     }
     </div>
-    <div class="bottomBar">
+        <div class="bottomBarHeader">
+            <div class="bottomBar">
     @foreach (var element in Model)
     {
             @if (element.Id != ViewBag.Id)
             {
-                <div class="card"  data-id="@element.Id">
-                    <div class="card-body">
-                            <h5 class="card-title">@element.Name</h5>
-                            <p class="card-text">@element.Description.</p>
-                            <p class="card-text">Category: @element.ProductCategory.Department</p>
-                            <p class="card-text">Supplier: @element.Supplier.Name</p>
-                            <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                            <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
-                        </div>
+                <div class="related"  data-id="@element.Id">
+                    
+                            <h5 class="related-title">@element.Name</h5>
+                            <p class="related-text">Category: @element.ProductCategory.Department</p>
+                            <div class="pricetag"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></div>
+                         
                     </div>
                 }
     }
+    </div>
     </div>
