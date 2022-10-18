@@ -8,9 +8,6 @@ function AddFilters() {
 
     let filterContainer = document.querySelector('#filterContainer');
 
-    mainContainer.appendChild(filterContainer);
-    filterContainer.id = "filterContainer";
-
     // Draw buttons
     let categoryHeader = document.createElement('h3');
     categoryHeader.innerText = "Categories";
@@ -19,6 +16,7 @@ function AddFilters() {
         filterContainer.appendChild(ButtonFactory("category", category));
     }
 
+    // Draw supplier categories
     let supplierHeader = document.createElement('h3');
     supplierHeader.innerText = "Suppliers";
     filterContainer.appendChild(supplierHeader);
@@ -46,16 +44,16 @@ function AddButtonListeners() {
         GatherToggledButtons();
     }));
 }
-    
+
 function GatherToggledButtons() {
     let dict = {};
     let clickedButtons = document.querySelectorAll(".filterButton");
-    
+
     clickedButtons.forEach((button) => {
         if (button.getAttribute('toggled') == 'true') {
             let category = button.getAttribute('data-filter-type');
             let value = button.getAttribute('data-filter-value');
-
+            
             if (category in dict) {
                 console.log(`${category} in dictionary`);
                 dict[category].push(value);
