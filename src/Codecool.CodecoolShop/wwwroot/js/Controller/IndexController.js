@@ -46,25 +46,24 @@ function AddButtonListeners() {
     }));
 }
 
-function GatherToggledButtons() {
-    let dict = {};
-    let clickedButtons = document.querySelectorAll(".filterButton");
+function GatherFilters() {
+    let filters = {};
+    let buttons = document.querySelectorAll(".filterButton");
 
-    clickedButtons.forEach((button) => {
+    buttons.forEach((button) => {
         if (button.getAttribute('toggled') == 'true') {
             let category = button.getAttribute('data-filter-type');
             let value = button.getAttribute('data-filter-value');
             
-            if (category in dict) {
-                console.log(`${category} in dictionary`);
-                dict[category].push(value);
+            if (category in filters) {
+                filters[category].push(value);
             }
             else {
-                dict[category] = [value];
+                filters[category] = [value];
             }
         }
-        console.log(dict);
         })
+    return filters;
 }
 
 //Read in the activated filters and hide cards that don't match
