@@ -4,7 +4,7 @@
 function CardFactory(name, description, category, supplier, price) {
     let card = document.createElement('div');
     card.classList.add('col-lg-3', 'card');
-
+   
     let image = document.createElement('img');
     image.src = `img/${name}.jpg`;
 
@@ -31,6 +31,11 @@ function CardFactory(name, description, category, supplier, price) {
     cardtext4.classList.add('card-text');
     cardtext4.innerText = `Price: ${price}`;
 
+    let button = document.createElement('a');
+    button.classList.add('btn', 'btn-primary', 'addToCart');
+    button.type = 'button';
+    button.innerText = 'Add To Cart';
+        
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardtext1);
     cardBody.appendChild(cardtext2);
@@ -39,6 +44,7 @@ function CardFactory(name, description, category, supplier, price) {
 
     card.appendChild(image);
     card.appendChild(cardBody);
+    card.appendChild(button);
 
     return card;
 }
