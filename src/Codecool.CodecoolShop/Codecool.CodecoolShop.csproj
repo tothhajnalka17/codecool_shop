@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\Controller\IndexController.js" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
