@@ -25,7 +25,7 @@ async function fetchFilteredProducts(dict) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(dict),
+            body: JSON.stringify(dict)
         });
         if (response.ok !== true) {
             throw new Error(`Error making fetch request: ${response}`);
