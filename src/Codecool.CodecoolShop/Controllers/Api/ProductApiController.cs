@@ -32,9 +32,9 @@ namespace Codecool.CodecoolShop.Controllers.Api
             foreach (var filter in filters)
             {
                 Console.WriteLine(filter.Key);
-                foreach (var item in filter.Value)
+                foreach (var value in filter.Value)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine(value);
                 }
             }
             

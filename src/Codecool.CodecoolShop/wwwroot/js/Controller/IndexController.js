@@ -71,16 +71,20 @@ function GatherFilters() {
 async function UpdateCards() {
     let filters = GatherFilters();
     let products = [];
+    let cardHolder = document.querySelector('#card-container');
+    cardHolder.innerHTML = "";
+
     if (Object.keys(filters).length == 0) {
         products = await fetchProducts();
     }
     else {
         products = await fetchFilteredProducts(filters);
     }
-    console.log(products);
+    for (var product of products) {
+        let card = CardFactory(product.name, product.description, product.category, product.supplier, product.price, product.currency);
+        cardHolder.appendChild(card);
+    }
 
-    // cardfactory
-    // attach
 }
 
 AddFilters();

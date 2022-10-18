@@ -6,7 +6,7 @@ function CardFactory(name, description, category, supplier, price) {
     card.classList.add('col-lg-3', 'card');
 
     let image = document.createElement('img');
-    image.src = `img/${name}.img`;
+    image.src = `img/${name}.jpg`;
 
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
@@ -40,7 +40,6 @@ function CardFactory(name, description, category, supplier, price) {
     card.appendChild(image);
     card.appendChild(cardBody);
 
-    card.appendChild()
     return card;
 }
 
