@@ -14,22 +14,20 @@ namespace Codecool.CodecoolShop.Controllers.Api
     [ApiController]
     public class ProductApiController : Controller  
     {
-        public async Task<List<Product>> Products()
+        public IEnumerable<Product> GetProducts()
         {
-            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
-                , "Codecool.CodecoolShop\\Storage\\Products.json");
+            var productDaoMemory = ProductDaoMemory.GetInstance();
+            var products = productDaoMemory.GetAll();
 
-            List<Product> products = new List<Product>();
-            using (StreamReader r = new StreamReader(path))
-            {
-                var jsonString = await r.ReadToEndAsync();
-                products = JsonConvert.DeserializeObject<List<Product>>(jsonString);
-            }
             return products;
         }
+
         [Route("Filter")]
         public async Task<List<Product>> FilteredProducts(Dictionary<string, List<string>> filters)
         {
+            var productDaoMemory = ProductDaoMemory.GetInstance();
+            var products = productDaoMemory.GetAll();
+            // TODO actually filter the data
             foreach (var filter in filters)
             {
                 Console.WriteLine(filter.Key);
@@ -38,15 +36,8 @@ namespace Codecool.CodecoolShop.Controllers.Api
                     Console.WriteLine(item);
                 }
             }
-            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
-                , "Codecool.CodecoolShop\\Storage\\Products.json");
-
-            using (StreamReader r = new StreamReader(path))
-            {
-                var jsonString = await r.ReadToEndAsync();
-                var products = JsonConvert.DeserializeObject<List<Product>>(jsonString);
-                return products;
-            }
+            
+            return products;
         }
     }
 }
