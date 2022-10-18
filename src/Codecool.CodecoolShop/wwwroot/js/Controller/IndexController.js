@@ -5,8 +5,9 @@ import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
 async function AddFilters() {
 
     // TODO fetch the data dynamically from the backend
-    let categories = ["software", "hardware"];
+    let categories = ["Software", "Hardware"];
     let suppliers = ["lenovo", "amazon"];
+    
 
     let filterContainer = document.querySelector('#filterContainer');
 
