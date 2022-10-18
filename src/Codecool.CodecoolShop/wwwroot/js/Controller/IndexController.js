@@ -6,9 +6,7 @@ function AddFilters() {
     let categories = ["software", "hardware"];
     let suppliers = ["lenovo", "amazon"];
 
-    let mainContainer = document.querySelector('main');
-
-    let filterContainer = document.createElement('div');
+    let filterContainer = document.querySelector('#filterContainer');
 
     mainContainer.appendChild(filterContainer);
     filterContainer.id = "filterContainer";
