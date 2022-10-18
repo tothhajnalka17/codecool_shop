@@ -1,5 +1,5 @@
 ﻿import { ButtonFactory, CardFactory } from "../View/View.js"
-import { fetchProducts } from "../Model/Model.js"
+import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
 
 // Add buttons for filtering
 async function AddFilters() {
@@ -68,8 +68,17 @@ function GatherToggledButtons() {
 }
 
 //Read in the activated filters and hide cards that don't match
-function UpdateCards() {
-    // fetch
+async function UpdateCards() {
+    let filters = GatherFilters();
+    let products = [];
+    if (Object.keys(filters).length == 0) {
+        products = await fetchProducts();
+    }
+    else {
+        products = await fetchFilteredProducts(filters);
+    }
+    console.log(products);
+
     // cardfactory
     // attach
 }
