@@ -49,8 +49,24 @@ function AddButtonListeners() {
     }));
 }
     
+function GatherToggledButtons() {
+    let dict = {};
+    let clickedButtons = document.querySelectorAll(".filterButton");
     
+    clickedButtons.forEach((button) => {
+        if (button.getAttribute('toggled') == 'true') {
+            let category = button.getAttribute('data-filter-type');
+            let value = button.getAttribute('data-filter-value');
 
+            if (category in dict) {
+                console.log(`${category} in dictionary`);
+                dict[category].push(value);
+            }
+            else {
+                dict[category] = [value];
+            }
+            }
+        })
 }
 
 //Read in the activated filters and hide cards that don't match
