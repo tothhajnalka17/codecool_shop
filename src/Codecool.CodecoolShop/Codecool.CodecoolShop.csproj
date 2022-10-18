@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\js\Model\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\js\Controller\IndexController.js" />
   </ItemGroup>
 
