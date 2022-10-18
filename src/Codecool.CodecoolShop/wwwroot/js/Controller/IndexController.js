@@ -38,9 +38,13 @@ function AddButtonListeners() {
     buttons.forEach((button) => button.addEventListener("click", (e) => {
         if (button.getAttribute('toggled') == 'false') {
             button.setAttribute('toggled', true);
+            button.classList.remove('btn-primary');
+            button.classList.add('btn-danger');
         }
         else {
             button.setAttribute('toggled', false);
+            button.classList.remove('btn-danger');
+            button.classList.add('btn-primary');
         }
         GatherToggledButtons();
     }));
