@@ -18,11 +18,14 @@ async function fetchProducts() {
 
 async function fetchFilteredProducts(dict) {
     try {
-        let url = "Products";
+        let url = "Products/Filter";
         //${url}FetchData/?topic=${topic}&page=${page}
         let response = await fetch(`${url}`, {
             method: 'POST',
-            body: JSON.stringify(dict)
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dict),
         });
         if (response.ok !== true) {
             throw new Error(`Error making fetch request: ${response}`);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -13,9 +14,10 @@ namespace Codecool.CodecoolShop.Controllers.Api
     [ApiController]
     public class ProductApiController : Controller  
     {
-        
-        public async Task<List<Product>> Products()
+        [Route("Filter")]
+        public async Task<List<Product>> FilteredProducts(Dictionary<string, List<string>> filters)
         {
+            Console.WriteLine(filters["category"][0]);
             var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
                 , "Codecool.CodecoolShop\\Storage\\Products.json");
 
@@ -27,8 +29,7 @@ namespace Codecool.CodecoolShop.Controllers.Api
             }
         }
 
-        [Route("Products")]
-        public async Task<List<Product>> FilteredProducts()
+        public async Task<List<Product>> Products()
         {
             var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
                 , "Codecool.CodecoolShop\\Storage\\Products.json");
