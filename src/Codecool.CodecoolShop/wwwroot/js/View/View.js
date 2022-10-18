@@ -1,7 +1,7 @@
 ﻿export { ButtonFactory, CardFactory }
 
 // Create the dom elements that hold the card data
-function CardFactory(name, description, category, supplier, price) {
+function CardFactory(name, description, category, supplier, price, currency) {
     let card = document.createElement('div');
     card.classList.add('col-lg-3', 'card');
    
@@ -29,7 +29,7 @@ function CardFactory(name, description, category, supplier, price) {
 
     let cardtext4 = document.createElement('p');
     cardtext4.classList.add('card-text');
-    cardtext4.innerText = `Price: ${price}`;
+    cardtext4.innerText = `Price: ${price} ${currency}`;
 
     let button = document.createElement('a');
     button.classList.add('btn', 'btn-primary', 'addToCart');
