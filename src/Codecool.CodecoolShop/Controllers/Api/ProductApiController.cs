@@ -14,21 +14,6 @@ namespace Codecool.CodecoolShop.Controllers.Api
     [ApiController]
     public class ProductApiController : Controller  
     {
-        [Route("Filter")]
-        public async Task<List<Product>> FilteredProducts(Dictionary<string, List<string>> filters)
-        {
-            Console.WriteLine(filters["category"][0]);
-            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
-                , "Codecool.CodecoolShop\\Storage\\Products.json");
-
-            using (StreamReader r = new StreamReader(path))
-            {
-                var jsonString = await r.ReadToEndAsync();
-                var products = JsonConvert.DeserializeObject<List<Product>>(jsonString);
-                return products;
-            }
-        }
-
         public async Task<List<Product>> Products()
         {
             var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
@@ -40,11 +25,28 @@ namespace Codecool.CodecoolShop.Controllers.Api
                 var jsonString = await r.ReadToEndAsync();
                 products = JsonConvert.DeserializeObject<List<Product>>(jsonString);
             }
-
-            // TODO read body and filter results accordingly
-            Dictionary<string, List<string>> filters = new Dictionary<string, List<string>>();
             return products;
         }
+        [Route("Filter")]
+        public async Task<List<Product>> FilteredProducts(Dictionary<string, List<string>> filters)
+        {
+            foreach (var filter in filters)
+            {
+                Console.WriteLine(filter.Key);
+                foreach (var item in filter.Value)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName
+                , "Codecool.CodecoolShop\\Storage\\Products.json");
 
+            using (StreamReader r = new StreamReader(path))
+            {
+                var jsonString = await r.ReadToEndAsync();
+                var products = JsonConvert.DeserializeObject<List<Product>>(jsonString);
+                return products;
+            }
+        }
     }
 }
