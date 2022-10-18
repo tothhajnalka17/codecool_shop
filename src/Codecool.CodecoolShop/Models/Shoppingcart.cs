@@ -7,25 +7,52 @@ namespace Codecool.CodecoolShop.Models
     {
         public List<Product> ShoppingCartList { get; private set; }
 
-        public double Total { get; set; }
+        public decimal Total { get; private set; }
 
-        public readonly DateTime CreationTime;
+        public DateTime CreationTime { get; private set; }
+
+        public DateTime LastModified { get; private set; }
 
         public ShoppingCart()
         {
             ShoppingCartList = new List<Product>();
             Total = 0;
-            CreationTime = DateTime.Now;
         }
 
-        void Add(Product product)
+        public void Add(Product product)
         {
-            throw new NotImplementedException();
+            if (ShoppingCartList == null)
+            {
+                CreationTime = DateTime.Now;
+            }
+            ShoppingCartList.Add(product);
+            Total += product.DefaultPrice;
+            LastModified = DateTime.Now;
         }
 
-        void Remove(int Id)
+        public void Remove(int Id, bool RemoveAllProducts)
         {
-            throw new NotImplementedException();
+            foreach (var item in ShoppingCartList)
+            {
+                if (item.Id == Id)
+                {
+                    ShoppingCartList.Remove(item);
+                    Total -= item.DefaultPrice;
+                    LastModified = DateTime.Now;
+
+                    if (!RemoveAllProducts)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void EmptyCart()
+        {
+            ShoppingCartList.Clear();
+            Total = 0;
+            LastModified = DateTime.Now;
         }
     }
 }
