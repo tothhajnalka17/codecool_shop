@@ -49,10 +49,24 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Viewer()
         {
             var path = HttpContext.Request.Path.ToString();
-            string[] strings = path.Split('/');
-            int id = Convert.ToInt32(strings[3]);
-            var product = ProductService.GetProduct(id);
-            return View(product);
+            try
+            {
+                string[] strings = path.Split('/');
+                int id = Convert.ToInt32(strings[3]);
+
+
+                var product = ProductService.GetProduct(id);
+                
+                var related = ProductService.GetProductsForCategory(id);
+                related.ToList().Add(product);
+
+                ViewBag.Id = id;
+                return View(related.ToList());
+            }
+            catch (Exception e)
+            {
+                return Error();
+            }
         }
     }
 }
