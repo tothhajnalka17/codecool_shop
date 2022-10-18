@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -26,19 +28,16 @@ namespace Codecool.CodecoolShop.Controllers.Api
         [Route("Filter")]
         public IEnumerable<Product> FilteredProducts(Dictionary<string, List<string>> filters)
         {
+            IEnumerable<Product> res = new List<Product>();
             var productDaoMemory = ProductDaoMemory.GetInstance();
             var products = productDaoMemory.GetAll();
             // TODO actually filter the data
             foreach (var filter in filters)
             {
-                Console.WriteLine(filter.Key);
-                foreach (var value in filter.Value)
-                {
-                    Console.WriteLine(value);
-                }
+                res = productDaoMemory.GetByCategory(filter.Key, filter.Value);
             }
-            
-            return products;
+
+            return res;
         }
     }
 }
