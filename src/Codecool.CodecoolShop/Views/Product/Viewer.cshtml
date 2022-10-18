@@ -1,25 +1,51 @@
-﻿@model Product
+﻿@model List<Codecool.CodecoolShop.Models.Product>
+
 
 @{
     ViewData["Viewer"] = "Single View";
 }
+<div class="barContainer">
+    @foreach (var element in Model)
+    {
+        @if (element.Id == ViewBag.Id)
+        {
+            <div class="leftBar">More Pictures</div>
 
-<div class="container">
+            <div class="midBar">
+                <img src="img/@(element.Name).jpg" />
+            </div>
 
-            <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
-                        <div class="card"  data-id="@Model.Id">
+            <div class="rightBar">
+                <div class="card"  data-id="@element.Id">
                     <div class="card-body">
-                        <h5 class="card-title text-center">
-                        </h5>
-                        <h5 class="card-title">@Model.Name</h5>
-                        <p class="card-text">@Model.Description.</p>
-                        <p class="card-text">Category: @Model.ProductCategory.Department</p>
-                        <p class="card-text">Supplier: @Model.Supplier.Name</p>
-                        <p class="card-text text-center"><strong>Price: @Model.DefaultPrice.ToString("C2")</strong></p>
+                        <h5 class="card-title">@element.Name</h5>
+                        <p class="card-text">@element.Description.</p>
+                        <p class="card-text">Category: @element.ProductCategory.Department</p>
+                        <p class="card-text">Supplier: @element.Supplier.Name</p>
+                        <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
                         <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
                     </div>
                 </div>
             </div>
-
-
-</div>
+            
+            }
+    }
+    </div>
+    <div class="bottomBar">
+    @foreach (var element in Model)
+    {
+            @if (element.Id != ViewBag.Id)
+            {
+                <div class="card"  data-id="@element.Id">
+                    <div class="card-body">
+                            <h5 class="card-title">@element.Name</h5>
+                            <p class="card-text">@element.Description.</p>
+                            <p class="card-text">Category: @element.ProductCategory.Department</p>
+                            <p class="card-text">Supplier: @element.Supplier.Name</p>
+                            <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                            <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
+                        </div>
+                    </div>
+                }
+    }
+    </div>
