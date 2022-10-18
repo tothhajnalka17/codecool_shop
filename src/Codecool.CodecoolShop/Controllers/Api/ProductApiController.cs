@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -23,7 +24,7 @@ namespace Codecool.CodecoolShop.Controllers.Api
         }
 
         [Route("Filter")]
-        public async Task<List<Product>> FilteredProducts(Dictionary<string, List<string>> filters)
+        public IEnumerable<Product> FilteredProducts(Dictionary<string, List<string>> filters)
         {
             var productDaoMemory = ProductDaoMemory.GetInstance();
             var products = productDaoMemory.GetAll();

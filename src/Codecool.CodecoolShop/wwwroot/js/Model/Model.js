@@ -3,8 +3,6 @@
 async function fetchProducts() {
     try {
         let url = "Products";
-        //TODO parameterized query
-        //${url}FetchData/?topic=${topic}&page=${page}
         let response = await fetch(`${url}`);
         if (response.ok !== true) {
             throw new Error(`Error making fetch request: ${response}`);
@@ -19,7 +17,6 @@ async function fetchProducts() {
 async function fetchFilteredProducts(dict) {
     try {
         let url = "Products/Filter";
-        //${url}FetchData/?topic=${topic}&page=${page}
         let response = await fetch(`${url}`, {
             method: 'POST',
             headers: {
