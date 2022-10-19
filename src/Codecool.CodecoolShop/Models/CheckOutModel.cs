@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json.Serialization;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Codecool.CodecoolShop.Models

@@ -13,8 +13,8 @@ namespace Codecool.CodecoolShop.Controllers
 
             
         [HttpPost]
-        [ActionName("Index")]
-        public IActionResult Index(CheckOutModel checkOutModel)
+        [ActionName("ShowCheckOutCart")]
+        public IActionResult ShowCheckOutCart(CheckOutModel checkOutModel)
         {
             //FirstName; LastName; Email; PhoneNumber;
             //BillingCountry; BillingCity; BillingZipCode; BillingAdress;
@@ -39,9 +39,9 @@ namespace Codecool.CodecoolShop.Controllers
                 $" {billingCountry} {billingCity} {billingZipCode} {billingAdress}" +
                 $"{shippingCountry} {shippingCity} {shippingZipCode} {shippingAdress}");
 
-            return RedirectToAction(actionName: "Index", controllerName: "Product");
+            //return RedirectToAction(actionName: "Index", controllerName: "Product");
+            return View("ShowCheckOutCart", checkOutModel);
         }
-
 
     }
 }
