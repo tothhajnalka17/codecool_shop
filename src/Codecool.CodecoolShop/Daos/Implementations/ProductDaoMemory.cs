@@ -56,18 +56,50 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return data.Where(x => x.ProductCategory.Id == productCategory.Id);
         }
 
-        public IEnumerable<Product> GetByCategory(string filterKey, List<string> filterValue)
+        public IEnumerable<Product> GetByCategory(Dictionary<string, List<string>> filters)
         {
-            switch (filterKey)
+            IEnumerable<Product> res = new List<Product>();
+
+            
+            
+            if (filters.Keys.Contains("category"))
             {
-                case "category":
-                    return data.Where(x => filterValue.Contains(x.ProductCategory.Department));
-                case "supplier":
-                    return data.Where(x => filterValue.Contains(x.Supplier.Name));
+                foreach (var categoryValues in filters["category"])
+                {
+                    res = res.Concat(data.Where(x => categoryValues.Contains(x.ProductCategory.Department)));
+                    
+                }
+                if (filters.Keys.Contains("supplier"))
+                {
+                    
+                    IEnumerable<Product> supplierSelect = new List<Product>();
+                    foreach (var supplierValues in filters["supplier"])
+                    {
+                        supplierSelect = supplierSelect.Concat(res.Where(x => supplierValues.Contains(x.Supplier.Name)));
+                       
+                    }
+
+                    return supplierSelect;
+                    
+                }
+
+
+                return res;
 
             }
+            else if (!filters.Keys.Contains("category"))
+            {
+                foreach (var supplierValues in filters["supplier"])
+                {
+                    res = res.Concat(data.Where(x => supplierValues.Contains(x.Supplier.Name)));
+                }
 
-            throw new();
+                return res;
+            }
+
+            return GetAll();
+
+
         }
     }
 }
