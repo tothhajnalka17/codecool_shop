@@ -11,11 +11,6 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
-        public IActionResult Payment()
-        {
-            return View();
-        }
-
         [HttpPost]
         [ActionName("ShowCheckOutCart")]
         public IActionResult ShowCheckOutCart(CheckOutModel checkOutModel)
@@ -47,5 +42,15 @@ namespace Codecool.CodecoolShop.Controllers
             return View("ShowCheckOutCart", checkOutModel);
         }
 
+        public IActionResult Payment()
+        {
+            return View();
+        }
+
+        //public IActionResult Payment(PaymentModel paymentModel)
+        //{
+        //    return View("Payment", paymentModel);
+        //}
+        
     }
 }

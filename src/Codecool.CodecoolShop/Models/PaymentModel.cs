@@ -6,11 +6,13 @@ namespace Codecool.CodecoolShop.Models
 {
     public class PaymentModel
     {
+       
         // card number, card holder, expiry date, and CVV code.
         [Display(Name = "Card number:")]
-        [CreditCard]
+
         [Required(ErrorMessage = "Card number is required")]
-        public int CardNumber { get; set; }
+        [RegularExpression(@"^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$", ErrorMessage = "Please enter a valid card number")]
+        public string CardNumber { get; set; }
 
 
         [Display(Name = "Card holder:")]
@@ -23,6 +25,7 @@ namespace Codecool.CodecoolShop.Models
         [MinLength(2, ErrorMessage = "Please provide proper expiry year:")]
         [MaxLength(2, ErrorMessage = "Please provide proper expiry year:")]
         [Required(ErrorMessage = "Expiry year is required")]
+        
         public int ExpiryDateYear { get; set; }
 
 
@@ -39,7 +42,7 @@ namespace Codecool.CodecoolShop.Models
         [Required(ErrorMessage = "CVV is required")]
         public string CVV { get; set; }
 
-        public PaymentModel(int cardNumber, string cardHolder, int expiryDateYear, int expiryDateMonth, string cVV)
+        public PaymentModel(string cardNumber, string cardHolder, int expiryDateYear, int expiryDateMonth, string cVV)
         {
             CardNumber = cardNumber;
             CardHolder = cardHolder;
