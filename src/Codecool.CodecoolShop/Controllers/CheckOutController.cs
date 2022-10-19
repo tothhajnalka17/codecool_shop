@@ -27,17 +27,18 @@ namespace Codecool.CodecoolShop.Controllers
             string phoneNumber = checkOutModel.PhoneNumber;
             string billingCountry = checkOutModel.BillingCountry;
             string billingCity = checkOutModel.BillingCity;
-            int billingZipCode = checkOutModel.BillingZipCode;
+            string billingZipCode = checkOutModel.BillingZipCode;
             string billingAdress = checkOutModel.BillingAdress;
 
             string shippingCountry = checkOutModel.ShippingCountry;
             string shippingCity = checkOutModel.ShippingCity;
-            int shippingZipCode = checkOutModel.ShippingZipCode;
+            string shippingZipCode = checkOutModel.ShippingZipCode;
             string shippingAdress = checkOutModel.ShippingAdress;
 
             Console.WriteLine($"{firstName} {lastName} {email} {phoneNumber}" +
                 $" {billingCountry} {billingCity} {billingZipCode} {billingAdress}" +
                 $"{shippingCountry} {shippingCity} {shippingZipCode} {shippingAdress}");
+
             return RedirectToAction(actionName: "Index", controllerName: "Product");
         }
 

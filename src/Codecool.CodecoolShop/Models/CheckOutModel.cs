@@ -43,9 +43,10 @@ namespace Codecool.CodecoolShop.Models
 
 
         [DisplayName("Billing Zip Code:")]
-        
+        [StringLength(4, MinimumLength = 4)]
+
         [Required(ErrorMessage = "Billing zip code is required")]
-        public int BillingZipCode { get; set; }
+        public string BillingZipCode { get; set; }
 
 
         [DisplayName("Billing Adress:")]
@@ -68,9 +69,10 @@ namespace Codecool.CodecoolShop.Models
 
 
         [DisplayName("Shipping Zip Code:")]
-        
+        [StringLength(4, MinimumLength = 4)]
+
         [Required(ErrorMessage = "Shipping zip code is required")]
-        public int ShippingZipCode { get; set; }
+        public string ShippingZipCode { get; set; }
 
 
         [DisplayName("Shipping Adress:")]
@@ -78,7 +80,7 @@ namespace Codecool.CodecoolShop.Models
         [Required(ErrorMessage = "Shipping adress is required")]
         public string ShippingAdress { get; set; }
 
-        public CheckOutModel(string firstName, string lastName, string email, string phoneNumber, string billingCountry, string billingCity, int billingZipCode, string billingAdress, string shippingCountry, string shippingCity, int shippingZipCode, string shippingAdress)
+        public CheckOutModel(string firstName, string lastName, string email, string phoneNumber, string billingCountry, string billingCity, string billingZipCode, string billingAdress, string shippingCountry, string shippingCity, string shippingZipCode, string shippingAdress)
         {
             FirstName = firstName;
             LastName = lastName;
