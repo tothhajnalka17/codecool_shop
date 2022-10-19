@@ -1,0 +1,38 @@
+﻿@model List<Codecool.CodecoolShop.Models.Product>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View Cart</h1>
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Currency</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.DefaultPrice
+                </td>
+                <td>
+                    @item.Currency
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>There isn't any item in your cart</p>
+}
