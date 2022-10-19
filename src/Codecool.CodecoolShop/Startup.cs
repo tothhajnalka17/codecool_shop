@@ -64,6 +64,9 @@ namespace Codecool.CodecoolShop
             IProductDao productDataStore = ProductDaoMemory.GetInstance();
             IProductCategoryDao productCategoryDataStore = ProductCategoryDaoMemory.GetInstance();
             ISupplierDao supplierDataStore = SupplierDaoMemory.GetInstance();
+            IShoppingCartDao shoppingCartStore = ShoppingCartDaoMemory.GetInstance();
+
+
 
             Supplier amazon = new Supplier{Name = "Amazon", Description = "Digital content and services"};
             supplierDataStore.Add(amazon);

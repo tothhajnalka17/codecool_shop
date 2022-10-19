@@ -24,6 +24,7 @@ namespace Codecool.CodecoolShop.Models
             if (ShoppingCartList == null)
             {
                 CreationTime = DateTime.Now;
+
             }
             ShoppingCartList.Add(product);
             Total += product.DefaultPrice;
