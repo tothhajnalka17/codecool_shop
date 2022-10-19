@@ -12,7 +12,7 @@
             <div class="leftBar">More Pictures</div>
 
             <div class="midBar">
-                <img src="img/@(element.Name).jpg" />
+                        <img src="img/@(element.Name).jpg">
             </div>
 
             <div class="rightBar">
@@ -37,9 +37,9 @@
     {
             @if (element.Id != ViewBag.Id)
             {
-                <div class="related"  data-id="@element.Id">
+                <div class="card"  data-id="@element.Id">
                     
-                            <h5 class="related-title">@element.Name</h5>
+                            <h6 class="related-title">@element.Name</h6>
                             <p class="related-text">Category: @element.ProductCategory.Department</p>
                             <div class="pricetag"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></div>
                          

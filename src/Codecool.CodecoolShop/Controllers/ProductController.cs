@@ -57,7 +57,7 @@ namespace Codecool.CodecoolShop.Controllers
 
                 var product = ProductService.GetProduct(id);
                 
-                var related = ProductService.GetProductsForCategory(id);
+                var related = ProductService.GetProductsForCategory(product.ProductCategory.Id);
                 related.ToList().Add(product);
 
                 ViewBag.Id = id;
