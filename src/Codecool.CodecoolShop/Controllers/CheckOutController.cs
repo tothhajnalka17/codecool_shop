@@ -11,7 +11,11 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
-            
+        public IActionResult Payment()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ActionName("ShowCheckOutCart")]
         public IActionResult ShowCheckOutCart(CheckOutModel checkOutModel)
