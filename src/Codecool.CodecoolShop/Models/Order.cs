@@ -62,6 +62,7 @@ namespace Codecool.CodecoolShop.Models
             Id = new Guid();
             ShippingMethod = ShippingMethod.PrivateDeliveryService;
             PaymenthMethod = PaymentMethod.Debitcard;
+            OrderTime = DateTime.Now;
         }
 
         private decimal GetOrderTotal()
@@ -87,6 +88,16 @@ namespace Codecool.CodecoolShop.Models
             return stringVersion;
         }
 
+        public string CreateHTMLString()
+        {
+            string stringVersion = $"<h2>Dear {FirstName}!</h2><p>Thank you for your order!</p><p>Order details:</p><p>Order id: {Id}</p></p>Ordered products:</p><ul>";
+            foreach (Product product in ProductList)
+            {
+                stringVersion += $"<li>{product.Name}</li>";
+            }
 
+            stringVersion += $"</ul><p>Ordered at:{OrderTime}</p>";
+            return stringVersion;
+        }
     }
 }

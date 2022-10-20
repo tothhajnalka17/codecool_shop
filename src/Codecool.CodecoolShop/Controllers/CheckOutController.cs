@@ -46,7 +46,7 @@ namespace Codecool.CodecoolShop.Controllers
             order.ShippingZipCode = checkOutModel.ShippingZipCode;
             order.ShippingAddress = checkOutModel.ShippingAddress;
 
-            mailService.SendEmailAsync(order.Email, "Order Details", order.ToString());
+            mailService.SendEmailAsync(order.Email, "Order Details", order.CreateHTMLString());
 
             ViewBag.OrderTotal = order.OrderTotal;
             return View("ShowCheckOutCart", checkOutModel);
