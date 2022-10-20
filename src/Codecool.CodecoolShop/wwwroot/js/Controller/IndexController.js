@@ -2,6 +2,7 @@
 import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
 import { AddToCartButtonEventListener } from "../Controller/ShoppingCartController.js"
 
+
 AddListeners();
 AddFilters();
 AddToCartButtonEventListener();
@@ -22,7 +23,7 @@ function Examine() {
 async function AddFilters() {
 
     // TODO fetch the data dynamically from the backend
-    let categories = ["T-Shirt"];
+    let categories = ["Shirt","Mug"];
     let suppliers = ["Gergő", "Marci", "Hajni", "Zoárd", "Robi", "Fülöp"];
 
     let filterContainer = document.querySelector('#filterContainer');
@@ -62,6 +63,7 @@ function AddButtonListeners() {
         }
         UpdateCards();
     }));
+    
 }
 
 function GatherFilters() {
@@ -102,4 +104,5 @@ async function UpdateCards() {
         let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency, product.id);
         cardHolder.appendChild(card);
     }
+    AddListeners();
 }
