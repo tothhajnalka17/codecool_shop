@@ -1,9 +1,10 @@
 ﻿import { ButtonFactory, CardFactory } from "../View/View.js"
 import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
+import { AddToCartButtonEventListener } from "../Controller/ShoppingCartController.js"
 
 AddListeners();
 AddFilters();
-
+AddToCartButtonEventListener();
 
 function AddListeners() {
     var selected = document.querySelectorAll(".card-title");
