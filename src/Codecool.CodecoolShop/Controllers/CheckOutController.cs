@@ -1,6 +1,9 @@
 ﻿using Codecool.CodecoolShop.Models;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using System;
+using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -15,30 +18,34 @@ namespace Codecool.CodecoolShop.Controllers
         [ActionName("ShowCheckOutCart")]
         public IActionResult ShowCheckOutCart(CheckOutModel checkOutModel)
         {
-            //FirstName; LastName; Email; PhoneNumber;
-            //BillingCountry; BillingCity; BillingZipCode; BillingAdress;
-            //ShippingCountry; ShippingCity; ShippingZipCode; ShippingAdress;
+            // TODO get from shopping cart
+            
 
-            string firstName = checkOutModel.FirstName;
-            string lastName = checkOutModel.LastName;
-            string email = checkOutModel.Email;
-
-            string phoneNumber = checkOutModel.PhoneNumber;
-            string billingCountry = checkOutModel.BillingCountry;
-            string billingCity = checkOutModel.BillingCity;
-            string billingZipCode = checkOutModel.BillingZipCode;
-            string billingAdress = checkOutModel.BillingAdress;
-
-            string shippingCountry = checkOutModel.ShippingCountry;
-            string shippingCity = checkOutModel.ShippingCity;
-            string shippingZipCode = checkOutModel.ShippingZipCode;
-            string shippingAdress = checkOutModel.ShippingAdress;
-
-            Console.WriteLine($"{firstName} {lastName} {email} {phoneNumber}" +
-                $" {billingCountry} {billingCity} {billingZipCode} {billingAdress}" +
-                $"{shippingCountry} {shippingCity} {shippingZipCode} {shippingAdress}");
+            //Console.WriteLine($"{firstName} {lastName} {email} {phoneNumber}" +
+            //    $" {billingCountry} {billingCity} {billingZipCode} {billingAddress}" +
+            //    $"{shippingCountry} {shippingCity} {shippingZipCode} {shippingAddress}");
 
             //return RedirectToAction(actionName: "Index", controllerName: "Product");
+            Order order = new Order();
+            order.ProductList = new List<Product>();
+
+            order.FirstName = checkOutModel.FirstName;
+            order.LastName = checkOutModel.LastName;
+            order.Email = checkOutModel.Email;
+
+            order.PhoneNumber = checkOutModel.PhoneNumber;
+            order.BillingCountry = checkOutModel.BillingCountry;
+            order.BillingCity = checkOutModel.BillingCity;
+            order.BillingZipCode = checkOutModel.BillingZipCode;
+            order.BillingAddress = checkOutModel.BillingAddress;
+
+            order.ShippingCountry = checkOutModel.ShippingCountry;
+            order.ShippingCity = checkOutModel.ShippingCity;
+            order.ShippingZipCode = checkOutModel.ShippingZipCode;
+            order.ShippingAddress = checkOutModel.ShippingAddress;
+
+            Console.WriteLine(order);
+
             return View("ShowCheckOutCart", checkOutModel);
         }
 
@@ -51,6 +58,8 @@ namespace Codecool.CodecoolShop.Controllers
         //{
         //    return View("Payment", paymentModel);
         //}
+
         
+
     }
 }
