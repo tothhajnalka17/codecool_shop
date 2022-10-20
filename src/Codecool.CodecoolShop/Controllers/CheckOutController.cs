@@ -1,4 +1,5 @@
 ﻿using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Services;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
@@ -44,10 +45,13 @@ namespace Codecool.CodecoolShop.Controllers
             order.ShippingZipCode = checkOutModel.ShippingZipCode;
             order.ShippingAddress = checkOutModel.ShippingAddress;
 
-            Console.WriteLine(order);
+            await MailService.SendEmailAsync();
+            SendEmailAsync(order.Email, "Order information", order.ToString());
 
             return View("ShowCheckOutCart", checkOutModel);
         }
+
+       
 
         public IActionResult Payment()
         {
