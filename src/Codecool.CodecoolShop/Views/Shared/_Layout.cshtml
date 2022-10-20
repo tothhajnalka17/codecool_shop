@@ -24,6 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CheckOut" asp-action="Index">Checkout Page</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +34,7 @@
     </header>
 <div class="row">
         <div class="col-sm-2" id="filterContainer"></div>
-    <main role="main" class="pb-3 col-sm-8 row">
+    <main role="main" class="pb-3 col-sm-8">
         @RenderBody()
     </main>
     <div class="col-sm-2"></div>
