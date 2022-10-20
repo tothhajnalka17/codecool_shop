@@ -7,19 +7,16 @@
 <div class="container row"  id="card-container">
     @foreach (var element in Model)
     {
-        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
-                <div class="card">
-                <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
 
-                <div class="card-body">
+        <div class="col-lg-3 productCards" data-id="@element.Id">
+            <img src="img/@(element.Name).jpg" class="productImage">
+            <div class="card-body">
 
-                    <h5 class="card-title" data-id="@element.Id">@element.Name</h5>
-                    <p class="card-text">@element.Description.</p>
-                    <p class="card-text">Category: @element.ProductCategory.Department</p>
-                    <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <a class="btn btn-primary addToCart" style="float: bottom">Add To Cart</a>
-                </div>
+                <h5 class="card-title headerAlign">@element.Name</h5>
+                <p class="card-text hidedText">@element.Description.</p>
+                <p class="card-text priceAlign"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+
+
             </div>
             <a href="" type="button" class="btn btn-primary addToCart ">Add To Cart</a>
         </div>

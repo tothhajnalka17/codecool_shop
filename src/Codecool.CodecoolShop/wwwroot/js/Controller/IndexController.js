@@ -5,6 +5,20 @@ import { AddToCartButtonEventListener } from "../Controller/ShoppingCartControll
 
 AddToCartButtonEventListener();
 
+addListeners();
+
+function addListeners() {
+    var selected = document.querySelectorAll(".card-title");
+    for (var i = 0; i < selected.length; i++) {
+        selected[i].addEventListener('click', Examine);
+    }
+}
+
+function Examine() {
+    var link = `/product/viewer/${this.dataset.id}`;
+    window.location = link;
+}
+
 // Add buttons for filtering
 async function AddFilters() {
 
