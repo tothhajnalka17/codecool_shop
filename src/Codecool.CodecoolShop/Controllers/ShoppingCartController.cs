@@ -20,5 +20,10 @@ namespace Codecool.CodecoolShop.Controllers
             
             return View();
         }
+
+        public IActionResult GoToCheckout()
+        {
+            return Redirect("../Checkout");
+        }
     }
 }

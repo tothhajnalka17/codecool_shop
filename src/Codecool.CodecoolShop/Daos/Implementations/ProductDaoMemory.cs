@@ -68,7 +68,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             if (filters.Keys.Contains("category"))
             {
                 foreach (var categoryValues in filters["category"])
-                    filteredProducts = filteredProducts.Concat(data.Where(x => categoryValues.Contains(x.ProductCategory.Department)));
+                    filteredProducts = (data.FindAll(x => categoryValues.Contains(x.ProductCategory.Department)));
                 
                 if (filters.Keys.Contains("supplier"))
                 {
