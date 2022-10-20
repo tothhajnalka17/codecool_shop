@@ -82,7 +82,7 @@ async function UpdateCards() {
     }
     for (var product of products) {
         console.log(product);
-        let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency);
+        let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency, product.id);
         
         cardHolder.appendChild(card);
     }
