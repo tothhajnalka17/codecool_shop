@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
 using Codecool.CodecoolShop.Services;
+using static Org.BouncyCastle.Bcpg.Attr.ImageAttrib;
 
 [Route("Checkout/[controller]")]
 [ApiController]
@@ -15,11 +16,11 @@ public class MailController : ControllerBase
         this.mailService = mailService;
     }
     [HttpPost("send")]
-    public async Task<IActionResult> SendMail([FromForm] MailRequest request)
+    public async Task<IActionResult> SendMail()
     {
         try
         {
-            await mailService.SendEmailAsync(request);
+            await mailService.SendEmailAsync();
             return Ok();
         }
         catch (Exception ex)

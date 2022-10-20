@@ -16,15 +16,21 @@ namespace Codecool.CodecoolShop.Services
         {
             _mailSettings = mailSettings.Value;
         }
-        public async Task SendEmailAsync(MailRequest mailRequest)
+        public async Task SendEmailAsync()
         {
+            // TODO add the request details (subject, toemail, body) stuff from the backend order object
+            // Add hardcoded stuff for email data:
+            // formData.append("ToEmail", "gergely.kamaras@gmail.com");
+            // formData.append("Subject", "Trollolo");
+            // formData.append("Body", "Jolan");
+
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
-            email.Subject = mailRequest.Subject;
+            email.To.Add(MailboxAddress.Parse("gergely.kamaras@gmail.com"));
+            email.Subject = "Trololo";
             var builder = new BodyBuilder();
             
-            builder.HtmlBody = mailRequest.Body;
+            builder.HtmlBody = "hali";
             email.Body = builder.ToMessageBody();
             using var smtp = new SmtpClient();
             smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);

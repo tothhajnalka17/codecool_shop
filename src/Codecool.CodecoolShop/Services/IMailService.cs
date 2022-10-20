@@ -5,6 +5,6 @@ namespace Codecool.CodecoolShop.Services
 {
     public interface IMailService
     {
-        Task SendEmailAsync(MailRequest mailRequest);
+        Task SendEmailAsync();
     }
 }
