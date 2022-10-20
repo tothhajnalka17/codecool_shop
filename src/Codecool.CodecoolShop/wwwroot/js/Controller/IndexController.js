@@ -81,8 +81,7 @@ async function UpdateCards() {
         products = await fetchFilteredProducts(filters);
     }
     for (var product of products) {
-        console.log(product);
-        let card = CardFactory(product.name, product.description, product.productCategory.department, product.supplier.name, product.defaultPrice, product.currency);
+        let card = CardFactory(product.name, product.description, product.productCategory.department, product.supplier.name, product.defaultPrice, product.currency, product.id);
         
         cardHolder.appendChild(card);
     }

@@ -13,6 +13,7 @@ function CardFactory(name, description, category, supplier, price, currency) {
 
     let cardTitle = document.createElement('h5');
     cardTitle.classList.add('card-title', 'text-center');
+    cardTitle.dataset.setAttribute('id', id)
     cardTitle.innerText = name;
 
     let cardtext1 = document.createElement('p');
