@@ -31,6 +31,8 @@ async function RefreshCart() {
 
         const tablebody = await document.querySelector("#shopping_cart--body");
 
+        let totalprice = 0;
+
         for (var item in cart) {
             let currentItem = JSON.parse(item);
             let itemname = await currentItem.Name;
@@ -40,7 +42,12 @@ async function RefreshCart() {
             
             var tablerow = await TableRowFactory(itemname, itemprice, itemcurrency, quantity);
             tablebody.appendChild(tablerow);
+            totalprice += cart[item] * currentItem.DefaultPrice;
         }
+
+        const total = document.createElement('div');
+        total.innerHTML = `<strong>Total: ${totalprice}</strong>`;
+        container.appendChild(total);
 
     }
 }
