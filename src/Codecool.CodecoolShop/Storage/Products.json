@@ -4,7 +4,7 @@
     "defaultPrice": "12500",
     "currency": "HUF",
     "description": "Special for Gudmon fans, Fantastic price. 100% Cotton, very confortable",
-    "productCategory": "tshirt",
+    "productCategory": "Shirt",
     "supplier": "Marci"
   },
   {
@@ -12,7 +12,7 @@
     "defaultPrice": "10000",
     "currency": "HUF",
     "description": "Great as a gift for your sister, mother, daughter. Only the highest quality cotton. Comfortable, stylish.",
-    "productCategory": "tshirt",
+    "productCategory": "Shirt",
     "supplier": "Fülöp"
   },
   {
@@ -20,7 +20,7 @@
     "defaultPrice": "12000",
     "currency": "HUF",
     "description": "Compliment your beauty with this wonderful piece of clothing. Catch the eye of everyone on the street. High-quality fabric.",
-    "productCategory": "tshirt",
+    "productCategory": "Shirt",
     "supplier": "Gergő"
   },
   {
@@ -28,7 +28,7 @@
     "defaultPrice": "11000",
     "currency": "HUF",
     "description": "Go to any concert and be the coolest audience member there. All while staying comfortable in this high quality clothing.",
-    "productCategory": "tshirt",
+    "productCategory": "Shirt",
     "supplier": "Robi"
   },
   {
@@ -36,7 +36,7 @@
     "defaultPrice": "12000",
     "currency": "HUF",
     "description": "Have a cheerful day, look in the mirror and smile with this joyous t-shirt.",
-    "productCategory": "tshirt",
+    "productCategory": "Shirt",
     "supplier": "Hajni"
   },
   {
@@ -44,7 +44,47 @@
     "defaultPrice": "13000",
     "currency": "HUF",
     "description": "Feel stylish and carefree wearing the hottest article of fashion. Only 100% cotton!",
-    "productCategory": "tshirt",
+    "productCategory": "Shirt",
+    "supplier": "Zoárd"
+  },
+  {
+    "name": "Szipi szupi Gergő bögre",
+    "defaultPrice": "6500",
+    "currency": "HUF",
+    "description": "The perfect Cup of <T> for C# devs",
+    "productCategory": "Mug",
+    "supplier": "Gergő"
+  },
+  {
+    "name": "Gudmon A KFT bögre",
+    "defaultPrice": "8500",
+    "currency": "HUF",
+    "description": "Forget your simple glass of water days. The mugs are where it's at now.",
+    "productCategory": "Mug",
+    "supplier": "Marci"
+  },
+  {
+    "name": "T Error a házba Hajni bögre",
+    "defaultPrice": "8500",
+    "currency": "HUF",
+    "description": "It hasn't got a spout but you can sure bet it has a handle! Ain't that great?",
+    "productCategory": "Mug",
+    "supplier": "Hajni"
+  },
+  {
+    "name": "Salt Daddy Fülöp bögre",
+    "defaultPrice": "3000",
+    "currency": "HUF",
+    "description": "Coffee lovers unite: pour your favorite substance into this lavish cup.",
+    "productCategory": "Mug",
+    "supplier": "Fülöp"
+  },
+  {
+    "name": "BugBuster Zoárd bögre",
+    "defaultPrice": "10000",
+    "currency": "HUF",
+    "description": "Drink your daily choice of poison from this lovely ceramic mug.",
+    "productCategory": "Mug",
     "supplier": "Zoárd"
   }
 ]
