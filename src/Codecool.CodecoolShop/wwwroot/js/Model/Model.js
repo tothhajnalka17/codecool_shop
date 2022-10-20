@@ -33,17 +33,3 @@ async function fetchFilteredProducts(dict) {
         console.log(error);
     }
 }
-
-async function SendMail() {
-    try {
-        let url = "mail/send";
-        let response = await fetch(`${url}`, {
-            method: 'POST',
-        });
-        if (response.ok !== true) {
-            throw new Error(`Error making fetch request: ${response}`);
-        } 
-    } catch (error) {
-        console.log(error);
-    }
-}
