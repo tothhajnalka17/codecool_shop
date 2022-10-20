@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Services;
+using Codecool.CodecoolShop.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,8 @@ namespace Codecool.CodecoolShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, Services.MailService>();
             services.AddControllersWithViews();
         }
 

@@ -1,4 +1,4 @@
-﻿export { fetchProducts, fetchFilteredProducts }
+﻿export { fetchProducts, fetchFilteredProducts}
 
 async function fetchProducts() {
     try {
