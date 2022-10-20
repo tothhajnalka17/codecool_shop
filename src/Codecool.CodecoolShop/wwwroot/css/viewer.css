@@ -12,6 +12,24 @@
     object-fit: contain;
 }
 
+.cardHeader{
+    padding: 10px;
+    font-size: larger;
+    text-align: left;
+}
+
+.cardDescription{
+    padding: 20px;
+    font-size: medium;
+    text-align: left;
+}
+
+.minImage{
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+}
+
 .leftBar{
     width:20%;
 }
@@ -30,7 +48,9 @@
     width: 90%;
     height: 120px;
     display: inline-flex;
+    overflow:hidden;
     background: none;
+    object-fit: scale-down;
 }
 
 .related {
@@ -50,4 +70,5 @@
 
 .pricetag{
     font-size: 15px;
+    justify-content: center;
 }
