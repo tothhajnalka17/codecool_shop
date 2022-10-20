@@ -6,7 +6,8 @@ namespace Codecool.CodecoolShop.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        public ShoppingCartDaoMemory UserShoppingCart { get; set; }
+        public ShoppingCartDaoMemory UserShoppingCart { get; set; }
+
 
         public ShoppingCartController()
         {
@@ -16,7 +17,7 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("ShoppingCart")]
         public IActionResult ShoppingCart()
         { 
-            var shoppingCart = UserShoppingCart.GetAll().ToList();
+            
             return View();
         }
     }
