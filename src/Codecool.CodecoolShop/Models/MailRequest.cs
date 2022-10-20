@@ -1,4 +1,7 @@
-﻿namespace Codecool.CodecoolShop.Models
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+
+namespace Codecool.CodecoolShop.Models
 {
     public class MailRequest
     {

@@ -1,4 +1,7 @@
-﻿namespace Codecool.CodecoolShop.Settings
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+
+namespace Codecool.CodecoolShop.Settings
 {
     public class MailSettings
     {
