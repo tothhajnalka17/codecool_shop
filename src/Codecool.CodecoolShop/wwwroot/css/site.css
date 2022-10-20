@@ -13,9 +13,9 @@ a {
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    color: black;
+    background-color: magenta;
+    border-color: darkmagenta;
     box-shadow: 1px 1px grey;
     margin-right: 0.25rem;
     margin-top: 0.25rem;
@@ -24,7 +24,7 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
+  background-color: darkmagenta;
   border-color: #1861ac;
 }
 
@@ -124,6 +124,8 @@ body {
 }
 
 .addToCart {
+    background-color: magenta;
+    color: black;
     position: absolute;
     left: 1rem;
     bottom: 1rem;

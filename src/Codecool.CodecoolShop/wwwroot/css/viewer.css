@@ -1,15 +1,15 @@
 ﻿.barContainer{
     position: relative;
-    width: 95%;
-    display: flex;
-    justify-content:space-between;
+    width: 100%;
+    display: inline-block;
+    
 }
 
-.mainImage{
-    justify-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    object-fit: contain;
+.mainImage {
+
+    
+    width: 100%;
+    max-height: 250px;
 }
 
 .cardHeader{
@@ -25,50 +25,67 @@
 }
 
 .minImage{
-    width: 60px;
-    height: auto;
-    object-fit: contain;
+    width: 100px;
+    height: 50%;
+    margin-left: 0.5rem;
+    
 }
 
 .leftBar{
     width:20%;
 }
 
-.midBar{
-    width:40%;
+.midBar {
+    
+    width: 60%;
+    margin-right: 2rem;
+    display: inline-block;
 }
 
 .rightBar{
+    position: absolute;
+    margin-left: 50rem;
     width:40%;
+    display: inline-block;
+    box-shadow: 1.5px 2px slategray;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.viewerAddCart {
+    position: absolute;
+    left: 0.2rem;
+    bottom: 0.5rem;
+    background-color: magenta;
 }
 
 .bottomBar {
-    position: absolute;
-    bottom: 60px;
+    position: relative;
+    margin-top: 2rem;
     width: 90%;
     height: 120px;
     display: inline-flex;
-    overflow:hidden;
-    background: none;
-    object-fit: scale-down;
+}
+.relatedCard {
+    margin-left: 1rem;
+    width: 150px;
+    height: 150px;
+    border: 1px solid;
+    box-shadow: 1px 1px grey; 
 }
 
 .related {
     width: 10%;
     max-width: 20%;
     margin-left: 10px;
-    margin-right: 10px;
-    border: 5px inset lightblue;
-    padding: 5px;
-    border-radius: 10px;
-    text-overflow: clip;
+    
 }
 
-.related-text{
-    font-size: 10px;
-}
 
 .pricetag{
     font-size: 15px;
     justify-content: center;
+    position: absolute;
+    bottom: 0px;
+
 }
