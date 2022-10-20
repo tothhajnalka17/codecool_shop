@@ -5,30 +5,31 @@ using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Codecool.CodecoolShop.Daos.Implementations;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class CheckOutController : Controller
     {
+        private readonly IMailService mailService;
         public IActionResult Index()
         {
             return View();
+        }
+
+        public CheckOutController(IMailService mailService)
+        {
+            this.mailService = mailService;
         }
 
         [HttpPost]
         [ActionName("ShowCheckOutCart")]
         public IActionResult ShowCheckOutCart(CheckOutModel checkOutModel)
         {
-            // TODO get from shopping cart
-            
-
-            //Console.WriteLine($"{firstName} {lastName} {email} {phoneNumber}" +
-            //    $" {billingCountry} {billingCity} {billingZipCode} {billingAddress}" +
-            //    $"{shippingCountry} {shippingCity} {shippingZipCode} {shippingAddress}");
-
-            //return RedirectToAction(actionName: "Index", controllerName: "Product");
             Order order = new Order();
-            order.ProductList = new List<Product>();
+            order.ProductList = ShoppingCartDaoMemory.GetInstance().GetAll().ToList();
 
             order.FirstName = checkOutModel.FirstName;
             order.LastName = checkOutModel.LastName;
@@ -45,13 +46,10 @@ namespace Codecool.CodecoolShop.Controllers
             order.ShippingZipCode = checkOutModel.ShippingZipCode;
             order.ShippingAddress = checkOutModel.ShippingAddress;
 
-            await MailService.SendEmailAsync();
-            SendEmailAsync(order.Email, "Order information", order.ToString());
+            mailService.SendEmailAsync(order.Email, "Order Details", order.ToString());
 
             return View("ShowCheckOutCart", checkOutModel);
         }
-
-       
 
         public IActionResult Payment()
         {
