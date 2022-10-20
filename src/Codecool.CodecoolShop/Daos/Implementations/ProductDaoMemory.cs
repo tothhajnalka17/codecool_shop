@@ -47,6 +47,10 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return data;
         }
 
+        public Product GetByName(string name)
+        {
+            return data.First(x => x.Name == name);
+        }
         public IEnumerable<Product> GetBy(Supplier supplier)
         {
             return data.Where(x => x.Supplier.Id == supplier.Id);
@@ -54,7 +58,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 
         public IEnumerable<Product> GetBy(ProductCategory productCategory)
         {
-            return data.Where(x => x.ProductCategory.Id == productCategory.Id);
+            return data.FindAll(x => x.ProductCategory.Id == productCategory.Id);
         }
 
         public IEnumerable<Product> GetByCategory(Dictionary<string, List<string>> filters)
