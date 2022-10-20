@@ -57,12 +57,9 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
-        //public IActionResult Payment(PaymentModel paymentModel)
-        //{
-        //    return View("Payment", paymentModel);
-        //}
-
-        
-
+        public IActionResult SuccessfullPayment()
+        {
+            return View();
+        }
     }
 }
