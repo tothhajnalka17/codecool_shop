@@ -1,5 +1,9 @@
 ﻿import { ButtonFactory, CardFactory } from "../View/View.js"
 import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
+import { fetchAddProductToCart, fetchCart } from "../Model/ShoppingCartModel.js"
+import { AddToCartButtonEventListener } from "../Controller/ShoppingCartController.js"
+
+AddToCartButtonEventListener();
 
 // Add buttons for filtering
 async function AddFilters() {
@@ -89,3 +93,4 @@ async function UpdateCards() {
 }
 
 AddFilters();
+AddToCartButtonEventListener();
