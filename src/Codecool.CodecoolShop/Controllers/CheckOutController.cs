@@ -1,44 +1,53 @@
 ﻿using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Services;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Codecool.CodecoolShop.Daos.Implementations;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class CheckOutController : Controller
     {
+        private readonly IMailService mailService;
         public IActionResult Index()
         {
             return View();
+        }
+
+        public CheckOutController(IMailService mailService)
+        {
+            this.mailService = mailService;
         }
 
         [HttpPost]
         [ActionName("ShowCheckOutCart")]
         public IActionResult ShowCheckOutCart(CheckOutModel checkOutModel)
         {
-            //FirstName; LastName; Email; PhoneNumber;
-            //BillingCountry; BillingCity; BillingZipCode; BillingAdress;
-            //ShippingCountry; ShippingCity; ShippingZipCode; ShippingAdress;
+            Order order = new Order();
+            order.ProductList = ShoppingCartDaoMemory.GetInstance().GetAll().ToList();
 
-            string firstName = checkOutModel.FirstName;
-            string lastName = checkOutModel.LastName;
-            string email = checkOutModel.Email;
+            order.FirstName = checkOutModel.FirstName;
+            order.LastName = checkOutModel.LastName;
+            order.Email = checkOutModel.Email;
 
-            string phoneNumber = checkOutModel.PhoneNumber;
-            string billingCountry = checkOutModel.BillingCountry;
-            string billingCity = checkOutModel.BillingCity;
-            string billingZipCode = checkOutModel.BillingZipCode;
-            string billingAdress = checkOutModel.BillingAdress;
+            order.PhoneNumber = checkOutModel.PhoneNumber;
+            order.BillingCountry = checkOutModel.BillingCountry;
+            order.BillingCity = checkOutModel.BillingCity;
+            order.BillingZipCode = checkOutModel.BillingZipCode;
+            order.BillingAddress = checkOutModel.BillingAddress;
 
-            string shippingCountry = checkOutModel.ShippingCountry;
-            string shippingCity = checkOutModel.ShippingCity;
-            string shippingZipCode = checkOutModel.ShippingZipCode;
-            string shippingAdress = checkOutModel.ShippingAdress;
+            order.ShippingCountry = checkOutModel.ShippingCountry;
+            order.ShippingCity = checkOutModel.ShippingCity;
+            order.ShippingZipCode = checkOutModel.ShippingZipCode;
+            order.ShippingAddress = checkOutModel.ShippingAddress;
 
-            Console.WriteLine($"{firstName} {lastName} {email} {phoneNumber}" +
-                $" {billingCountry} {billingCity} {billingZipCode} {billingAdress}" +
-                $"{shippingCountry} {shippingCity} {shippingZipCode} {shippingAdress}");
+            mailService.SendEmailAsync(order.Email, "Order Details", order.ToString());
 
-            //return RedirectToAction(actionName: "Index", controllerName: "Product");
             return View("ShowCheckOutCart", checkOutModel);
         }
 
@@ -51,6 +60,8 @@ namespace Codecool.CodecoolShop.Controllers
         //{
         //    return View("Payment", paymentModel);
         //}
+
         
+
     }
 }
