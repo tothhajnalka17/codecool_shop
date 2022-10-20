@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using System.Web;
+using System.Security.Policy;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -41,6 +45,29 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Viewer()
+        {
+            var path = HttpContext.Request.Path.ToString();
+            try
+            {
+                string[] strings = path.Split('/');
+                int id = Convert.ToInt32(strings[3]);
+
+
+                var product = ProductService.GetProduct(id);
+                
+                var related = ProductService.GetProductsForCategory(product.ProductCategory.Id);
+                related.ToList().Add(product);
+
+                ViewBag.Id = id;
+                return View(related.ToList());
+            }
+            catch (Exception e)
+            {
+                return Error();
+            }
         }
     }
 }

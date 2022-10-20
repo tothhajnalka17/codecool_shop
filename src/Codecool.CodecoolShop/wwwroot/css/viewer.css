@@ -1,0 +1,74 @@
+﻿.barContainer{
+    position: relative;
+    width: 95%;
+    display: flex;
+    justify-content:space-between;
+}
+
+.mainImage{
+    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    object-fit: contain;
+}
+
+.cardHeader{
+    padding: 10px;
+    font-size: larger;
+    text-align: left;
+}
+
+.cardDescription{
+    padding: 20px;
+    font-size: medium;
+    text-align: left;
+}
+
+.minImage{
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+}
+
+.leftBar{
+    width:20%;
+}
+
+.midBar{
+    width:40%;
+}
+
+.rightBar{
+    width:40%;
+}
+
+.bottomBar {
+    position: absolute;
+    bottom: 60px;
+    width: 90%;
+    height: 120px;
+    display: inline-flex;
+    overflow:hidden;
+    background: none;
+    object-fit: scale-down;
+}
+
+.related {
+    width: 10%;
+    max-width: 20%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 5px inset lightblue;
+    padding: 5px;
+    border-radius: 10px;
+    text-overflow: clip;
+}
+
+.related-text{
+    font-size: 10px;
+}
+
+.pricetag{
+    font-size: 15px;
+    justify-content: center;
+}
