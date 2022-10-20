@@ -6,8 +6,7 @@ async function AddFilters() {
 
     // TODO fetch the data dynamically from the backend
     let categories = ["Software", "Hardware"];
-    let suppliers = ["lenovo", "amazon"];
-    
+    let suppliers = ["Lenovo", "Amazon"];
 
     let filterContainer = document.querySelector('#filterContainer');
 

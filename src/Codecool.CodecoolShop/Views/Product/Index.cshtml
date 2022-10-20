@@ -9,23 +9,23 @@
     {
         <div class="col-lg-3 card">
             <img src="img/@(element.Name).jpg" class="productImage">
-                <div class="card-body">
-                    <h5 class="card-title text-center">
-                        Product
-                        @{
-                            var num = Model.IndexOf(element) + 1;
-                        }
-                        @num
-                    </h5>
-                    <h5 class="card-title">@element.Name</h5>
-                    <p class="card-text">@element.Description.</p>
-                    <p class="card-text">Category: @element.ProductCategory.Department</p>
-                    <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <a href="" type="button" class="btn btn-primary addToCart">Add To Cart</a>
-                </div>
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    Product
+                    @{
+                        var num = Model.IndexOf(element) + 1;
+                    }
+                    @num
+                </h5>
+                <h5 class="card-title">@element.Name</h5>
+                <p class="card-text">@element.Description.</p>
+                <p class="card-text">Category: @element.ProductCategory.Department</p>
+                <p class="card-text">Supplier: @element.Supplier.Name</p>
+                <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                <a href="" type="button" class="btn btn-primary addToCart">Add To Cart</a>
+            </div>
         </div>
     }
-
-
 </div>
+
+<script src="~/js/Controller/IndexController.js" asp-append-version="true" type="module"></script>
