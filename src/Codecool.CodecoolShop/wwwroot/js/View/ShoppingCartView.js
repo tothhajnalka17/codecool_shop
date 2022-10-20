@@ -1,11 +1,8 @@
 ﻿export { TableRowFactory, TableFactory }
 
-function TableRowFactory(name, supplier, price, currency) {
+function TableRowFactory(name, price, currency, quantity) {
 
     const tablerow = document.createElement('tr');
-    
-    let itemmaker = document.createElement('td');
-    itemmaker.innerText = supplier;
 
     let itemname = document.createElement('td');
     itemname.innerText = name;
@@ -16,10 +13,13 @@ function TableRowFactory(name, supplier, price, currency) {
     let pricecurrency = document.createElement('td');
     pricecurrency.innerText = currency;
 
-    tablerow.appendChild(itemmaker);
+    let itemquantity = document.createElement('td');
+    itemquantity.innerText = quantity;
+
     tablerow.appendChild(itemname);
     tablerow.appendChild(itemprice);
     tablerow.appendChild(pricecurrency);
+    tablerow.appendChild(itemquantity);
 
     return tablerow;
 }
@@ -34,19 +34,19 @@ function TableFactory() {
 
     const tableheader1 = document.createElement('th');
     tableheader1.setAttribute("scope", "col");
-    tableheader1.innerText = "Maker";
+    tableheader1.innerText = "Name";
 
     const tableheader2 = document.createElement('th');
     tableheader2.setAttribute("scope", "col");
-    tableheader2.innerText = "Name";
+    tableheader2.innerText = "Price";
 
     const tableheader3 = document.createElement('th');
     tableheader3.setAttribute("scope", "col");
-    tableheader3.innerText = "Price";
+    tableheader3.innerText = "Currency";
 
     const tableheader4 = document.createElement('th');
     tableheader4.setAttribute("scope", "col");
-    tableheader4.innerText = "Currency";
+    tableheader4.innerText = "Quantity";
 
     tablerow.appendChild(tableheader1);
     tablerow.appendChild(tableheader2);
