@@ -1,12 +1,13 @@
 ﻿export { ButtonFactory, CardFactory }
+import { AddListener } from "../Controller/ShoppingCartController.js"
 
 // Create the dom elements that hold the card data
-function CardFactory(name, description, price, currency) {
+function CardFactory(name, description, price, currency, id) {
     let card = document.createElement('div');
     card.classList.add('col-lg-3', 'productCards');
-   
+
     let image = document.createElement('img');
-    image.src = `img/${name}.jpg`;
+    image.src = `img/${ name }.jpg`;
     image.classList.add('productImage');
 
     let cardBody = document.createElement('div');
@@ -24,16 +25,17 @@ function CardFactory(name, description, price, currency) {
 
     let cardtext4 = document.createElement('strong');
     cardtext4.classList.add('card-text', 'priceAlign');
-    cardtext4.innerText = `Price: ${price} ${currency}`;
+    cardtext4.innerText = `Price: ${ price } ${ currency }`;
 
     let button = document.createElement('a');
     button.classList.add('btn', 'btn-primary', 'addToCart');
-    button.type = 'button';
+    button.setAttribute('data-Id', id)
     button.innerText = 'Add To Cart';
-        
+    AddListener(button);
+
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardtext1);
-    
+
     cardBody.appendChild(cardtext4);
 
     card.appendChild(image);

@@ -1,5 +1,22 @@
 ﻿import { ButtonFactory, CardFactory } from "../View/View.js"
 import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
+import { AddToCartButtonEventListener } from "../Controller/ShoppingCartController.js"
+
+AddListeners();
+AddFilters();
+AddToCartButtonEventListener();
+
+function AddListeners() {
+    var selected = document.querySelectorAll(".card-title");
+    for (var i = 0; i < selected.length; i++) {
+        selected[i].addEventListener('click', Examine);
+    }
+}
+
+function Examine() {
+    var link = `/product/viewer/${this.dataset.id}`;
+    window.location = link;
+}
 
 // Add buttons for filtering
 async function AddFilters() {
@@ -32,7 +49,7 @@ async function AddFilters() {
 function AddButtonListeners() {
     let buttons = document.querySelectorAll(".filterButton");
     
-    buttons.forEach((button) => button.addEventListener("click", (e) => {
+    buttons.forEach((button) => button.addEventListener("click", async (e) => {
         if (button.getAttribute('toggled') == 'false') {
             button.setAttribute('toggled', true);
             button.classList.remove('btn-primary');
@@ -69,6 +86,7 @@ function GatherFilters() {
 
 //Read in the activated filters and hide cards that don't match
 async function UpdateCards() {
+    console.log("start filtering");
     let filters = GatherFilters();
     let products = [];
     let cardHolder = document.querySelector('#card-container');
@@ -81,12 +99,7 @@ async function UpdateCards() {
         products = await fetchFilteredProducts(filters);
     }
     for (var product of products) {
-        console.log(product);
-        let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency);
-        
+        let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency, product.id);
         cardHolder.appendChild(card);
     }
-
 }
-
-AddFilters();
