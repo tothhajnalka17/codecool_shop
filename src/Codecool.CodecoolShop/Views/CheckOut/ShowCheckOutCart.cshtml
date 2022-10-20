@@ -1,13 +1,12 @@
 ﻿@model Codecool.CodecoolShop.Models.CheckOutModel
 
 @{
-    ViewData["Title"] = "ShowCheckOutCart";
+    ViewData["Title"] = "Checkout Information";
 }
 
 <h1>ShowCheckOutCart</h1>
 
 <div>
-    <h4>CheckOutModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -84,9 +83,12 @@
         </dd>
     </dl>
 </div>
+<h4>Order Total: @ViewBag.OrderTotal</h4>
+<div>
+    <a asp-controller="CheckOut" asp-action="Payment" class="btn-primary btn">Go to Payment</a>
+</div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 
-    <a asp-controller="CheckOut" asp-action="Payment" class="btn-primary btn">Go to Payment</a>
 </div>
