@@ -4,15 +4,19 @@
 @{
     ViewData["Viewer"] = "Single View";
 }
+
+
 <div class="barContainer">
+
     @foreach (var element in Model)
     {
         @if (element.Id == ViewBag.Id)
         {
+
             <div class="leftBar">More Pictures</div>
 
             <div class="midBar">
-                        <img src="img/@(element.Name).jpg">
+            <img src="../../img/@(element.Name).Jpg" class="mainImg" alt="AD SPACE!">
             </div>
 
             <div class="rightBar">
@@ -28,10 +32,9 @@
                 </div>
             </div>
             
-            }
+        }
     }
     </div>
-        <div class="bottomBarHeader">
             <div class="bottomBar">
     @foreach (var element in Model)
     {
@@ -46,5 +49,4 @@
                     </div>
                 }
     }
-    </div>
     </div>
