@@ -48,6 +48,7 @@ namespace Codecool.CodecoolShop.Controllers
 
             mailService.SendEmailAsync(order.Email, "Order Details", order.ToString());
 
+            ViewBag.OrderTotal = order.OrderTotal;
             return View("ShowCheckOutCart", checkOutModel);
         }
 
