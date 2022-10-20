@@ -5,8 +5,8 @@ import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
 async function AddFilters() {
 
     // TODO fetch the data dynamically from the backend
-    let categories = ["Software", "Hardware"];
-    let suppliers = ["Lenovo", "Amazon"];
+    let categories = ["T-Shirt"];
+    let suppliers = ["Gergő", "Marci", "Hajni", "Zoárd", "Robi", "Fülöp"];
 
     let filterContainer = document.querySelector('#filterContainer');
 
@@ -82,7 +82,7 @@ async function UpdateCards() {
     }
     for (var product of products) {
         console.log(product);
-        let card = CardFactory(product.name, product.description, product.productCategory.department, product.supplier.name, product.defaultPrice, product.currency);
+        let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency);
         
         cardHolder.appendChild(card);
     }
