@@ -1,26 +1,50 @@
 [
   {
-    "name": "Amazon Fire",
-    "defaultPrice": "49,90",
-    "currency": "USD",
-    "description": "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.",
-    "productCategory": "tablet",
+    "name": "Madafakin' Marcell T-Shirt",
+    "defaultPrice": "12500",
+    "currency": "HUF",
+    "description": "Special for Gudmon fans, Fantastic price. 100% Cotton, very confortable",
+    "productCategory": "tshirt",
+    "supplier": "Marci"
+  },
+  {
+    "name": "Freaky Fülöp T-Shirt",
+    "defaultPrice": "10000",
+    "currency": "HUF",
+    "description": "Great as a gift for your sister, mother, daughter. Only the highest quality cotton. Comfortable, stylish.",
+    "productCategory": "tshirt",
     "supplier": "Fülöp"
   },
   {
-    "name": "Lenovo IdeaPad Miix 700",
-    "defaultPrice": "479,0",
-    "currency": "USD",
-    "description": "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.",
-    "productCategory": "tablet",
+    "name": "Gorgeous Gergő T-Shirt",
+    "defaultPrice": "12000",
+    "currency": "HUF",
+    "description": "Compliment your beauty with this wonderful piece of clothing. Catch the eye of everyone on the street. High-quality fabric.",
+    "productCategory": "tshirt",
     "supplier": "Gergő"
   },
   {
-    "name": "Amazon Fire HD 8",
-    "defaultPrice": "89,0",
-    "currency": "USD",
-    "description": "Amazon's latest Fire HD 8 tablet is a great value for media consumption.",
-    "productCategory": "tablet",
-    "supplier": "Marci"
+    "name": "Rockin' Robi T-Shirt",
+    "defaultPrice": "11000",
+    "currency": "HUF",
+    "description": "Go to any concert and be the coolest audience member there. All while staying comfortable in this high quality clothing.",
+    "productCategory": "tshirt",
+    "supplier": "Robi"
+  },
+  {
+    "name": "Happy Hajni T-Shirt",
+    "defaultPrice": "12000",
+    "currency": "HUF",
+    "description": "Have a cheerful day, look in the mirror and smile with this joyous t-shirt.",
+    "productCategory": "tshirt",
+    "supplier": "Hajni"
+  },
+  {
+    "name": "Zany Zoárd T-Shirt",
+    "defaultPrice": "13000",
+    "currency": "HUF",
+    "description": "Feel stylish and carefree wearing the hottest article of fashion. Only 100% cotton!",
+    "productCategory": "tshirt",
+    "supplier": "Zoárd"
   }
 ]
