@@ -1,7 +1,7 @@
 ﻿export { ButtonFactory, CardFactory }
 
 // Create the dom elements that hold the card data
-function CardFactory(name, description, price, currency) {
+function CardFactory(name, description, price, currency, id) {
     let card = document.createElement('div');
     card.classList.add('col-lg-3', 'productCards');
    
@@ -11,10 +11,13 @@ function CardFactory(name, description, price, currency) {
 
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
+    
+    
 
     let cardTitle = document.createElement('h5');
     cardTitle.classList.add('card-title', 'text-center', 'headerAlign');
     cardTitle.innerText = name;
+    cardTitle.setAttribute("data-id", id);
 
     let cardtext1 = document.createElement('p');
     cardtext1.classList.add('card-text');

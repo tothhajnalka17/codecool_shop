@@ -13,9 +13,13 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    box-shadow: 1px 1px grey;
+    margin-right: 0.25rem;
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -92,6 +96,7 @@ body {
     max-height: 250px;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
+    border-radius: 1px;
 
 }
 
@@ -107,7 +112,7 @@ body {
     width: 450px;
     margin-left: 1rem;
     margin-top: 1rem;
-    box-shadow: 5px 5px;
+    box-shadow: 2px 3px grey;
 }
 
 
