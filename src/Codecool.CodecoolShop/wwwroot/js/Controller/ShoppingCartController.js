@@ -1,12 +1,16 @@
 ﻿import { fetchAddProductToCart, fetchCart } from "../Model/ShoppingCartModel.js"
 import { TableFactory, TableRowFactory } from "../View/ShoppingCartView.js"
-export { AddToCartButtonEventListener }
+export { AddToCartButtonEventListener, AddListener }
 
 async function AddToCartButtonEventListener() {
     const addToCartButtons = await document.querySelectorAll('.addToCart')
-    await addToCartButtons.forEach((button) => button.addEventListener("click", async () => {
-        await fetchAddProductToCart(1);
-    }))
+    await addToCartButtons.forEach((button) => AddListener(button));
+};
+
+async function AddListener(button) {
+    button.addEventListener("click", async () => {
+        await fetchAddProductToCart(button.getAttribute("data-id"));
+    })
 }
 
 async function RefreshCart() {
