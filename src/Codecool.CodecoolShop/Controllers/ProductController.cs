@@ -49,16 +49,15 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Viewer()
         {
+            var productDaoMemory = ProductDaoMemory.GetInstance();
             var path = HttpContext.Request.Path.ToString();
             try
             {
                 string[] strings = path.Split('/');
-                int id = Convert.ToInt32(strings[3]);
-
-
-                var product = ProductService.GetProduct(id);
+                int id = int.Parse(strings[3]);
+                var product = productDaoMemory.Get(id);
                 
-                var related = ProductService.GetProductsForCategory(product.ProductCategory.Id);
+                var related = productDaoMemory.GetBy(product.ProductCategory);
                 related.ToList().Add(product);
 
                 ViewBag.Id = id;

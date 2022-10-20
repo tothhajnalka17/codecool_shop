@@ -8,12 +8,12 @@
     @foreach (var element in Model)
     {
 
-        <div class="col-lg-3 productCards" data-id="@element.Id">
+        <div class="col-lg-3 productCards" >
             <img src="img/@(element.Name).jpg" class="productImage">
             <div class="card-body">
-
-                <h5 class="card-title headerAlign">@element.Name</h5>
-                <p class="card-text hidedText">@element.Description.</p>
+                
+                    <h5 class="card-title headerAlign" data-id="@element.Id" >@element.Name</h5>
+                    <p class="card-text hidedText">@element.Description.</p>
                 <p class="card-text priceAlign"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
 
 

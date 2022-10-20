@@ -12,10 +12,13 @@ function CardFactory(name, description, price, currency, id) {
 
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
+    
+    
 
     let cardTitle = document.createElement('h5');
     cardTitle.classList.add('card-title', 'text-center', 'headerAlign');
     cardTitle.innerText = name;
+    cardTitle.setAttribute("data-id", id);
 
     let cardtext1 = document.createElement('p');
     cardtext1.classList.add('card-text');
