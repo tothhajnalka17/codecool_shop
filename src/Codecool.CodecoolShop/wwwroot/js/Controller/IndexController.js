@@ -9,8 +9,8 @@ AddToCartButtonEventListener();
 async function AddFilters() {
 
     // TODO fetch the data dynamically from the backend
-    let categories = ["Software", "Hardware"];
-    let suppliers = ["Lenovo", "Amazon"];
+    let categories = ["T-Shirt"];
+    let suppliers = ["Gergő", "Marci", "Hajni", "Zoárd", "Robi", "Fülöp"];
 
     let filterContainer = document.querySelector('#filterContainer');
 
