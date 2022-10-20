@@ -28,16 +28,10 @@ namespace Codecool.CodecoolShop.Controllers.Api
         [Route("Filter")]
         public IEnumerable<Product> FilteredProducts(Dictionary<string, List<string>> filters)
         {
-            IEnumerable<Product> res = new List<Product>();
             var productDaoMemory = ProductDaoMemory.GetInstance();
-            var products = productDaoMemory.GetAll();
-            // TODO actually filter the data
-            foreach (var filter in filters)
-            {
-                res = productDaoMemory.GetByCategory(filter.Key, filter.Value);
-            }
-
-            return res;
+            var filteredProducts = productDaoMemory.GetByCategory(filters);
+            
+            return filteredProducts;
         }
     }
 }

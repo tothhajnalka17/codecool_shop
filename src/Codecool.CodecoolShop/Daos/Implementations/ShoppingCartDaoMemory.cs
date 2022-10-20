@@ -53,6 +53,11 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return _cart.Find(x => x.Id == id);
         }
 
+        public Product GetByName(string name)
+        {
+            return _cart.Find(x => x.Name == name);
+        }
+
         public IEnumerable<Product> GetAll()
         {
             return _cart;

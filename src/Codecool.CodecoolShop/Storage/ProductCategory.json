@@ -1,3 +1,7 @@
-{
-
-}
+[
+  {
+    "name": "tablet",
+    "department": "Hardware",
+    "description":  "test" 
+  }
+]
