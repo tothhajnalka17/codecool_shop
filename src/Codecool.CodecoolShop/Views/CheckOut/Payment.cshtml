@@ -1,0 +1,55 @@
+﻿@model Codecool.CodecoolShop.Models.PaymentModel
+
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<h1 class="col-12">Payment</h1>
+
+<div>
+    <form asp-action="Payment" class="form-row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group col-6">
+            <label asp-for="CardNumber" class="control-label"></label>
+            <input asp-for="CardNumber" class="form-control" type="text" placeholder="0000-0000-0000-0000" />
+            <span asp-validation-for="CardNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group col-6">
+            <label asp-for="CardHolder" class="control-label"></label>
+            <input asp-for="CardHolder" class="form-control" type="text" placeholder="Hegyiemberné Jolán" />
+            <span asp-validation-for="CardHolder" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="form-group col-4 row">
+                <label asp-for="ExpiryDateYear" class="control-label col-8"></label>
+                <input asp-for="ExpiryDateYear" class="form-control col-4" type="number" maxlength="2" placeholder="YY" />
+                <span asp-validation-for="ExpiryDateYear" class="text-danger"></span>
+            </div>
+            <div class="form-group col-4 row">
+                <label asp-for="ExpiryDateMonth" class="control-label col-0"></label>
+                <input asp-for="ExpiryDateMonth" class="form-control col-4" type="number" maxlength="2" placeholder="MM" />
+                <span asp-validation-for="ExpiryDateMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group col-12 row">
+                <label asp-for="CVV" class="control-label col-1"></label>
+                <input asp-for="CVV" class="form-control col-1" type="text" />
+                <span asp-validation-for="CVV" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row col-12">
+            <input id="payment-button" type="button" value="Pay" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Check out</a>
+</div>
+
+<script src="~/js/Controller/ConfirmationController.js" asp-append-version="true" type="module"></script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

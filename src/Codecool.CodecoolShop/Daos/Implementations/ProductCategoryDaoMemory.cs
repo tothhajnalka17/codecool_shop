@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Codecool.CodecoolShop.Models;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
@@ -36,6 +37,11 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         public ProductCategory Get(int id)
         {
             return data.Find(x => x.Id == id);
+        }
+
+        public ProductCategory GetByName(string name)
+        {
+            return data.Find(x => x.Name == name);
         }
 
         public IEnumerable<ProductCategory> GetAll()

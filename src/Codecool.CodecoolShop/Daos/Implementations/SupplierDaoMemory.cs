@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Codecool.CodecoolShop.Models;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
@@ -36,6 +37,11 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         public Supplier Get(int id)
         {
             return data.Find(x => x.Id == id);
+        }
+
+        public Supplier GetByName(string name)
+        {
+            return data.First(X => X.Name == name);
         }
 
         public IEnumerable<Supplier> GetAll()
