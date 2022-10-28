@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Shirt",
+    "department": "Shirt",
+    "description": "Best clothes for biggest fans, for low price"
+  },
+  {
+    "name": "Mug",
+    "department": "Mug",
+    "description":  "Best gift for your family members" 
+  }
+]

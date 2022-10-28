@@ -1,0 +1,56 @@
+﻿@model List<Codecool.CodecoolShop.Models.Product>
+
+
+@{
+    ViewData["Viewer"] = "Single View";
+}
+
+<div class = "row">
+
+
+    @foreach (var element in Model)
+    {
+        @if (element.Id == ViewBag.Id)
+        {
+            
+            <div class="midBar">
+            <img src="../../img/@(element.Name).Jpg" class="mainImg" alt="AD SPACE!">
+            </div>
+
+            <div class="rightBar">
+                <div class="card"  data-id="@element.Id">
+                    <div class="cardHeader">
+                        <h2 class="card-title">@element.Name</h2>
+                        <p class="card-text">Category: @element.ProductCategory.Department</p>
+                        <p class="card-text">Supplier: @element.Supplier.Name</p>
+                    </div>
+
+
+                    <div class="cardDescription">
+                        <p class="card-text">@element.Description.</p>
+                    </div>
+
+                    <div class="priceTag">
+                        <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                        <a href="" type="button" class="btn btn-primary viewerAddCart" style="float: bottom">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            
+        }
+    }
+    
+<div class="bottomBar">
+    @foreach (var element in Model)
+    {
+        @if (element.Id != ViewBag.Id)
+        {
+            <div class="card relatedCard"  data-id="@element.Id">
+                <h6 class="related-title">@element.Name</h6>
+                <img src="../../img/@(element.Name).Jpg" class="minImage" alt="AD SPACE!">
+                <div class="pricetag"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></div>
+            </div>
+        }
+    }
+</div>
+</div>

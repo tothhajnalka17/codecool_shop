@@ -1,0 +1,205 @@
+﻿@startuml
+namespace Codecool.CodecoolShop {
+
+class Program
+{
+
++ static void Main(string[] args)
++ static IHostBuilder CreateHostBuilder(string[] args)
+
+}
+
+class StartUp
+{
+
++ IConfiguration Configuration { get; }
+
++ StartUp(IConfiguration configuration)
++ void ConfigurationServices(IServiceCollection services)
++ void Configure(IApplicationBuilder app, IWebHostEnvironment env)
++ void SetUpMemoryDatabases()
+
+}
+
+namespace Codecool.CodecoolShop.Modal {
+
+abstract class BaseModel
+{
+
++ int ID { get; set; }
++ string Name { get; set; }
++ string Description { get; set; }
+
+}
+
+class ErrorViewModel
+{
+
++ string RequestID { get; set; }
+
++ bool ShowRequestID()
+
+}
+
+class Product
+{
+
++ string Currency { get; set; }
++ decimal DefaultPrice { get; set; }
++ ProductCategory ProductCategory { get; set; }
++ Supplier Supplier { get; set; }
+
++ void SetProductCategory(ProductCategory productCategory)
+
+}
+
+class ProductCategory
+{
+
++ List<Product> Products { get; set; }
++ string Department { get; set; }
+
+}
+
+class Supplier
+{
+
++ List<Product> Products { get; set; }
+
++ override ToString()
+
+}
+
+namespace Codecool.CodecoolShop.Daos {
+
+namespace Codecool.CodecoolShop.Daos.Implementations {
+
+class ProductCategoryDaoMemory 
+{
+
+- List<ProductCategory> Data
+- static ProductCategoryDaoMemory Instance
+
+- ProductCategoryDaoMemory()
++ static ProductCategoryDaomemory GetInstance()
++ void Add(ProductCategory Item)
++ void Remove(int id)
++ ProductCategory Get(int id)
++ IEnumerable<ProductCategory> GetAll()
+
+}
+
+class ProductDaoMemory
+{
+
+- List<Product> Data
+- static ProductDaoMemory Instance
+
+- ProductDaoMemory()
++ static ProductDaomemory GetInstance()
++ void Add(Product Item)
++ void Remove(int id)
++ Product Get(int id)
++ IEnumerable<Product> GetAll()
++ IEnumerable<Product> GetBy(Supplier supplier)
++ IEnumerable<Product> GetBy(ProductCategory productCategory)
+
+}
+
+class SupplierDaoMemory
+{
+
+- List<Supplier> Data
+- static SupplierDaoMemory Instance
+
+- SupplierDaoMemory()
++ static SupplierDaomemory GetInstance()
++ void Add(Supplier supplier)
++ void Remove(int id)
++ Supplier Get(int id)
++ IEnumerable<Supplier> GetAll()
+
+}
+
+}
+
+interface IDao<T>
+{
+
++ void Add(T item)
++ void Remove(int id)
++ T Get(int id)
++ IEnumerable<T> GetAll()
+
+}
+
+interface IProductCategoryDao
+{
+}
+
+interface IProductDao
+{
+
++ IEnumerable<Product> GetBy(Supplier supplier)
++ IEnumerable<Product> GetBy(ProductCategory productCategory)
+
+}
+
+interface ISupplierDao
+{
+}
+
+}
+
+namespace Codecool.CodecoolShop.Controllers {
+
+class ProductController
+{
+
+- readonly ILogger<ProductController> _logger
++ ProductService ProductService { get; set; }
+
++ ProductController(ILogger<ProductController> logger)
++ IActionResult Index()
++ IActionResult Privacy()
++ IActionResult Error()
+
+}
+
+}
+
+namespace Codecool.CodecoolShop.Service {
+
+class ProductService
+{
+
+- readonly IProductDao _productDao
+- readonly IProductCategoryDao _productCategoryDao
+
++ ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao)
++ ProductCategory GetProductCategory(int categoryId)
++ IEnumerable<Product> GetProductForCategory(int categoryId)
+
+}
+
+}
+
+namespace Codecool.CodecoolShop.View {
+}
+
+}
+
+Codecool.CodecoolShop.Modal.BaseModel <|-- Codecool.CodecoolShop.Modal.Product
+Codecool.CodecoolShop.Modal.BaseModel <|-- Codecool.CodecoolShop.Modal.ProductCategory
+Codecool.CodecoolShop.Modal.BaseModel <|-- Codecool.CodecoolShop.Modal.Supplier
+
+Codecool.CodecoolShop.Daos.IDao <|-- Codecool.CodecoolShop.Daos.IProductCategoryDao
+Codecool.CodecoolShop.Daos.IDao <|-- Codecool.CodecoolShop.Daos.IProductDao
+Codecool.CodecoolShop.Daos.IDao <|-- Codecool.CodecoolShop.Daos.ISupplierDao
+
+Codecool.CodecoolShop.Daos.IProductCategoryDao <|--- Codecool.CodecoolShop.Daos.Implementations.ProductCategoryDaoMemory
+Codecool.CodecoolShop.Daos.IProductDao <|--- Codecool.CodecoolShop.Daos.Implementations.ProductDaoMemory
+Codecool.CodecoolShop.Daos.ISupplierDao <|--- Codecool.CodecoolShop.Daos.Implementations.SupplierDaoMemory
+Controller <|-- Codecool.CodecoolShop.Controllers.ProductController
+
+@enduml

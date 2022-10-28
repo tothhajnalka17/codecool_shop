@@ -13,14 +13,28 @@ a {
 }
 
 .btn-primary {
+<<<<<<< HEAD
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+=======
+    color: black;
+    background-color: magenta;
+    border-color: darkmagenta;
+    box-shadow: 1px 1px grey;
+    margin-right: 0.25rem;
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+>>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
+<<<<<<< HEAD
   background-color: #1b6ec2;
+=======
+  background-color: darkmagenta;
+>>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
   border-color: #1861ac;
 }
 
@@ -69,3 +83,63 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+<<<<<<< HEAD
+=======
+
+.headerAlign {
+    position: absolute;
+    left: 1.3rem;
+    bottom: 10rem;
+}
+
+.hidedText {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    position: absolute;
+    left: 1.2rem;
+    bottom: 6rem;
+
+}
+
+.productImage {
+    width: 100%;
+    max-height: 250px;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-radius: 1px;
+
+}
+
+.productCards 
+{
+    
+    position: relative;
+    display: block;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    height: 450px;
+    width: 450px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    box-shadow: 2px 3px grey;
+}
+
+
+
+.priceAlign {
+    position: absolute;
+    left: 1.2rem;
+    bottom: 4rem;
+}
+
+.addToCart {
+    background-color: magenta;
+    color: black;
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+}
+>>>>>>> codecool-shop-1-csharp-GergelyKamaras/development

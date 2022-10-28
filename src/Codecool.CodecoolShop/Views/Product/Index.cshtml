@@ -4,6 +4,7 @@
 
 @model List<Codecool.CodecoolShop.Models.Product>
 
+<<<<<<< HEAD
 <div class="container">
     @foreach (var element in Model)
     {
@@ -30,3 +31,25 @@
 
 
 </div>
+=======
+<div class="container row"  id="card-container">
+    @foreach (var element in Model)
+    {
+
+        <div class="col-lg-3 productCards" >
+            <img src="img/@(element.Name).jpg" class="productImage">
+            <div class="card-body">
+                
+                    <h5 class="card-title headerAlign" data-id="@element.Id" >@element.Name</h5>
+                    <p class="card-text hidedText">@element.Description.</p>
+                <p class="card-text priceAlign"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+
+
+            </div>
+            <a class="btn btn-primary addToCart" data-id="@element.Id">Add To Cart</a>
+        </div>
+    }
+</div>
+
+<script src="~/js/Controller/IndexController.js" asp-append-version="true" type="module"></script>
+>>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
