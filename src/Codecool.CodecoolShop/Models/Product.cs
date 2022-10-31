@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 using Newtonsoft.Json;
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 using System.ComponentModel.DataAnnotations;
 
 namespace Codecool.CodecoolShop.Models

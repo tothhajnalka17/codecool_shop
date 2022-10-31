@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
 using System.Linq;
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 using Codecool.CodecoolShop.Models;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
@@ -41,15 +38,11 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         {
             return data.Find(x => x.Id == id);
         }
-
-<<<<<<< HEAD
-=======
         public Supplier GetByName(string name)
         {
             return data.First(X => X.Name == name);
         }
 
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
         public IEnumerable<Supplier> GetAll()
         {
             return data;

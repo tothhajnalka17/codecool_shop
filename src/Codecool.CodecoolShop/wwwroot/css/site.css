@@ -13,11 +13,6 @@ a {
 }
 
 .btn-primary {
-<<<<<<< HEAD
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-=======
     color: black;
     background-color: magenta;
     border-color: darkmagenta;
@@ -25,17 +20,12 @@ a {
     margin-right: 0.25rem;
     margin-top: 0.25rem;
     margin-left: 0.25rem;
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-<<<<<<< HEAD
-  background-color: #1b6ec2;
-=======
-  background-color: darkmagenta;
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
-  border-color: #1861ac;
+    color: #fff;
+    background-color: darkmagenta;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
@@ -83,8 +73,6 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
-<<<<<<< HEAD
-=======
 
 .headerAlign {
     position: absolute;
@@ -142,4 +130,3 @@ body {
     left: 1rem;
     bottom: 1rem;
 }
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development

@@ -9,13 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
-<<<<<<< HEAD
-=======
 using System.Web;
 using System.Security.Policy;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.RazorPages;
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -24,10 +21,6 @@ namespace Codecool.CodecoolShop.Controllers
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
@@ -52,11 +45,6 @@ namespace Codecool.CodecoolShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-<<<<<<< HEAD
-    }
-}
-=======
-
         public IActionResult Viewer()
         {
             var productDaoMemory = ProductDaoMemory.GetInstance();
@@ -80,4 +68,3 @@ namespace Codecool.CodecoolShop.Controllers
         }
     }
 }
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development

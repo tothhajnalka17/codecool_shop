@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Codecool.CodecoolShop.Models;
-<<<<<<< HEAD
-=======
 using Newtonsoft.Json.Linq;
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {
@@ -49,14 +46,10 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         {
             return data;
         }
-
-<<<<<<< HEAD
-=======
         public Product GetByName(string name)
         {
             return data.First(x => x.Name == name);
         }
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
         public IEnumerable<Product> GetBy(Supplier supplier)
         {
             return data.Where(x => x.Supplier.Id == supplier.Id);
@@ -64,9 +57,6 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 
         public IEnumerable<Product> GetBy(ProductCategory productCategory)
         {
-<<<<<<< HEAD
-            return data.Where(x => x.ProductCategory.Id == productCategory.Id);
-=======
             return data.FindAll(x => x.ProductCategory.Id == productCategory.Id);
         }
 
@@ -97,7 +87,6 @@ namespace Codecool.CodecoolShop.Daos.Implementations
                 return filteredProducts;
             }
             return GetAll();
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
         }
     }
 }
