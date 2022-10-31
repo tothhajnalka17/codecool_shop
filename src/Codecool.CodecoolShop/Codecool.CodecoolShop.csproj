@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk.Web">
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
-
-<<<<<<< HEAD
-=======
   <ItemGroup>
 
     <PackageReference Include="MailKit" Version="3.4.1" />
@@ -20,5 +12,4 @@
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
->>>>>>> codecool-shop-1-csharp-GergelyKamaras/development
 </Project>
