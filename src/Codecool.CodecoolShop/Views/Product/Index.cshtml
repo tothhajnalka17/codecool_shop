@@ -4,23 +4,37 @@
 
 @model List<Codecool.CodecoolShop.Models.Product>
 
-<div class="container row"  id="card-container">
-    @foreach (var element in Model)
-    {
-
-        <div class="col-lg-3 productCards" >
-            <img src="img/@(element.Name).jpg" class="productImage">
-            <div class="card-body">
-                
-                    <h5 class="card-title headerAlign" data-id="@element.Id" >@element.Name</h5>
-                    <p class="card-text hidedText">@element.Description.</p>
-                <p class="card-text priceAlign"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-
-
+<div class="container product-wrapper"  id="card-container">
+    
+        @foreach (var element in Model)
+        { 
+        <div class="el-wrapper">
+                <div class="box-up" data-id="@(element.Id)">
+                <img class="img" src="img/@(element.Name).jpg" alt="">
+                <div class="img-info">
+                    <div class="info-inner">
+                        <span class="p-name" >@element.Name</span>
+                        <span class="p-company">@element.Supplier.Name</span>
+                    </div>
+                    <div class="a-size">Description: <span class="size">@element.Description</span></div>
+                </div>
             </div>
-            <a class="btn btn-primary addToCart" data-id="@element.Id">Add To Cart</a>
-        </div>
-    }
+
+            <div class="box-down">
+                <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                </div>
+
+                    <a class="cart" data-id="@(element.Id)" >
+                <span class="price">@element.DefaultPrice.ToString("C2")</span>
+                <span class="add-to-cart">
+                    <span class="txt">Add in cart</span>
+                </span>
+                </a>
+            </div>
+        </div> 
+        }
+    
 </div>
 
 <script src="~/js/Controller/IndexController.js" asp-append-version="true" type="module"></script>
