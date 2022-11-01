@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Codecool.CodecoolShop.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json.Linq;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {
@@ -49,7 +51,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 
         public Product GetByName(string name)
         {
-            return data.First(x => x.Name == name);
+            return data.Find(x => x.Name == name);
         }
         public IEnumerable<Product> GetBy(Supplier supplier)
         {
@@ -61,33 +63,19 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return data.FindAll(x => x.ProductCategory.Id == productCategory.Id);
         }
 
-        public IEnumerable<Product> GetByCategory(Dictionary<string, List<string>> filters)
+        public IEnumerable<Product> GetByCategory(List<string> filters)
         {
             IEnumerable<Product> filteredProducts = new List<Product>();
-
-            if (filters.Keys.Contains("category"))
-            {
-                foreach (var categoryValues in filters["category"])
-                    filteredProducts = (data.FindAll(x => categoryValues.Contains(x.ProductCategory.Department)));
-                
-                if (filters.Keys.Contains("supplier"))
-                {
-                    IEnumerable<Product> supplierSelect = new List<Product>();
-                    foreach (var supplierValues in filters["supplier"])
-                        supplierSelect = supplierSelect.Concat(filteredProducts.Where(x => supplierValues.Contains(x.Supplier.Name)));
-
-                    return supplierSelect;
-
-                } return filteredProducts;
-            }
-            else if (!filters.Keys.Contains("category"))
-            {
-                foreach (var supplierValues in filters["supplier"])
-                    filteredProducts = filteredProducts.Concat(data.Where(x => supplierValues.Contains(x.Supplier.Name)));
-
-                return filteredProducts;
-            }
-            return GetAll();
+            filteredProducts = data.Where(x => filters.Contains(x.ProductCategory.Department));    
+            return filteredProducts;
         }
+        
+        public IEnumerable<Product> GetBySupplier(List<string> filters)
+        {
+            IEnumerable<Product> filteredProducts = new List<Product>();
+            filteredProducts = data.Where(x => filters.Contains(x.Supplier.Name));    
+            return filteredProducts;
+        }
+
     }
 }
