@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -53,15 +54,15 @@ namespace Codecool.CodecoolShop.Controllers.Api
         }
 
         [Route("RemoveOne")]
-        public void Remove(int id)
+        public void RemoveOne(Dictionary<string, int> dict)
         {
-            UserShoppingCart.Remove(id);
+            UserShoppingCart.Remove(dict["id"]);
         }
 
         [Route("RemoveAll")]
-        public void RemoveAll(int id)
+        public void RemoveAll(Dictionary<string, int> dict)
         {
-            UserShoppingCart.RemoveAllById(id);
+            UserShoppingCart.RemoveAllById(dict["id"]);
         }
 
         [Route("RemoveCart")]
