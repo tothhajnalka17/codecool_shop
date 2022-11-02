@@ -15,29 +15,29 @@ namespace Codecool.CodecoolShop.Sql
 
         // Users
         // Insert user
-        public static void InsertUser()
+        public static void InsertUser(Registration registration)
         {
             SqlConnection connection = DbConnectionService.Singleton.Connection;
             connection.Open();
 
             using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email, @password);", connection);
 
-            command.Parameters.AddWithValue("@name", );
-            command.Parameters.AddWithValue("@email", );
-            command.Parameters.AddWithValue("@password", );
+            command.Parameters.AddWithValue("@name", registration.Name);
+            command.Parameters.AddWithValue("@email", registration.Email);
+            command.Parameters.AddWithValue("@password", registration.Password);
 
             using SqlDataReader reader = command.ExecuteReader();
             connection.Close();
         }
         
-        // Get user by email
-        public static User GetUserByEmail()
-        {
-            SqlConnection connection = DbConnectionService.Singleton.Connection;
-            connection.Open();
+        //// Get user by email
+        //public static User GetUserByEmail()
+        //{
+        //    SqlConnection connection = DbConnectionService.Singleton.Connection;
+        //    connection.Open();
 
-            using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email);", connection);
-        }
+        //    using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email);", connection);
+        //}
         
         // Check username
         public static bool CheckIfUsernameExists()

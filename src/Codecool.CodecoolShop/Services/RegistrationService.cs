@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Helpers;
 using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Sql;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace Codecool.CodecoolShop.Services
@@ -48,12 +49,12 @@ namespace Codecool.CodecoolShop.Services
                 {
                     Console.WriteLine(registration.Name);
                     Console.WriteLine(registration.Email);
-                    var hashedPassword = Crypto.HashPassword(registration.Password);
-
+                    registration.Password = Crypto.HashPassword(registration.Password);
                     //var verified = Crypto.VerifyHashedPassword(hash, "foo");
-                    Console.WriteLine(hashedPassword);
+                    //Console.WriteLine(hashedPassword);
 
                     //
+                    Queries.InsertUser(registration);
                 }
             
             }
