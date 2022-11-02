@@ -1,4 +1,4 @@
-﻿import { fetchAddProductToCart, fetchCart } from "../Model/ShoppingCartModel.js"
+﻿import { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchCart } from "../Model/ShoppingCartModel.js"
 import { TableFactory, TableRowFactory } from "../View/ShoppingCartView.js"
 export { AddToCartButtonEventListener, AddListener }
 
