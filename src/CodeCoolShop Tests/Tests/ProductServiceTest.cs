@@ -4,6 +4,7 @@ using Codecool.CodecoolShop.Services;
 using NSubstitute;
 using Codecool.CodecoolShop.Models;
 using CodeCoolShop_Tests.MockClasses;
+using NSubstitute.ExceptionExtensions;
 
 namespace CodeCoolShop_Tests
 {
@@ -23,7 +24,7 @@ namespace CodeCoolShop_Tests
 
         }
 
-    [Test]
+        [Test]
         public void GetProductCategory_GetsValidId_ReturnsCategory()
         {
             // arrange
@@ -40,7 +41,9 @@ namespace CodeCoolShop_Tests
         [Test]
         public void GetProductCategory_GetsOutOfRangeId_ThrowError()
         {
-            Assert.Pass();
+            
+            // assert
+            Assert.Throws<IndexOutOfRangeException>(() => _productService.GetProductCategory(8));
         }
 
         [Test]
