@@ -23,17 +23,14 @@ namespace Codecool.CodecoolShop.Controllers
         [ActionName("Register")]
         public IActionResult Register(Registration registration)
         {
-            
-            // Check if the username/email is already taken
-            string ID = HttpContext.Session.GetString("ID");
-            Console.WriteLine(ID);
-            Console.WriteLine(registration.Name);
-            Console.WriteLine(registration.Email);
-            var hashedPassword = Crypto.HashPassword(registration.Password);
 
-            //var verified = Crypto.VerifyHashedPassword(hash, "foo");
-            Console.WriteLine(hashedPassword);
-            
+            // Check if the username/email is already taken
+
+            // If not, make new User with the session id, hashed password
+
+            _registrationService.AddUser(registration);
+
+
 
             return Redirect("/Product/Index");
         }
