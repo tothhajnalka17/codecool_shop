@@ -1,5 +1,5 @@
-﻿import { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchCart } from "../Model/ShoppingCartModel.js"
-import { TableFactory, TableRowFactory } from "../View/ShoppingCartView.js"
+﻿import { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart } from "../Model/ShoppingCartModel.js"
+import { TableFactory, TableRowFactory, FooterFactory } from "../View/ShoppingCartView.js"
 export { AddToCartButtonEventListener, AddListener }
 
 async function AddToCartButtonEventListener() {
@@ -18,9 +18,11 @@ function AddCartPageButtonEventListener() {
     const removeOneButtons = document.querySelectorAll('.remove_one_button');
     const addOneButtons = document.querySelectorAll('.add_one_button');
     const removeAllButtons = document.querySelectorAll('.remove_all_button');
+    const removeCartButtons = document.querySelectorAll('.remove_cart_button');
     addOneButtons.forEach((button) => AddListener(button));
     removeOneButtons.forEach((button) => RemoveOneListener(button));
     removeAllButtons.forEach((button) => RemoveAllListener(button));
+    removeCartButtons.forEach((button) => RemoveCartListener(button));
 }
 
 async function RemoveOneListener(button) {
@@ -33,6 +35,13 @@ async function RemoveOneListener(button) {
 async function RemoveAllListener(button) {
     button.addEventListener("click", async () => {
         await fetchRemoveAllProductFromCart(button.getAttribute("data-id"));
+        RefreshCart();
+    })
+}
+
+async function RemoveCartListener(button) {
+    button.addEventListener("click", async () => {
+        await fetchRemoveCart();
         RefreshCart();
     })
 }
@@ -74,6 +83,10 @@ async function RefreshCart() {
         const total = document.createElement('div');
         total.innerHTML = `<strong>Total: ${totalprice}</strong>`;
         container.appendChild(total);
+
+        const footer = FooterFactory();
+
+        container.appendChild(footer);
 
         AddCartPageButtonEventListener();
 

@@ -1,4 +1,4 @@
-﻿export { TableRowFactory, TableFactory }
+﻿export { TableRowFactory, TableFactory, FooterFactory }
 
 function TableRowFactory(id, name, price, currency, quantity) {
 
@@ -87,4 +87,16 @@ function TableFactory() {
     table.appendChild(tablebody);
 
     return table;
+}
+
+function FooterFactory() {
+    const footerdiv = document.createElement('div');
+
+    const removeAllFromCartButton = document.createElement('button');
+    removeAllFromCartButton.innerText = "Remove All Items";
+    removeAllFromCartButton.classList.add('remove_cart_button');
+
+    footerdiv.appendChild(removeAllFromCartButton);
+
+    return footerdiv;
 }

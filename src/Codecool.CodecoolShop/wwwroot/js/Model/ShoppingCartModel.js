@@ -1,4 +1,4 @@
-﻿export { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchCart }
+﻿export { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart }
 
 async function fetchAddProductToCart(productId) {
     try {
@@ -45,6 +45,20 @@ async function fetchRemoveAllProductFromCart(productId) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ id: productId })
+        });
+        if (response.ok !== true) {
+            throw new Error(`Error making fetch request: ${response}`);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function fetchRemoveCart() {
+    try {
+        let url = "ShoppingCartApi/RemoveCart";
+        let response = await fetch(`${url}`, {
+            method: 'POST'
         });
         if (response.ok !== true) {
             throw new Error(`Error making fetch request: ${response}`);
