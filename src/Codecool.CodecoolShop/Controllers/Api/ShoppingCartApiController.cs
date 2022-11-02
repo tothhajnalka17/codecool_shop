@@ -51,5 +51,23 @@ namespace Codecool.CodecoolShop.Controllers.Api
             var product = AllProduct.GetAll().Where(myproduct => myproduct.Id == productId).First();
             UserShoppingCart.Add(product);
         }
+
+        [Route("RemoveOne")]
+        public void Remove(int id)
+        {
+            UserShoppingCart.Remove(id);
+        }
+
+        [Route("RemoveAll")]
+        public void RemoveAll(int id)
+        {
+            UserShoppingCart.RemoveAllById(id);
+        }
+
+        [Route("RemoveCart")]
+        public void RemoveAllFromCart()
+        {
+            UserShoppingCart.RemoveAll();
+        }
     }
 }
