@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System;
 using Codecool.CodecoolShop.Models;
+using NuGet.Protocol.Core.Types;
 
 namespace Codecool.CodecoolShop.Sql
 {
@@ -11,7 +12,38 @@ namespace Codecool.CodecoolShop.Sql
     {
         // Orders
         // ShoppingCarts
+
         // Users
+        // Insert user
+        public static void InsertUser()
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email, @password);", connection);
+
+            command.Parameters.AddWithValue("@name", );
+            command.Parameters.AddWithValue("@email", );
+            command.Parameters.AddWithValue("@password", );
+
+            using SqlDataReader reader = command.ExecuteReader();
+            connection.Close();
+        }
+        
+        // Get user by email
+        public static User GetUserByEmail()
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email);", connection);
+        }
+        
+        // Check username
+        public static bool CheckIfUsernameExists()
+        {
+            return false;
+        }
 
         // Products
         public static List<Product> GetAllProducts()
