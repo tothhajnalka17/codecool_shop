@@ -26,21 +26,11 @@ namespace Codecool.CodecoolShop.Controllers.Api
         [Route("Get")]
         public string GetAll()
         {
-            var cart = UserShoppingCart.GetAll().ToList();
-            Dictionary<string, int> cartDictionary = new Dictionary<string, int>();
-
-            for (int i = 0; i < cart.Count(); i++)
-            {
-                if (cartDictionary.ContainsKey(cart[i].ToJson()))
-                {
-                    cartDictionary[cart[i].ToJson()] += 1;
-                }
-                else
-                {
-                    cartDictionary.Add(cart[i].ToJson(), 1);
-                }
-            }
-
+            var cart = UserShoppingCart.GetAll();
+            // Erre gondoltam Zoárd
+            Dictionary<string, int> cartDictionary = cart.GroupBy(x => x.Name)
+                .ToDictionary(k => k.Key, v => v.Count());
+          
             return cartDictionary.ToJson();
         }
 
