@@ -141,6 +141,8 @@ namespace Codecool.CodecoolShop
             ISupplierDao supplierDataStore)
         {
             var products = Queries.GetAllProducts();
+            var categories = Queries.GetAllCategories();
+            var suppliers = Queries.GetAllSuppliers();
         }
     }
 }
