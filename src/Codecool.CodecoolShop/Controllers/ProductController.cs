@@ -21,6 +21,7 @@ namespace Codecool.CodecoolShop.Controllers
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
 
+
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
@@ -45,14 +46,12 @@ namespace Codecool.CodecoolShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult Viewer()
+
+        public IActionResult Viewer(int id)
         {
             var productDaoMemory = ProductDaoMemory.GetInstance();
-            var path = HttpContext.Request.Path.ToString();
             try
             {
-                string[] strings = path.Split('/');
-                int id = int.Parse(strings[3]);
                 var product = productDaoMemory.Get(id);
                 
                 var related = productDaoMemory.GetBy(product.ProductCategory);
@@ -61,7 +60,7 @@ namespace Codecool.CodecoolShop.Controllers
                 ViewBag.Id = id;
                 return View(related.ToList());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return Error();
             }

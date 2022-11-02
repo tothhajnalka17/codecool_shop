@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit.IO;
 using Newtonsoft.Json;
 
 namespace Codecool.CodecoolShop.Controllers.Api
@@ -21,7 +22,6 @@ namespace Codecool.CodecoolShop.Controllers.Api
         {
             var productDaoMemory = ProductDaoMemory.GetInstance();
             var products = productDaoMemory.GetAll();
-
             return products;
         }
 
@@ -29,9 +29,26 @@ namespace Codecool.CodecoolShop.Controllers.Api
         public IEnumerable<Product> FilteredProducts(Dictionary<string, List<string>> filters)
         {
             var productDaoMemory = ProductDaoMemory.GetInstance();
-            var filteredProducts = productDaoMemory.GetByCategory(filters);
-            
-            return filteredProducts;
+            List<string> categories = new();
+            List<string> suppliers = new();
+            IEnumerable<Product> categoryFilteredProducts = new List<Product>();
+            IEnumerable<Product> supplierFilteredProducts = new List<Product>();
+
+            if (filters.ContainsKey("category") )
+            {
+                categories = filters["category"];
+                categoryFilteredProducts = productDaoMemory.GetByCategory(categories);
+            } else { categoryFilteredProducts = productDaoMemory.GetAll();}
+
+            if (filters.ContainsKey("supplier"))
+            {
+                suppliers = filters["supplier"];
+                supplierFilteredProducts = productDaoMemory.GetBySupplier(suppliers);
+            } else { supplierFilteredProducts = productDaoMemory.GetAll(); }
+
+            return supplierFilteredProducts.Where(x => categoryFilteredProducts.Contains(x));
+
+
         }
     }
 }

@@ -7,46 +7,45 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/viewer.css" />
+    <link rel="stylesheet" href="~/css/navbar.css" />
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Product" asp-action="Index">Merch</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="ShoppingCart">Shopping Cart</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+        <li><a href='http://'>Home</a></li>
+        <li><a class='dropdown-arrow' href='http://'>Products</a>
+        <ul class='sub-menus'>
+        </ul>
+        </li>
+        <li><a href='http://'>About</a></li>
+        <li><a class='dropdown-arrow' href='http://'>Services</a>
+        <ul class='sub-menus'>
+        <li><a href='http://'>Services 1</a></li>
+        </ul>
+        </li>
+        <li><a href='http://'>Contact Us</a></li>
+        </ul>
         </nav>
     </header>
-<div class="row">
-        <div class="col-sm-2" id="filterContainer"></div>
-    <main role="main" class="pb-3 col-sm-8">
-        @RenderBody()
-    </main>
-    <div class="col-sm-2"></div>
-</div>
+    
 
-<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Codecool.CodecoolShop - <a asp-area="" asp-controller="Product" asp-action="Privacy">Privacy</a>
+<section class="layout">
+        <div class="filters">
+
         </div>
-    </footer>
+    <div class="products">
+        @RenderBody()
+    </div>
+    
+    
+</section>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
 @RenderSection("Scripts", required: false)
 
 </body>

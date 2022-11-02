@@ -3,7 +3,7 @@ import { TableFactory, TableRowFactory } from "../View/ShoppingCartView.js"
 export { AddToCartButtonEventListener, AddListener }
 
 async function AddToCartButtonEventListener() {
-    const addToCartButtons = await document.querySelectorAll('.addToCart')
+    const addToCartButtons = await document.querySelectorAll('.cart')
     await addToCartButtons.forEach((button) => AddListener(button));
 };
 

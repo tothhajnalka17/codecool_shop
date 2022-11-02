@@ -3,21 +3,19 @@ import { fetchProducts, fetchFilteredProducts } from "../Model/Model.js"
 import { AddToCartButtonEventListener } from "../Controller/ShoppingCartController.js"
 
 
+
 AddListeners();
 AddFilters();
+EventForFilterButton();
 AddToCartButtonEventListener();
 
 function AddListeners() {
-    var selected = document.querySelectorAll(".headerAlign");
-    for (var i = 0; i < selected.length; i++) {
-        selected[i].addEventListener('click', Examine);
-    }
+    var selected = document.querySelectorAll(".box-up");
+    selected.forEach(box => box.addEventListener("click", (e) => {
+        window.location = `/product/viewer/${box.dataset.id}`;
+    }));
 }
 
-function Examine() {
-    var link = `/product/viewer/${this.dataset.id}`;
-    window.location = link;
-}
 
 // Add buttons for filtering
 async function AddFilters() {
@@ -26,7 +24,7 @@ async function AddFilters() {
     let categories = ["Shirt","Mug"];
     let suppliers = ["Gergő", "Marci", "Hajni", "Zoárd", "Robi", "Fülöp"];
 
-    let filterContainer = document.querySelector('#filterContainer');
+    let filterContainer = document.querySelector('.filters');
 
     // Draw buttons
     let categoryHeader = document.createElement('h3');
@@ -43,46 +41,42 @@ async function AddFilters() {
     for (let supplier of suppliers) {
         filterContainer.appendChild(ButtonFactory("supplier", supplier));
     }
-
-    AddButtonListeners();
 }
 
-function AddButtonListeners() {
-    let buttons = document.querySelectorAll(".filterButton");
-    
-    buttons.forEach((button) => button.addEventListener("click", async (e) => {
-        if (button.getAttribute('toggled') == 'false') {
-            button.setAttribute('toggled', true);
-            button.classList.remove('btn-primary');
-            button.classList.add('btn-danger');
+// Fact: The click event trigger twice default in label, preventDefault disable all css command. 3hour wasted :(
+
+function EventForFilterButton() {
+    let filterSwitches = document.querySelectorAll('.toggle-switch')
+    filterSwitches.forEach(filterSwitch => filterSwitch.addEventListener("click", function (e) {
+        if (this.dataset.status == "toggled") {
+            delete this.dataset.status;
+            
         }
         else {
-            button.setAttribute('toggled', false);
-            button.classList.remove('btn-danger');
-            button.classList.add('btn-primary');
+            this.dataset.status = "toggled";
         }
         UpdateCards();
-    }));
-    
+
+    }))
 }
 
 function GatherFilters() {
     let filters = {};
-    let buttons = document.querySelectorAll(".filterButton");
+    let buttons = document.querySelectorAll("[data-status]");
 
     buttons.forEach((button) => {
-        if (button.getAttribute('toggled') == 'true') {
-            let category = button.getAttribute('data-filter-type');
-            let value = button.getAttribute('data-filter-value');
-            
-            if (category in filters) {
-                filters[category].push(value);
-            }
-            else {
-                filters[category] = [value];
-            }
+       
+        let category = button.getAttribute('filter-type');
+        let value = button.nextElementSibling.innerText;
+
+        if (category in filters) {
+            filters[category].push(value);
         }
-        })
+        else {
+            filters[category] = [value];
+        }
+        
+    })
     return filters;
 }
 
@@ -101,8 +95,10 @@ async function UpdateCards() {
         products = await fetchFilteredProducts(filters);
     }
     for (var product of products) {
-        let card = CardFactory(product.name, product.description, product.defaultPrice, product.currency, product.id);
+        let card = CardFactory(product.name, product.description, product.defaultPrice, product.id);
         cardHolder.appendChild(card);
     }
     AddListeners();
+
+    
 }
