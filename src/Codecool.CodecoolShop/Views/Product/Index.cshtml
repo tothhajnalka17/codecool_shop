@@ -4,7 +4,13 @@
 
 @model List<Codecool.CodecoolShop.Models.Product>
 
-<div class="container product-wrapper"  id="card-container">
+ <section class="layout">
+    <div class="filters">
+
+    </div>
+    <div class="products">
+    
+    <div class="container product-wrapper"  id="card-container">
     
         @foreach (var element in Model)
         { 
@@ -26,7 +32,7 @@
                 </div>
 
                     <a class="cart" data-id="@(element.Id)" >
-                <span class="price">@element.DefaultPrice.ToString("C2")</span>
+                <span class="price">@element.DefaultPrice Ft</span>
                 <span class="add-to-cart">
                     <span class="txt">Add in cart</span>
                 </span>
@@ -35,6 +41,10 @@
         </div> 
         }
     
+    </div>
 </div>
+
+
+</section>
 
 <script src="~/js/Controller/IndexController.js" asp-append-version="true" type="module"></script>

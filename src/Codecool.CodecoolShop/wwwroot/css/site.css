@@ -29,6 +29,7 @@
 }
 
 
+
 /* body(bg yet) */
 body {
     height: 200px;
@@ -109,7 +110,7 @@ body {
 
 .product-wrapper {
     
-    height: 100%;
+    height: 390px;
     display: grid;
     grid-template-rows: repeat(auto-fit, 1fr);
     grid-template-columns: repeat(3, 1fr);
@@ -147,17 +148,18 @@ body {
 }
 
 .el-wrapper:hover .price {
-    left: 20px;
+    left: 80px;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    color: #818181;
+    color: white;
 }
 
 .el-wrapper:hover .add-to-cart {
     left: 50%;
 }
+
 
 
 
@@ -173,6 +175,10 @@ body {
     opacity: 1;
 }
 
+.el-wrapper:hover .img{
+    filter: blur(1.5rem);
+    filter: contrast(1.5rem);
+}
 .el-wrapper .box-down {
     width: 100%;
     height: 60px;
@@ -223,7 +229,7 @@ body {
 }
 
 .h-bg .h-bg-inner {
-    width: 50%;
+    width: 41%;
     height: 100%;
     background-color: #464646;
 }
@@ -252,8 +258,8 @@ body {
     .info-inner .p-name {
         font-family: 'PT Sans', sans-serif;
         font-size: 30px;
-        text-shadow: black 0px 0px 10px;
-        color: rgb(255, 0, 0);
+        text-shadow: inherit 0px 0px 5px;
+        color:rgba(255, 0, 165, 1);
     }
 
     .info-inner .p-company {
@@ -262,7 +268,7 @@ body {
         text-transform: uppercase;
         text-align: right;
         padding-right: 100px;
-        color: rgb(255, 0, 0, 2);
+        color: rgba(255, 0, 165, 1);
         text-shadow: black 0px 0px 10px;
     }
 
@@ -283,12 +289,15 @@ body {
     bottom: -20px;
     font-family: 'PT Sans', sans-serif;
     text-shadow: black 0px 0px 10px;
-    color: #828282;
+    color: white;
     opacity: 0;
+    text-shadow: black 0px 0px 10px;
 }
 
     .a-size .size {
-        color: #252525;
+        
+        color: white;
+        text-shadow: black 0px 0px 10px;
     }
 
 .cart {
@@ -351,15 +360,31 @@ body {
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-
+        
         .cart .add-to-cart .txt {
             font-size: 12px;
             color: whitesmoke;
             letter-spacing: 0.035rem;
             text-transform: uppercase;
             white-space: nowrap;
-            padding-left: 7rem;
+            padding-left: 17rem;
+            transition-delay:0.5s;
         }
+        .cart .add-to-cart .txt:hover {
+            
+            color: rgba(191, 233, 255, 1);
+            cursor:pointer
+        }
+
+            .cart .add-to-cart .txt:active {
+                transition-delay: 0s;
+                font-size: 11px;
+                color: black;
+                letter-spacing: 0.035rem;
+                text-transform: uppercase;
+                white-space: nowrap;
+                padding-left: 17rem;
+            }
 
 
 
