@@ -13,11 +13,14 @@ using System.Web;
 using System.Security.Policy;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class ProductController : Controller
     {
+        private Guid Guid { get; set; }
+
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
 
@@ -32,6 +35,12 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Index()
         {
             var products = ProductService.GetProductsForCategory(1);
+            // Storing Value
+            HttpContext.Session.SetString("ID", Guid.NewGuid().ToString());
+            
+
+            // Retrieving Value
+            
             return View(products.ToList());
         }
 
