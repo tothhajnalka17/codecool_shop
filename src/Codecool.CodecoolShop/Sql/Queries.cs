@@ -9,6 +9,10 @@ namespace Codecool.CodecoolShop.Sql
 {
     public static class Queries
     {
+        // Orders
+        // ShoppingCarts
+        // Users
+
         // Products
         public static List<Product> GetAllProducts()
         {
@@ -58,8 +62,26 @@ namespace Codecool.CodecoolShop.Sql
         }
 
         // Suppliers
-        // Orders
-        // ShoppingCarts
-        // Users
+        public static List<ProductCategory> GetAllCategories()
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            List<ProductCategory> categories = new List<ProductCategory>();
+
+            using SqlCommand command = new SqlCommand("SELECT * FROM suppliers;", connection);
+            using SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                ProductCategory currentSupplier = new ProductCategory();
+                currentSupplier.Id = (int)reader["id"];
+                currentSupplier.Name = (string)reader["name"];
+                currentSupplier.Department = (string)reader["department"];
+                currentSupplier.Description = (string)reader["description"];
+                categories.Add(currentSupplier);
+            }
+            connection.Close();
+            return categories;
+        }
     }
 }
