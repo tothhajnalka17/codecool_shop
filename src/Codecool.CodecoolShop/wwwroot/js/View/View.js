@@ -55,7 +55,7 @@ function CardFactory(name, description, price, id) {
 
     let priceTag = document.createElement('span');
     priceTag.classList.add('price');
-    priceTag.innerText = price;
+    priceTag.innerText = `${price} Ft`;
 
     let addToCart = document.createElement('span');
     addToCart.classList.add('add-to-cart');
