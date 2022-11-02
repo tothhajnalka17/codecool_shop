@@ -79,13 +79,13 @@ namespace Codecool.CodecoolShop
 
             string operatingMode = Configuration.GetSection("mode").Value;
 
-            if (operatingMode != "sql")
+            if (operatingMode == "sql")
             {
-                AddDataFromJson(productDataStore, productCategoryDataStore, supplierDataStore);
+                AddDataFromDb(productDataStore, productCategoryDataStore, supplierDataStore);
             }
             else
             {
-                AddDataFromDb(productDataStore, productCategoryDataStore, supplierDataStore);
+                AddDataFromJson(productDataStore, productCategoryDataStore, supplierDataStore);
             }
         }
 
@@ -98,26 +98,13 @@ namespace Codecool.CodecoolShop
 
             var suppliers = JsonConvert.DeserializeObject<List<Supplier>>
                 (new StreamReader(suppliersPath).ReadToEnd());
-            foreach (var supplier in suppliers)
-            {
-                supplierDataStore.Add(new Supplier
-                {
-                    Name = supplier.Name,
-                    Description = supplier.Description
-                });
-            }
+            LoadSuppliersToMemory(suppliers, supplierDataStore);
+            
 
             var productCategories = JsonConvert.DeserializeObject<List<ProductCategory>>
                 (new StreamReader(productCategoryPath).ReadToEnd());
-            foreach (var productCategory in productCategories)
-            {
-                productCategoryDataStore.Add(new ProductCategory
-                {
-                    Name = productCategory.Name,
-                    Department = productCategory.Department,
-                    Description = productCategory.Description
-                });
-            }
+            LoadProductCategoriesToMemory(productCategories, productCategoryDataStore);
+            
 
             var products =
                 JsonConvert.DeserializeObject<IEnumerable<Dictionary<string, string>>>(
@@ -143,6 +130,42 @@ namespace Codecool.CodecoolShop
             var products = Queries.GetAllProducts();
             var categories = Queries.GetAllCategories();
             var suppliers = Queries.GetAllSuppliers();
+
+            LoadSuppliersToMemory(suppliers, supplierDataStore);
+            LoadProductCategoriesToMemory(categories, productCategoryDataStore);
+
+            foreach (var product in products)
+            {
+                product.Supplier = suppliers.First(supplier => supplier.Id == product.Supplier_id);
+                product.ProductCategory = categories.First(category => category.Id == product.Category_id);
+
+                productDataStore.Add(product);
+            }
+        }
+
+        private void LoadSuppliersToMemory(List<Supplier> suppliers, ISupplierDao supplierDataStore)
+        {
+            foreach (var supplier in suppliers)
+            {
+                supplierDataStore.Add(new Supplier
+                {
+                    Name = supplier.Name,
+                    Description = supplier.Description
+                });
+            }
+        }
+
+        private void LoadProductCategoriesToMemory(List<ProductCategory> productCategories, IProductCategoryDao productCategoryDataStore)
+        {
+            foreach (var productCategory in productCategories)
+            {
+                productCategoryDataStore.Add(new ProductCategory
+                {
+                    Name = productCategory.Name,
+                    Department = productCategory.Department,
+                    Description = productCategory.Description
+                });
+            }
         }
     }
 }

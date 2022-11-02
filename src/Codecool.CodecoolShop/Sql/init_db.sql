@@ -38,7 +38,7 @@ INSERT INTO categories(name, department, description) VALUES('Mug', 'Mug', 'Best
 
 INSERT INTO suppliers(name, description) VALUES('Marci', 'Marci collection made by UristenVery.Co');
 INSERT INTO suppliers(name, description) VALUES('Hajni', 'Hajni collection made by UristenVery.Co');
-INSERT INTO suppliers(name, description) VALUES('Gergő', 'Gergő collection made by UristenVery.Co');
+INSERT INTO suppliers(name, description) VALUES('Gergo', 'Gergo collection made by UristenVery.Co');
 INSERT INTO suppliers(name, description) VALUES('Robi', 'Robi collection made by UristenVery.Co');
 INSERT INTO suppliers(name, description) VALUES('Zoárd', 'Zoárd collection made by UristenVery.Co');
 INSERT INTO suppliers(name, description) VALUES('Fülöp', 'Fülöp collection made by UristenVery.Co');
@@ -50,7 +50,7 @@ INSERT INTO products (name, defaultprice, currency, description, category_id, su
 VALUES ('Freaky Fülöp T-Shirt', 10000, 'HUF', 'Great as a gift for your sister, mother, daughter. Only the highest quality cotton. Comfortable, stylish.', 1, 6);
 
 INSERT INTO products (name, defaultprice, currency, description, category_id, supplier_id)
-VALUES('Gorgeous Gergő T-Shirt', 12000, 'HUF','Compliment your beauty with this wonderful piece of clothing. Catch the eye of everyone on the street. High-quality fabric.',1, 3);
+VALUES('Gorgeous Gergo T-Shirt', 12000, 'HUF','Compliment your beauty with this wonderful piece of clothing. Catch the eye of everyone on the street. High-quality fabric.',1, 3);
 
 INSERT INTO products (name, defaultprice, currency, description, category_id, supplier_id)
 VALUES('Rockin'' Robi T-Shirt', 11000, 'HUF', 'Go to any concert and be the coolest audience member there. All while staying comfortable in this high quality clothing.', 1, 4);
@@ -62,7 +62,7 @@ INSERT INTO products (name, defaultprice, currency, description, category_id, su
 VALUES('Zany Zoárd T-Shirt', 13000, 'HUF', 'Feel stylish and carefree wearing the hottest article of fashion. Only 100% cotton!', 1, 5);
 
 INSERT INTO products (name, defaultprice, currency, description, category_id, supplier_id)
-VALUES('Szipi szupi Gergő bögre', 6500, 'HUF', 'The perfect Cup of <T> for C# devs', 2, 3);
+VALUES('Szipi szupi Gergo bögre', 6500, 'HUF', 'The perfect Cup of <T> for C# devs', 2, 3);
 
 INSERT INTO products (name, defaultprice, currency, description, category_id, supplier_id)
 VALUES('Gudmon A KFT bögre', 8500, 'HUF', 'Forget your simple glass of water days. The mugs are where it''s at now.', 2, 1);
