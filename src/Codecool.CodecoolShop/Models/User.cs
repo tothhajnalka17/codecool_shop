@@ -5,7 +5,7 @@ namespace Codecool.CodecoolShop.Models
 {
     public class User
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }   
         public string Password { get; set; }
@@ -13,5 +13,12 @@ namespace Codecool.CodecoolShop.Models
         public List<Order> OrderList { get; set; }
 
         public ShoppingCart ShoppingCart { get; set; }
+
+        public User(string name, string email, string password)
+        {
+            Name = name;
+            Email = email;
+            Password = password;
+        }
     }
 }

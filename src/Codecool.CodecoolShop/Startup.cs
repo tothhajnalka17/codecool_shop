@@ -49,6 +49,12 @@ namespace Codecool.CodecoolShop
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<IMailService, Services.MailService>();
             services.AddControllersWithViews();
+
+            services.AddDbContext<CodecoolCodecoolShopContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CodecoolCodecoolShopContext")));
+
+            services.AddScoped<IRegistrationService, RegistrationService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
