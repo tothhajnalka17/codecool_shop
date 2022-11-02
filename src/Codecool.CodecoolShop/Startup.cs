@@ -46,6 +46,9 @@ namespace Codecool.CodecoolShop
 
             services.AddDbContext<CodecoolCodecoolShopContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CodecoolCodecoolShopContext")));
+
+            services.AddScoped<IRegistrationService, RegistrationService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
