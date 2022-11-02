@@ -69,16 +69,16 @@ namespace Codecool.CodecoolShop.Sql
 
             List<ProductCategory> categories = new List<ProductCategory>();
 
-            using SqlCommand command = new SqlCommand("SELECT * FROM suppliers;", connection);
+            using SqlCommand command = new SqlCommand("SELECT * FROM categories;", connection);
             using SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ProductCategory currentSupplier = new ProductCategory();
-                currentSupplier.Id = (int)reader["id"];
-                currentSupplier.Name = (string)reader["name"];
-                currentSupplier.Department = (string)reader["department"];
-                currentSupplier.Description = (string)reader["description"];
-                categories.Add(currentSupplier);
+                ProductCategory currentCategory = new ProductCategory();
+                currentCategory.Id = (int)reader["id"];
+                currentCategory.Name = (string)reader["name"];
+                currentCategory.Department = (string)reader["department"];
+                currentCategory.Description = (string)reader["description"];
+                categories.Add(currentCategory);
             }
             connection.Close();
             return categories;
