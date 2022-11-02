@@ -10,11 +10,20 @@ async function AddToCartButtonEventListener() {
 async function AddListener(button) {
     button.addEventListener("click", async () => {
         await fetchAddProductToCart(button.getAttribute("data-id"));
+        RefreshCart();
     })
+}
+
+function AddCartPageButtonEventListener() {
+    const removeOneButtons = document.querySelectorAll('.remove_one_button');
+    const addOneButtons = document.querySelectorAll('.add_one_button');
+    const removeAllButtons = document.querySelectorAll('.remove_all_button');
+    addOneButtons.forEach((button) => AddListener(button));
 }
 
 async function RefreshCart() {
     const container = await document.querySelector('#cart_container');
+    container.innerHTML = "";
 
     var cart = await fetchCart();
     console.log(cart);
@@ -49,6 +58,8 @@ async function RefreshCart() {
         const total = document.createElement('div');
         total.innerHTML = `<strong>Total: ${totalprice}</strong>`;
         container.appendChild(total);
+
+        AddCartPageButtonEventListener();
 
     }
 }
