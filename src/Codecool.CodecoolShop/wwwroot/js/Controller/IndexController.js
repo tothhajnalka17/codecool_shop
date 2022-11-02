@@ -24,7 +24,7 @@ async function AddFilters() {
 
     // TODO fetch the data dynamically from the backend
     let categories = ["Shirt","Mug"];
-    let suppliers = ["Gergő", "Marci", "Hajni", "Zoárd", "Robi", "Fülöp"];
+    let suppliers = ["Gergo", "Marci", "Hajni", "Zoárd", "Robi", "Fülöp"];
 
     let filterContainer = document.querySelector('#filterContainer');
 
