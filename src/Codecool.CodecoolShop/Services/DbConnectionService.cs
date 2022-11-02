@@ -18,8 +18,7 @@ namespace Codecool.CodecoolShop.Services
 
         private DbConnectionService()
         {
-            ConnectionString =
-                "Server=(LocalDb)\\MSSQLLocalDB;Database=codecoolshop;Trusted_Connection=True;MultipleActiveResultSets=true";
+            ConnectionString = Startup.Configuration.GetSection("ConnectionStrings:DefaultConnection").Value;
             Connection = new SqlConnection(ConnectionString);
         }
 
