@@ -27,18 +27,32 @@ namespace Codecool.CodecoolShop.Sql
             command.Parameters.AddWithValue("@password", registration.Password);
 
             using SqlDataReader reader = command.ExecuteReader();
+
             connection.Close();
         }
-        
-        //// Get user by email
-        //public static User GetUserByEmail()
-        //{
-        //    SqlConnection connection = DbConnectionService.Singleton.Connection;
-        //    connection.Open();
 
-        //    using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email);", connection);
-        //}
-        
+        // Get user by email
+        public static User GetUserByEmail(string email)
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("SELECT * FROM users WHERE email=@email;", connection);
+            command.Parameters.AddWithValue("@email", email);
+
+            using SqlDataReader reader = command.ExecuteReader();
+            User user = null;
+            while (reader.Read())
+            {
+                user = new User((string)reader["name"], (string)reader["email"], (string)reader["password"]);
+                user.ID = (int)reader["id"];
+            }
+            reader.Close();
+            connection.Close();
+
+            return user;
+        }
+
         // Check username
         public static bool CheckIfUsernameExists()
         {

@@ -13,7 +13,7 @@ namespace Codecool.CodecoolShop.Services
 
         public bool IsEmailAvailable(Registration registration)
         {
-            if(registration.Email == "asd@asd.asd")
+            if (Queries.GetUserByEmail(registration.Email) != null)
             {
                 Errormessage = "Email is already in use";
                 return false;
@@ -35,6 +35,7 @@ namespace Codecool.CodecoolShop.Services
         {
             if (registration.Name != null && registration.Email != null && registration.Password != null)
             {
+                //TODO add feedback to user
                 if (!IsUsernameAvailable(registration))
                 {
                     Console.WriteLine("username taken");
