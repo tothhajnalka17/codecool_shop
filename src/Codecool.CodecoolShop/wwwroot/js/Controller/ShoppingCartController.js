@@ -35,12 +35,13 @@ async function RefreshCart() {
 
         for (var item in cart) {
             let currentItem = JSON.parse(item);
+            let itemid = await currentItem.Id;
             let itemname = await currentItem.Name;
             let itemcurrency = await currentItem.Currency;
             let itemprice = await currentItem.DefaultPrice;
             let quantity = await cart[item];
             
-            var tablerow = await TableRowFactory(itemname, itemprice, itemcurrency, quantity);
+            var tablerow = await TableRowFactory(itemid, itemname, itemprice, itemcurrency, quantity);
             tablebody.appendChild(tablerow);
             totalprice += cart[item] * currentItem.DefaultPrice;
         }

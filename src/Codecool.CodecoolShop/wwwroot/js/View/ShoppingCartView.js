@@ -1,6 +1,6 @@
 ﻿export { TableRowFactory, TableFactory }
 
-function TableRowFactory(name, price, currency, quantity) {
+function TableRowFactory(id, name, price, currency, quantity) {
 
     const tablerow = document.createElement('tr');
 
@@ -19,10 +19,13 @@ function TableRowFactory(name, price, currency, quantity) {
     let action = document.createElement('td');
     let addButton = document.createElement('button');
     addButton.innerText = "+";
+    addButton.setAttribute("id", id);
     let removeOneButton = document.createElement('button');
     removeOneButton.innerText = "-";
+    removeOneButton.setAttribute("id", id);
     let removeAllButton = document.createElement('button');
     removeAllButton.innerText = "Remove";
+    removeAllButton.setAttribute("id", id);
 
     action.appendChild(addButton);
     action.appendChild(removeOneButton);
