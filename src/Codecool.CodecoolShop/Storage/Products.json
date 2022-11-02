@@ -16,12 +16,12 @@
     "supplier": "Fülöp"
   },
   {
-    "name": "Gorgeous Gergő T-Shirt",
+    "name": "Gorgeous Gergo T-Shirt",
     "defaultPrice": "12000",
     "currency": "HUF",
     "description": "Compliment your beauty with this wonderful piece of clothing. Catch the eye of everyone on the street. High-quality fabric.",
     "productCategory": "Shirt",
-    "supplier": "Gergő"
+    "supplier": "Gergo"
   },
   {
     "name": "Rockin' Robi T-Shirt",
@@ -48,12 +48,12 @@
     "supplier": "Zoárd"
   },
   {
-    "name": "Szipi szupi Gergő bögre",
+    "name": "Szipi szupi Gergo bögre",
     "defaultPrice": "6500",
     "currency": "HUF",
     "description": "The perfect Cup of <T> for C# devs",
     "productCategory": "Mug",
-    "supplier": "Gergő"
+    "supplier": "Gergo"
   },
   {
     "name": "Gudmon A KFT bögre",
