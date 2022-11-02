@@ -5,6 +5,8 @@ namespace Codecool.CodecoolShop.Models
 {
     public class ShoppingCart
     {
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public List<Product> ShoppingCartList { get; private set; }
 
         public decimal Total { get; private set; }

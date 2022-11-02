@@ -5,7 +5,8 @@ namespace Codecool.CodecoolShop.Models
 {
     public class Order
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public List<Product> ProductList { get; set; }
         private DateTime OrderTime { get; set; }
 
@@ -36,9 +37,8 @@ namespace Codecool.CodecoolShop.Models
 
         public PaymentMethod PaymenthMethod { get; set; }
 
-        public Order(Guid id, List<Product> productList, DateTime orderTime, string firstName, string lastName, string email, string phoneNumber, string billingCountry, string billingCity, string billingZipCode, string billingAddress, string shippingCountry, string shippingCity, string shippingZipCode, string shippingAddress, ShippingMethod shippingMethod, PaymentMethod paymenthMethod)
+        public Order(List<Product> productList, DateTime orderTime, string firstName, string lastName, string email, string phoneNumber, string billingCountry, string billingCity, string billingZipCode, string billingAddress, string shippingCountry, string shippingCity, string shippingZipCode, string shippingAddress, ShippingMethod shippingMethod, PaymentMethod paymenthMethod)
         {
-            Id = new Guid();
             ProductList = productList;
             OrderTime = orderTime;
             FirstName = firstName;
@@ -59,7 +59,6 @@ namespace Codecool.CodecoolShop.Models
 
         public Order()
         {
-            Id = new Guid();
             ShippingMethod = ShippingMethod.PrivateDeliveryService;
             PaymenthMethod = PaymentMethod.Debitcard;
             OrderTime = DateTime.Now;

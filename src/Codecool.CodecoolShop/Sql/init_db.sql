@@ -1,6 +1,24 @@
 ﻿DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS suppliers;
 DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS shoppingcarts;
+DROP TABLE IF EXISTS orders;
+
+CREATE TABLE shoppingcarts(
+    id int IDENTITY(1,1) PRIMARY KEY,
+);
+
+CREATE TABLE orders(
+    id int IDENTITY(1,1) PRIMARY KEY,
+);
+
+CREATE TABLE users (
+    id int IDENTITY(1,1) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+);
 
 CREATE TABLE categories (
     id int IDENTITY(1,1) PRIMARY KEY,
@@ -32,6 +50,8 @@ CREATE TABLE products (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+INSERT INTO users(name, email, password) VALUES('Hegyiember', 'hegyiember@hegy.com', 'hegy');
 
 INSERT INTO categories(name, department, description) VALUES('Shirt', 'Shirt', 'Best clothes for biggest fans, for low price');
 INSERT INTO categories(name, department, description) VALUES('Mug', 'Mug', 'Best gift for your family members');
