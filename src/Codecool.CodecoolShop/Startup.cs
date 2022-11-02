@@ -21,6 +21,8 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
+using Microsoft.EntityFrameworkCore;
+using Codecool.CodecoolShop.Data;
 
 namespace Codecool.CodecoolShop
 {
@@ -36,6 +38,13 @@ namespace Codecool.CodecoolShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<IMailService, Services.MailService>();
             services.AddControllersWithViews();
@@ -60,6 +69,7 @@ namespace Codecool.CodecoolShop
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
