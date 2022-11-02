@@ -1,4 +1,4 @@
-﻿export { fetchAddProductToCart, fetchCart }
+﻿export { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart }
 
 async function fetchAddProductToCart(productId) {
     try {
@@ -9,6 +9,56 @@ async function fetchAddProductToCart(productId) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({id: productId})
+        });
+        if (response.ok !== true) {
+            throw new Error(`Error making fetch request: ${response}`);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function fetchRemoveOneProductFromCart(productId) {
+    try {
+        let url = "ShoppingCartApi/RemoveOne";
+        let response = await fetch(`${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: productId })
+        });
+        if (response.ok !== true) {
+            throw new Error(`Error making fetch request: ${response}`);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function fetchRemoveAllProductFromCart(productId) {
+    try {
+        let url = "ShoppingCartApi/RemoveAll";
+        let response = await fetch(`${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: productId })
+        });
+        if (response.ok !== true) {
+            throw new Error(`Error making fetch request: ${response}`);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function fetchRemoveCart() {
+    try {
+        let url = "ShoppingCartApi/RemoveCart";
+        let response = await fetch(`${url}`, {
+            method: 'POST'
         });
         if (response.ok !== true) {
             throw new Error(`Error making fetch request: ${response}`);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,24 @@ namespace Codecool.CodecoolShop.Controllers.Api
 
             var product = AllProduct.GetAll().Where(myproduct => myproduct.Id == productId).First();
             UserShoppingCart.Add(product);
+        }
+
+        [Route("RemoveOne")]
+        public void RemoveOne(Dictionary<string, int> dict)
+        {
+            UserShoppingCart.Remove(dict["id"]);
+        }
+
+        [Route("RemoveAll")]
+        public void RemoveAll(Dictionary<string, int> dict)
+        {
+            UserShoppingCart.RemoveAllById(dict["id"]);
+        }
+
+        [Route("RemoveCart")]
+        public void RemoveAllFromCart()
+        {
+            UserShoppingCart.RemoveAll();
         }
     }
 }

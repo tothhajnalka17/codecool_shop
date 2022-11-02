@@ -1,6 +1,6 @@
-﻿export { TableRowFactory, TableFactory }
+﻿export { TableRowFactory, TableFactory, FooterFactory }
 
-function TableRowFactory(name, price, currency, quantity) {
+function TableRowFactory(id, name, price, currency, quantity) {
 
     const tablerow = document.createElement('tr');
 
@@ -16,10 +16,29 @@ function TableRowFactory(name, price, currency, quantity) {
     let itemquantity = document.createElement('td');
     itemquantity.innerText = quantity;
 
+    let action = document.createElement('td');
+    let addButton = document.createElement('button');
+    addButton.innerText = "+";
+    addButton.setAttribute("data-id", id);
+    addButton.classList.add('add_one_button');
+    let removeOneButton = document.createElement('button');
+    removeOneButton.innerText = "-";
+    removeOneButton.setAttribute("data-id", id);
+    removeOneButton.classList.add('remove_one_button');
+    let removeAllButton = document.createElement('button');
+    removeAllButton.innerText = "Remove";
+    removeAllButton.setAttribute("data-id", id);
+    removeAllButton.classList.add('remove_all_button');
+
+    action.appendChild(addButton);
+    action.appendChild(removeOneButton);
+    action.appendChild(removeAllButton);
+
     tablerow.appendChild(itemname);
     tablerow.appendChild(itemprice);
     tablerow.appendChild(pricecurrency);
     tablerow.appendChild(itemquantity);
+    tablerow.appendChild(action);
 
     return tablerow;
 }
@@ -48,10 +67,15 @@ function TableFactory() {
     tableheader4.setAttribute("scope", "col");
     tableheader4.innerText = "Quantity";
 
+    const tableheader5 = document.createElement('th');
+    tableheader5.setAttribute("scope", "col");
+    tableheader5.innerText = "Action";
+
     tablerow.appendChild(tableheader1);
     tablerow.appendChild(tableheader2);
     tablerow.appendChild(tableheader3);
     tablerow.appendChild(tableheader4);
+    tablerow.appendChild(tableheader5);
 
     tablehead.appendChild(tablerow);
 
@@ -63,4 +87,16 @@ function TableFactory() {
     table.appendChild(tablebody);
 
     return table;
+}
+
+function FooterFactory() {
+    const footerdiv = document.createElement('div');
+
+    const removeAllFromCartButton = document.createElement('button');
+    removeAllFromCartButton.innerText = "Remove All Items";
+    removeAllFromCartButton.classList.add('remove_cart_button');
+
+    footerdiv.appendChild(removeAllFromCartButton);
+
+    return footerdiv;
 }
