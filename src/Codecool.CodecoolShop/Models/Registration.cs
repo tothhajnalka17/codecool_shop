@@ -6,7 +6,8 @@ namespace Codecool.CodecoolShop.Models
 {
     public class Registration
     {
-        
+        public string ID { get; set; }
+
         //[StringLength(20, MinimumLength = 2)]
         //[Required(ErrorMessage = "Username is required")]
         //[DisplayName("Username:")]
@@ -23,6 +24,7 @@ namespace Codecool.CodecoolShop.Models
 
         public Registration(string name, string email, string password)
         {
+            ID = iD;
             Name = name;
             Email = email;
             Password = password;

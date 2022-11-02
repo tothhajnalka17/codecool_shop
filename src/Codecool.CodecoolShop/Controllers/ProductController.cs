@@ -36,6 +36,12 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Index()
         {
             var products = ProductService.GetProductsForCategory(1);
+            // Storing Value
+            HttpContext.Session.SetString("ID", Guid.NewGuid().ToString());
+            
+
+            // Retrieving Value
+            
             return View(products.ToList());
         }
 
