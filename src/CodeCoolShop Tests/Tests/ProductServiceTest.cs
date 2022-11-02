@@ -19,7 +19,7 @@ namespace CodeCoolShop_Tests
         public void Setup()
         {
             _productService = new ProductService(_productDaoMock, _productCategoryDaoMock);
-            _productCategoryDaoMock.Get(0).Returns(_productCategory0);
+            _productCategory0.Id = 0;
 
         }
 
@@ -34,7 +34,7 @@ namespace CodeCoolShop_Tests
 
 
             // assert
-            Assert.Equals(TestCategory, _productCategory0);
+            Assert.That(_productCategory0.Id, Is.EqualTo(TestCategory.Id));
         }
 
         [Test]
