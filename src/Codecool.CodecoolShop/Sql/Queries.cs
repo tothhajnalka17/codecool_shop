@@ -18,7 +18,6 @@ namespace Codecool.CodecoolShop.Sql
             var products = new List<Product>();
 
             using SqlCommand command = new SqlCommand("SELECT * FROM products;", connection);
-
             using SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -32,9 +31,31 @@ namespace Codecool.CodecoolShop.Sql
                 currentProduct.Supplier_id = (int)reader["supplier_id"];
                 products.Add(currentProduct);
             }
+            connection.Close();
             return products;
         }
+        
         // Categories
+        public static List<Supplier> GetAllSuppliers()
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            List<Supplier> suppliers = new List<Supplier>();
+            
+            using SqlCommand command = new SqlCommand("SELECT * FROM suppliers;", connection);
+            using SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Supplier currentSupplier = new Supplier();
+                currentSupplier.Id = (int)reader["id"];
+                currentSupplier.Name = (string)reader["name"];
+                currentSupplier.Description = (string)reader["description"];
+                suppliers.Add(currentSupplier);
+            }
+            connection.Close();
+            return suppliers;
+        }
 
         // Suppliers
         // Orders
