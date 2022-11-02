@@ -19,6 +19,22 @@ function AddCartPageButtonEventListener() {
     const addOneButtons = document.querySelectorAll('.add_one_button');
     const removeAllButtons = document.querySelectorAll('.remove_all_button');
     addOneButtons.forEach((button) => AddListener(button));
+    removeOneButtons.forEach((button) => RemoveOneListener(button));
+    removeAllButtons.forEach((button) => RemoveAllListener(button));
+}
+
+async function RemoveOneListener(button) {
+    button.addEventListener("click", async () => {
+        await fetchRemoveOneProductFromCart(button.getAttribute("data-id"));
+        RefreshCart();
+    })
+}
+
+async function RemoveAllListener(button) {
+    button.addEventListener("click", async () => {
+        await fetchRemoveAllProductFromCart(button.getAttribute("data-id"));
+        RefreshCart();
+    })
 }
 
 async function RefreshCart() {
