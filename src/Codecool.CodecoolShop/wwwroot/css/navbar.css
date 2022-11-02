@@ -1,10 +1,11 @@
 ﻿#menu {
-    margin-top: 15px;
+    margin-top: 25px;
     margin-left: 50px;
     background: #6c0881a5;
     color: #6c0881;
-    height: 42px;
-    padding-left: 18px;
+    height: 55px;
+    padding-top: 7px;
+    padding-left: 50px;
     border-radius: 44px;
     border: 1px solid #6D6D6D;
 }
@@ -31,7 +32,7 @@
         padding: 0 14px;
         text-decoration: none;
         color: #FFFFFF;
-        font-size: 16px;
+        font-size: 20px;
     }
 
         #menu a.dropdown-arrow:after {
@@ -48,7 +49,7 @@
         display: none;
         margin: 0;
         padding: 0;
-        height: 42px;
+        height: 50px;
         width: 100%;
         opacity: 0;
         cursor: pointer
