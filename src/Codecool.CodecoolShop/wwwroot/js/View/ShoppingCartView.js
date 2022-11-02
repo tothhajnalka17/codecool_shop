@@ -19,15 +19,15 @@ function TableRowFactory(id, name, price, currency, quantity) {
     let action = document.createElement('td');
     let addButton = document.createElement('button');
     addButton.innerText = "+";
-    addButton.setAttribute("id", id);
+    addButton.setAttribute("data-id", id);
     addButton.classList.add('add_one_button');
     let removeOneButton = document.createElement('button');
     removeOneButton.innerText = "-";
-    removeOneButton.setAttribute("id", id);
+    removeOneButton.setAttribute("data-id", id);
     removeOneButton.classList.add('remove_one_button');
     let removeAllButton = document.createElement('button');
     removeAllButton.innerText = "Remove";
-    removeAllButton.setAttribute("id", id);
+    removeAllButton.setAttribute("data-id", id);
     removeAllButton.classList.add('remove_all_button');
 
     action.appendChild(addButton);
