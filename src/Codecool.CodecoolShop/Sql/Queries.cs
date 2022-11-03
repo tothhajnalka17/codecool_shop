@@ -4,14 +4,80 @@ using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System;
 using Codecool.CodecoolShop.Models;
+using NuGet.Protocol.Core.Types;
 
 namespace Codecool.CodecoolShop.Sql
 {
     public static class Queries
     {
         // Orders
+        // Insert
+        // Update switching tables
         // ShoppingCarts
+        // Insert 
+        // Update
+        // Update switching tables
+
         // Users
+        // Insert user
+        public static void InsertUser(Registration registration)
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("INSERT INTO users(name, email, password) VALUES(@name, @email, @password);", connection);
+
+            command.Parameters.AddWithValue("@name", registration.Name);
+            command.Parameters.AddWithValue("@email", registration.Email);
+            command.Parameters.AddWithValue("@password", registration.Password);
+
+            using SqlDataReader reader = command.ExecuteReader();
+
+            connection.Close();
+        }
+
+        // Get user by email
+        public static User GetUserByEmail(string email)
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("SELECT * FROM users WHERE email=@email;", connection);
+            command.Parameters.AddWithValue("@email", email);
+
+            using SqlDataReader reader = command.ExecuteReader();
+            User user = null;
+            while (reader.Read())
+            {
+                user = new User((string)reader["name"], (string)reader["email"], (string)reader["password"]);
+                user.ID = (int)reader["id"];
+            }
+            reader.Close();
+            connection.Close();
+
+            return user;
+        }
+
+        // Check username
+        public static bool CheckIfUsernameExists(string name)
+        {
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("SELECT * FROM users WHERE name=@name;", connection);
+            command.Parameters.AddWithValue("@name", name);
+
+            using SqlDataReader reader = command.ExecuteReader();
+            User user = null;
+            while (reader.Read())
+            {
+                user = new User((string)reader["name"], (string)reader["email"], (string)reader["password"]);
+                user.ID = (int)reader["id"];
+            }
+            reader.Close();
+            connection.Close();
+            return (user != null);
+        }
 
         // Products
         public static List<Product> GetAllProducts()
