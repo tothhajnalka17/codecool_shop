@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codecool.CodecoolShop", "Codecool.CodecoolShop\Codecool.CodecoolShop.csproj", "{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCoolShop Tests", "CodeCoolShop Tests\CodeCoolShop Tests.csproj", "{FAA061FF-FD29-4D57-90EA-FFD5C92DFCFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA061FF-FD29-4D57-90EA-FFD5C92DFCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA061FF-FD29-4D57-90EA-FFD5C92DFCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA061FF-FD29-4D57-90EA-FFD5C92DFCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA061FF-FD29-4D57-90EA-FFD5C92DFCFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
