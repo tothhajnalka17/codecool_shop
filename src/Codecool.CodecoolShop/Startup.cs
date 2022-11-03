@@ -23,7 +23,7 @@ using Newtonsoft.Json.Linq;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 using Serilog;
 using Microsoft.EntityFrameworkCore;
-using Codecool.CodecoolShop.Data;
+
 
 namespace Codecool.CodecoolShop
 {
@@ -49,9 +49,6 @@ namespace Codecool.CodecoolShop
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<IMailService, Services.MailService>();
             services.AddControllersWithViews();
-
-            services.AddDbContext<CodecoolCodecoolShopContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("CodecoolCodecoolShopContext")));
 
             services.AddScoped<IRegistrationService, RegistrationService>();
 

@@ -27,12 +27,29 @@ namespace Codecool.CodecoolShop.Controllers
             // Check if the username/email is already taken
 
             // If not, make new User with the session id, hashed password
+            try
+            {
+                _registrationService.AddUser(registration);
 
-            _registrationService.AddUser(registration);
-
-
-
-            return Redirect("/Product/Index");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return Redirect("/Registration/RegistrationFailed");
+            }
+            
+            return Redirect("/Registration/RegistrationSuccessful");
         }
+
+        public IActionResult RegistrationFailed()
+        {
+            return View();
+        }
+
+        public IActionResult RegistrationSuccessful()
+        {
+            return View();
+        }
+        
     }
 }
