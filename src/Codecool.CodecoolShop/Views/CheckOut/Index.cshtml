@@ -38,22 +38,22 @@
             <div class="col-4" id="billing">
             <div class="form-group">
                 <label asp-for="BillingCountry" class="control-label"></label>
-                <input asp-for="BillingCountry" class="form-control" />
+                <input asp-for="BillingCountry" class="form-control billing" />
                 <span asp-validation-for="BillingCountry" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BillingCity" class="control-label"></label>
-                <input asp-for="BillingCity" class="form-control" />
+                <input asp-for="BillingCity" class="form-control billing" />
                 <span asp-validation-for="BillingCity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BillingZipCode" class="control-label"></label>
-                <input asp-for="BillingZipCode" class="form-control" />
+                <input asp-for="BillingZipCode" class="form-control billing" />
                 <span asp-validation-for="BillingZipCode" class="text-danger"></span>
             </div>
                 <div class="form-group">
                     <label asp-for="BillingAddress" class="control-label"></label>
-                    <input asp-for="BillingAddress" class="form-control" />
+                    <input asp-for="BillingAddress" class="form-control billing" />
                     <span asp-validation-for="BillingAddress" class="text-danger"></span>
                 </div>
                 <label for="isShippingBilling">Does the Billing Address match the Shipping Address?</label>
@@ -62,27 +62,27 @@
         <div class="col-4" id="shipping">
             <div class="form-group">
                 <label asp-for="ShippingCountry" class="control-label"></label>
-                <input asp-for="ShippingCountry" class="form-control" />
+                <input asp-for="ShippingCountry" class="form-control shipping" />
                 <span asp-validation-for="ShippingCountry" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShippingCity" class="control-label"></label>
-                <input asp-for="ShippingCity" class="form-control" />
+                <input asp-for="ShippingCity" class="form-control shipping" />
                 <span asp-validation-for="ShippingCity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShippingZipCode" class="control-label"></label>
-                <input asp-for="ShippingZipCode" class="form-control" />
+                <input asp-for="ShippingZipCode" class="form-control shipping" />
                 <span asp-validation-for="ShippingZipCode" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShippingAddress" class="control-label"></label>
-                <input asp-for="ShippingAddress" class="form-control" />
+                <input asp-for="ShippingAddress" class="form-control shipping" />
                 <span asp-validation-for="ShippingAddress" class="text-danger"></span>
             </div>
             </div>
             <div class="form-group">
-            <input type="submit" value="Go to Payment" class="btn btn-primary" />
+            <input id="checkOutSubmit" type="submit" value="Go to Payment" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -93,6 +93,8 @@
     
     <a asp-controller="Product" asp-action="Index">Back to Home</a>
 </div>
+
+<script src="~/js/Controller/CheckOutController.js" asp-append-version="true" type="module"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
