@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Security;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
 using NuGet.Protocol;
 
@@ -35,15 +37,21 @@ namespace Codecool.CodecoolShop.Controllers.Api
         }
 
         [Route("Update")]
-        public void Update(Dictionary<int,int> dict)
+        public void Update(Dictionary<string,int> dict)
         {
-            var products = AllProduct.GetAll().Where(x => dict.ContainsKey(x.Id));
-            Dictionary<Product, int> countedProducts = products.GroupBy(x => x)
-                .ToDictionary(k => k.Key, v => v.Count());
-            if(countedProducts.Values.First() > dict.Values.First())
-            {
-                UserShoppingCart.Remove(dict.Keys.First());
-            }
+            var id = dict["id"];
+            var quantity = dict["quantity"];
+
+            var products = UserShoppingCart.GetAll();
+
+            IDictionary<Product, int> countedProducts = products.GroupBy(x => x)
+                 .ToDictionary(k => k.Key, v => v.Count());
+            var countedProduct = countedProducts.Where(x => x.Key.Id == id).First();
+            if (countedProduct.Value > quantity)
+                UserShoppingCart.Remove(dict["id"]);
+            else if (countedProduct.Value < quantity)
+                UserShoppingCart.Add(countedProduct.Key);
+           
         }
             
         [Route("Add")]
@@ -53,12 +61,6 @@ namespace Codecool.CodecoolShop.Controllers.Api
 
             var product = AllProduct.GetAll().Where(myproduct => myproduct.Id == productId).First();
             UserShoppingCart.Add(product);
-        }
-
-        [Route("RemoveOne")]
-        public void RemoveOne(Dictionary<string, int> dict)
-        {
-            UserShoppingCart.Remove(dict["id"]);
         }
 
         [Route("RemoveAll")]
