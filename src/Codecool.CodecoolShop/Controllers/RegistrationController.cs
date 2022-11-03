@@ -9,10 +9,10 @@ namespace Codecool.CodecoolShop.Controllers
 {
     public class RegistrationController : Controller
     {
-        private IAuthenticationService _registrationService;
-        public RegistrationController(IAuthenticationService registrationService)
+        private IAuthenticationService _authenticationService;
+        public RegistrationController(IAuthenticationService authenticationService)
         {
-            _registrationService = registrationService;
+            _authenticationService = authenticationService;
         }
         public IActionResult Index()
         {
@@ -23,13 +23,9 @@ namespace Codecool.CodecoolShop.Controllers
         [ActionName("Register")]
         public IActionResult Register(Registration registration)
         {
-
-            // Check if the username/email is already taken
-
-            // If not, make new User with the session id, hashed password
             try
             {
-                _registrationService.AddUser(registration);
+                _authenticationService.AddUser(registration);
             }
             catch (Exception e)
             {
