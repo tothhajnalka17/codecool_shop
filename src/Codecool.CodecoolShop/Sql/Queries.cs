@@ -54,9 +54,24 @@ namespace Codecool.CodecoolShop.Sql
         }
 
         // Check username
-        public static bool CheckIfUsernameExists()
+        public static bool CheckIfUsernameExists(string name)
         {
-            return false;
+            SqlConnection connection = DbConnectionService.Singleton.Connection;
+            connection.Open();
+
+            using SqlCommand command = new SqlCommand("SELECT * FROM users WHERE name=@name;", connection);
+            command.Parameters.AddWithValue("@name", name);
+
+            using SqlDataReader reader = command.ExecuteReader();
+            User user = null;
+            while (reader.Read())
+            {
+                user = new User((string)reader["name"], (string)reader["email"], (string)reader["password"]);
+                user.ID = (int)reader["id"];
+            }
+            reader.Close();
+            connection.Close();
+            return (user != null);
         }
 
         // Products
