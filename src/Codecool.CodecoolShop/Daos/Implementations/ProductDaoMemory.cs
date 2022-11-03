@@ -63,17 +63,13 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         }
 
         public IEnumerable<Product> GetByCategory(List<string> filters)
-        {
-            IEnumerable<Product> filteredProducts = new List<Product>();
-            filteredProducts = data.Where(x => filters.Contains(x.ProductCategory.Department));    
-            return filteredProducts;
+        {  
+            return data.Where(x => filters.Contains(x.ProductCategory.Department));       
         }
         
         public IEnumerable<Product> GetBySupplier(List<string> filters)
         {
-            IEnumerable<Product> filteredProducts = new List<Product>();
-            filteredProducts = data.Where(x => filters.Contains(x.Supplier.Name));    
-            return filteredProducts;
+            return data.Where(x => filters.Contains(x.Supplier.Name));      
         }
 
     }
