@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,7 +22,19 @@
                 <li><a href='http://'>About Us</a></li>
                 <li><a href='http://'>Contact Us</a></li>
                 <li><a asp-controller="Registration" asp-action="Index">Register</a></li>
-                <li><a asp-controller="Login" asp-action="Index">Login</a></li>
+                @{
+                    if (@HttpContextAccessor.HttpContext.Session.GetString("UserName") != null)
+                    {
+                        <li>
+                            Logged in as: @HttpContextAccessor.HttpContext.Session.GetString("UserName")
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Login" asp-action="Index">Login</a></li>
+                    }
+
+                }
             </ul>
         </nav>
     </header>

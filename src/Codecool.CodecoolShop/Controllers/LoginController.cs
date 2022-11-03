@@ -27,10 +27,11 @@ namespace Codecool.CodecoolShop.Controllers
             if (_registrationService.ValidateUser(login))
             {
                 User user = Queries.GetUserByEmail(login.Email);
-                
-                var resp = new HttpResponseMessage();
-                var cookie = new CookieHeaderValue("UserName", user.Name);
-                
+                HttpContext.Session.SetString("UserName", user.Name);
+                HttpContext.Session.SetString("UserId", $"{user.ID}");
+
+                string Username = HttpContext.Session.GetString("UserName");
+                string ID = HttpContext.Session.GetString("UserId");
                 return Redirect("/Login/LoginSuccessful");
             }
             return Redirect("/Login/LoginFailed");

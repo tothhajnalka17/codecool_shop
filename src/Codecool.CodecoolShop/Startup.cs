@@ -12,6 +12,7 @@ using Codecool.CodecoolShop.Settings;
 using Codecool.CodecoolShop.Sql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Data.SqlClient;
@@ -22,6 +23,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 
 namespace Codecool.CodecoolShop
@@ -50,7 +52,7 @@ namespace Codecool.CodecoolShop
             services.AddControllersWithViews();
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
