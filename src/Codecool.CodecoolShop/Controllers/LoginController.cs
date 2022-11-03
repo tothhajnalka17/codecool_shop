@@ -2,6 +2,11 @@
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Diagnostics.Eventing.Reader;
+using System.Net.Http;
+using Codecool.CodecoolShop.Sql;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Net.Http.Headers;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -21,6 +26,11 @@ namespace Codecool.CodecoolShop.Controllers
         {
             if (_registrationService.ValidateUser(login))
             {
+                User user = Queries.GetUserByEmail(login.Email);
+                
+                var resp = new HttpResponseMessage();
+                var cookie = new CookieHeaderValue("UserName", user.Name);
+                
                 return Redirect("/Login/LoginSuccessful");
             }
             return Redirect("/Login/LoginFailed");
