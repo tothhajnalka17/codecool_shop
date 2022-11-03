@@ -4,7 +4,7 @@ using Codecool.CodecoolShop.Models;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {
-    class ProductCategoryDaoMemory : IProductCategoryDao
+    public class ProductCategoryDaoMemory : IProductCategoryDao
     {
         private List<ProductCategory> data = new List<ProductCategory>();
         private static ProductCategoryDaoMemory instance = null;

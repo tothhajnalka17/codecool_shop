@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
@@ -18,10 +19,7 @@ namespace Codecool.CodecoolShop.Services
             this.productCategoryDao = productCategoryDao;
         }
 
-        public ProductCategory GetProductCategory(int categoryId)
-        {
-            return this.productCategoryDao.Get(categoryId);
-        }
+
         public IEnumerable<Product> GetProductsForCategory(int categoryId)
         {
             ProductCategory category = this.productCategoryDao.Get(categoryId);
