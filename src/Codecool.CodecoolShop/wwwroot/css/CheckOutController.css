@@ -78,10 +78,7 @@ ol, ul {
 /*
  * BOOTSTRAP
  */
-.container {
-    border: none;
-    
-}
+
 
 .btn {
     border-radius: 1px;
@@ -99,22 +96,60 @@ ol, ul {
 .panel-heading {
     border-top-left-radius: 1px;
     border-top-right-radius: 1px;
-    color: rgba(0,0,0,0.1);
+    color: #000000;
+    text-align:center;
+    border-bottom: 1px solid black;
+    padding : 10px;
 }
-.row .cart-body{
+.cart-body{
     display: flex;
 }
 
-.panel-info{
-    
+.panel-body{
+    text-align:center;
 }
-
 .panel {
-    display: inline-block;
+    margin-top: 55px;
+    margin-right: 10px;
+    width: 500px;
+    height: 800px;
+    display: inline-flex;
+    border: 1px solid ;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
 }
 
-.btn-link {
+.panel_2 {
+    margin: 55px;
+    width: 400px;
+    height: 500px;
+    display: inline-flex;
+    border: 1px solid;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+}
+
+.panel-info{
+    padding-left: 10px;
+    align-content: center;
+    text-align: center;
+    justify-content:center;
+}
+.panel-info_2 {
     
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+.checkout-inline {
+    display: inline-flex;
 }
 
 hr {
