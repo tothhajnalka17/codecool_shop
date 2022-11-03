@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "Checkout Information";
 }
+<link rel="stylesheet" href="~/css/ShowCheckOutCart.css" />
 
-<h1>Checkout Information</h1>
+<h1 class="title">Checkout Information</h1>
 
-<div>
+<div class="content-box">
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -83,12 +84,8 @@
         </dd>
     </dl>
 </div>
-<h4>Order Total: @ViewBag.OrderTotal</h4>
-<div>
+<div class="payment-button">
+    <h4 class="Order-Total">Order Total: @ViewBag.OrderTotal</h4>
     <a asp-controller="CheckOut" asp-action="Payment" class="btn-primary btn">Go to Payment</a>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
 
-</div>

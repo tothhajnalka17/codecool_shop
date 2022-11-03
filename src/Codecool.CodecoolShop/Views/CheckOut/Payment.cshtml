@@ -3,48 +3,103 @@
 @{
     ViewData["Title"] = "Payment";
 }
+<link rel="stylesheet" href="~/css/Paymentcss.css" />
 
-<h1 class="col-12">Payment</h1>
-
-<div>
-    <form asp-action="SuccessfullPayment" class="form-row">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group col-6">
-            <label asp-for="CardNumber" class="control-label"></label>
-            <input asp-for="CardNumber" class="form-control" type="text" placeholder="0000-0000-0000-0000" />
-            <span asp-validation-for="CardNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group col-6">
-            <label asp-for="CardHolder" class="control-label"></label>
-            <input asp-for="CardHolder" class="form-control" type="text" placeholder="Hegyiemberné Jolán" />
-            <span asp-validation-for="CardHolder" class="text-danger"></span>
-        </div>
-        <div class="row">
-            <div class="form-group col-4 row">
-                <label asp-for="ExpiryDateYear" class="control-label col-8"></label>
-                <input asp-for="ExpiryDateYear" class="form-control col-4" type="number" maxlength="2" placeholder="YY" />
-                <span asp-validation-for="ExpiryDateYear" class="text-danger"></span>
+<!--CREDIT CART PAYMENT-->
+<form  asp-action="SuccessfullPayment">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="panel panel-info">
+    <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span> Secure Payment</div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-md-12"><strong>Card Type:</strong></div>
+            <div class="col-md-12">
+                <select id="CreditCardType" name="CreditCardType" class="form-control">
+                    <option value="5">Visa</option>
+                    <option value="6">MasterCard</option>
+                    <option value="7">American Express</option>
+                    <option value="8">Discover</option>
+                </select>
             </div>
-            <div class="form-group col-4 row">
-                <label asp-for="ExpiryDateMonth" class="control-label col-0"></label>
-                <input asp-for="ExpiryDateMonth" class="form-control col-4" type="number" maxlength="2" placeholder="MM" />
-                <span asp-validation-for="ExpiryDateMonth" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>Credit Card Number:</strong></div>
+            <div class="col-md-12"><input type="text" asp-for="CardNumber" class="form-control" name="car_number" value="" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>Card CVV:</strong></div>
+            <div class="col-md-12"><input type="text" asp-for="CVV" class="form-control" name="car_code" value="" />
+                <span asp-validation-for="CVV" class="text-danger"></span></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <strong>Expiration Date</strong>
             </div>
-            <div class="form-group col-12 row">
-                <label asp-for="CVV" class="control-label col-1"></label>
-                <input asp-for="CVV" class="form-control col-1" type="text" />
-                <span asp-validation-for="CVV" class="text-danger"></span>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <select class="form-control" asp-for="ExpiryDateMonth" name="">
+                    <option value="">Month</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+            </select>
+            <span asp-validation-for="ExpiryDateMonth" class="text-danger"></span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <select class="form-control" asp-for="ExpiryDateYear" name="">
+                    <option value="">Year</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+            </select>
+            <span asp-validation-for="ExpiryDateYear" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>Pay secure using your credit card.</span>
+            </div>
+            <div class="col-md-12">
+                <ul class="cards">
+                    <li class="visa hand">Visa</li>
+                    <li class="mastercard hand">MasterCard</li>
+                    <li class="amex hand">Amex</li>
+                </ul>
+                <div class="clearfix"></div>
             </div>
         </div>
         <div class="form-group row col-12">
-            <input id="payment-button" type="submit" value="Pay" class="btn btn-primary" />
-        </div>
-    </form>
+<input id="payment-button" type="submit" value="Pay" class="btn btn-primary" />
 </div>
+    </div>
+</div>
+<!--CREDIT CART PAYMENT END-->
+                
 
-<div>
-    <a asp-action="Index">Back to Check out</a>
-</div>
+
+
+
+
+
+   
+</form>
 
 <script src="~/js/Controller/ConfirmationController.js" asp-append-version="true" type="module"></script>
 

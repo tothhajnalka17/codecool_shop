@@ -19,14 +19,13 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href='/ShoppingCart'>Shopping Cart</a></li>
-                <li><a href='http://'>About Us</a></li>
-                <li><a href='http://'>Contact Us</a></li>
+   
                 <li><a asp-controller="Registration" asp-action="Index">Register</a></li>
                 @{
                     if (@HttpContextAccessor.HttpContext.Session.GetString("UserName") != null)
                     {
                         <li>
-                            Logged in as: @HttpContextAccessor.HttpContext.Session.GetString("UserName")
+                            <p class="login-response">Logged in as: @HttpContextAccessor.HttpContext.Session.GetString("UserName")</p>
                         </li>
                     }
                     else
