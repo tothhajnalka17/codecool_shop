@@ -1,4 +1,10 @@
-﻿
+﻿.login-response {
+
+    margin-left: 700px;
+    margin-top: 8px;
+    color: white;
+    font-size: inherit;
+}
 /*
     side wrapping
     20% left 80% right
