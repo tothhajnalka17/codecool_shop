@@ -1,12 +1,92 @@
 ﻿@{
     ViewData["Title"] = "View";
 }
+@model IDictionary<Codecool.CodecoolShop.Models.Product, int>
 
-<h1>View Cart</h1>
+<html lang="en">
 
-<div id="cart_container"></div>
-<div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basket</title>
+  <link rel="stylesheet" href="~/css/ShoppingCart.css" />
+</head>
 
-</div>
-<a class="button btn btn-primary" type="button" href="Checkout">Go to checkout</a>
+<body>
+  <main>
+        @{
+            decimal totalPrice = 0;
+        }
+
+      @foreach (var element in Model)
+     {
+         
+        <div class="basket">
+      
+          <div class="basket-labels">
+            <ul>
+              <li class="item item-heading">Item</li>
+              <li class="price">Price</li>
+              <li class="quantity">Quantity</li>
+              <li class="subtotal">Subtotal</li>
+            </ul>
+          </div>
+          <div class="basket-product">
+            <div class="item">
+              <div class="product-image">
+                <img src="img/@(element.Key.Name).jpg" alt="" class="product-frame">
+              </div>
+              <div class="product-details">
+                <h1><strong>@element.Key.Name</strong></h1>
+                <h2>@element.Key.Description</h2>
+              </div>
+            </div>
+            <div class="price">@element.Key.DefaultPrice</div>
+            <div class="quantity">
+              <input type="number" value="@element.Value" min="1" class="quantity-field"
+              data-id=@element.Key.Id>
+            </div>
+            <div class="subtotal">@(element.Key.DefaultPrice*element.Value)</div>
+            <div class="remove">
+              <button data-id=@element.Key.Id>Remove</button>
+            </div>
+          </div>
+        </div>
+            totalPrice += element.Key.DefaultPrice * element.Value;
+     }
+      
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">@totalPrice</div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+          </div>
+        </div>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Select Collection or Delivery</option>
+             <option value="collection">Delivery</option>
+             <option value="first-class">Csodás magyar posta</option>
+             <option value="second-class">...</option>
+             <option value="signed-for">....</option>
+          </select>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">@totalPrice</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">Go to Secure Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
+
 <script src="~/js/Controller/ShoppingCartController.js" asp-append-version="true" type="module"></script>

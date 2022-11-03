@@ -1,5 +1,8 @@
-﻿using Codecool.CodecoolShop.Daos.Implementations;
+﻿using Codecool.CodecoolShop.Controllers.Api;
+using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Codecool.CodecoolShop.Controllers
@@ -18,7 +21,10 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult ShoppingCart()
         { 
             
-            return View();
+            var products = UserShoppingCart.GetAll();
+            IDictionary<Product, int> countedProducts = products.GroupBy(x => x)
+                .ToDictionary(k => k.Key, v => v.Count());
+            return View(countedProducts);
         }
 
         public IActionResult GoToCheckout()

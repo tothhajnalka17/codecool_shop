@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Security;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
 using NuGet.Protocol;
 
@@ -26,24 +28,32 @@ namespace Codecool.CodecoolShop.Controllers.Api
         [Route("Get")]
         public string GetAll()
         {
-            var cart = UserShoppingCart.GetAll().ToList();
-            Dictionary<string, int> cartDictionary = new Dictionary<string, int>();
-
-            for (int i = 0; i < cart.Count(); i++)
-            {
-                if (cartDictionary.ContainsKey(cart[i].ToJson()))
-                {
-                    cartDictionary[cart[i].ToJson()] += 1;
-                }
-                else
-                {
-                    cartDictionary.Add(cart[i].ToJson(), 1);
-                }
-            }
-
+            var cart = UserShoppingCart.GetAll();
+            // Erre gondoltam Zoárd
+            Dictionary<string, int> cartDictionary = cart.GroupBy(x => x.Name)
+                .ToDictionary(k => k.Key, v => v.Count());
+          
             return cartDictionary.ToJson();
         }
 
+        [Route("Update")]
+        public void Update(Dictionary<string,int> dict)
+        {
+            var id = dict["id"];
+            var quantity = dict["quantity"];
+
+            var products = UserShoppingCart.GetAll();
+
+            IDictionary<Product, int> countedProducts = products.GroupBy(x => x)
+                 .ToDictionary(k => k.Key, v => v.Count());
+            var countedProduct = countedProducts.Where(x => x.Key.Id == id).First();
+            if (countedProduct.Value > quantity)
+                UserShoppingCart.Remove(dict["id"]);
+            else if (countedProduct.Value < quantity)
+                UserShoppingCart.Add(countedProduct.Key);
+           
+        }
+            
         [Route("Add")]
         public void Add(Dictionary<string, int> dict)
         {
@@ -51,12 +61,6 @@ namespace Codecool.CodecoolShop.Controllers.Api
 
             var product = AllProduct.GetAll().Where(myproduct => myproduct.Id == productId).First();
             UserShoppingCart.Add(product);
-        }
-
-        [Route("RemoveOne")]
-        public void RemoveOne(Dictionary<string, int> dict)
-        {
-            UserShoppingCart.Remove(dict["id"]);
         }
 
         [Route("RemoveAll")]

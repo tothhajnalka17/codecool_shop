@@ -34,11 +34,9 @@
                     </p>
                 
                     <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <a href="/ShoppingCart" type="button" class="add-to-cart-button">Buy it!</a>
+                    <a data-id="@element.Id" class="add-to-cart-button">Buy it!</a>
                 </div>
             </div>
-        
-            
         }
     }
 </div>
@@ -57,3 +55,5 @@
         }
     }
 </div>
+
+<script src="~/js/Controller/viewerController.js" asp-append-version="true" type="module"></script>
