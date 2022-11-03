@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Web.Helpers;
+using Codecool.CodecoolShop.Controllers;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Sql;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Codecool.CodecoolShop.Services
 {
@@ -36,13 +37,16 @@ namespace Codecool.CodecoolShop.Services
             if (registration.Name != null && registration.Email != null && registration.Password != null)
             {
                 //TODO add feedback to user
-                if (!IsUsernameAvailable(registration))
+                if (Queries.CheckIfUsernameExists(registration.Name))
                 {
-                    Console.WriteLine("username taken");
+                    //Console.WriteLine("username taken");
+                    throw new Exception("Username taken");
+                  
                 }
-                else if (!IsEmailAvailable(registration))
+                else if (Queries.GetUserByEmail(registration.Email) != null)
                 {
-                    Console.WriteLine("email taken");
+                    //Console.WriteLine("email taken");
+                    throw new Exception("Email taken");
 
                 }
 

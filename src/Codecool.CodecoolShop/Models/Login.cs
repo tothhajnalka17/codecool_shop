@@ -16,6 +16,11 @@
             Email = email;
             Password = password;
         }
+
+        public Login()
+        {
+
+        }
     }
 
 }
