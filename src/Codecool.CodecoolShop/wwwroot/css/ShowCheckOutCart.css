@@ -1,0 +1,22 @@
+﻿.content-box{
+    margin-top: 3rem;
+    margin-left: 20%;
+    
+}
+.row {
+    margin-top:2rem
+}
+
+.title {
+    margin-top: 3rem;
+    margin-left: 20%;
+}
+
+.payment-button{
+    margin-top: 3rem;
+    margin-left: 20%;
+}
+
+.Order-Total{
+    font-size:20px;
+}
