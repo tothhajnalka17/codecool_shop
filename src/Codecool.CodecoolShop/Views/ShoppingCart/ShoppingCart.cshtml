@@ -44,7 +44,8 @@
             </div>
             <div class="price">@element.Key.DefaultPrice</div>
             <div class="quantity">
-              <input type="number" value="@element.Value" min="1" class="quantity-field">
+              <input type="number" value="@element.Value" min="1" class="quantity-field"
+              data-id=@element.Key.Id>
             </div>
             <div class="subtotal">@(element.Key.DefaultPrice*element.Value)</div>
             <div class="remove">
