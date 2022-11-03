@@ -1,4 +1,22 @@
-﻿export { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart }
+﻿export { fetchUpdateProductToCart ,fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart }
+
+async function fetchUpdateProductToCart(productId, quantity) {
+    try {
+        let url = "ShoppingCartApi/Update";
+        let response = await fetch(`${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ productId, quantity })
+        });
+        if (response.ok !== true) {
+            throw new Error(`Error making fetch request: ${response}, ${url}`);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 async function fetchAddProductToCart(productId) {
     try {
