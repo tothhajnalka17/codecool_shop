@@ -21,6 +21,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
+using Serilog;
 
 namespace Codecool.CodecoolShop
 {
@@ -56,6 +57,8 @@ namespace Codecool.CodecoolShop
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 
