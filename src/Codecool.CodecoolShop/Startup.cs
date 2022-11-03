@@ -49,7 +49,7 @@ namespace Codecool.CodecoolShop
             services.AddTransient<IMailService, Services.MailService>();
             services.AddControllersWithViews();
 
-            services.AddScoped<IRegistrationService, RegistrationService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         }
 

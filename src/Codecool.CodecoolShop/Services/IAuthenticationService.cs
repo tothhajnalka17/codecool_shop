@@ -2,9 +2,11 @@
 
 namespace Codecool.CodecoolShop.Services
 {
-    public interface IRegistrationService
+    public interface IAuthenticationService
     {
         void AddUser(Registration registration);
+
+        bool ValidateUser(Login login);
       
     }
 }

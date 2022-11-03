@@ -9,8 +9,8 @@ namespace Codecool.CodecoolShop.Controllers
 {
     public class RegistrationController : Controller
     {
-        private IRegistrationService _registrationService;
-        public RegistrationController(IRegistrationService registrationService)
+        private IAuthenticationService _registrationService;
+        public RegistrationController(IAuthenticationService registrationService)
         {
             _registrationService = registrationService;
         }
@@ -30,14 +30,12 @@ namespace Codecool.CodecoolShop.Controllers
             try
             {
                 _registrationService.AddUser(registration);
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return Redirect("/Registration/RegistrationFailed");
             }
-            
             return Redirect("/Registration/RegistrationSuccessful");
         }
 

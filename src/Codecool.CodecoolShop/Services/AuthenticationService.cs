@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Codecool.CodecoolShop.Services
 {
-    public class RegistrationService : IRegistrationService
+    public class AuthenticationService : IAuthenticationService
     {
         public string Errormessage { get; set; }    
 
@@ -39,36 +39,33 @@ namespace Codecool.CodecoolShop.Services
                 //TODO add feedback to user
                 if (Queries.CheckIfUsernameExists(registration.Name))
                 {
-                    //Console.WriteLine("username taken");
-                    throw new Exception("Username taken");
-                  
+                    throw new Exception("Username taken"); 
                 }
                 else if (Queries.GetUserByEmail(registration.Email) != null)
                 {
-                    //Console.WriteLine("email taken");
                     throw new Exception("Email taken");
-
                 }
-
                 else
                 {
-                    Console.WriteLine(registration.Name);
-                    Console.WriteLine(registration.Email);
                     registration.Password = Crypto.HashPassword(registration.Password);
-                    //var verified = Crypto.VerifyHashedPassword(hash, "foo");
-                    //Console.WriteLine(hashedPassword);
-
-                    //
                     Queries.InsertUser(registration);
                 }
-            
             }
             else
             {
                 Console.WriteLine("Form is not filled");
             }
-            
-
+        }
+        
+        public bool ValidateUser(Login login)
+        {
+            User user = Queries.GetUserByEmail(login.Email);
+            if (user != null)
+            {
+                var verified = Crypto.VerifyHashedPassword(user.Password, login.Password);
+                return verified;
+            }
+            return false;
         }
     }
 }
