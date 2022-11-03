@@ -99,6 +99,6 @@ async function UpdateCards() {
         cardHolder.appendChild(card);
     }
     AddListeners();
-
+    AddToCartButtonEventListener();
     
 }
