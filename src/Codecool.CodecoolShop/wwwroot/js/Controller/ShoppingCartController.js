@@ -1,4 +1,4 @@
-﻿import { fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart } from "../Model/ShoppingCartModel.js"
+﻿import { fetchUpdateProductToCart ,fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart } from "../Model/ShoppingCartModel.js"
 import { TableFactory, TableRowFactory, FooterFactory } from "../View/ShoppingCartView.js"
 export { AddToCartButtonEventListener, AddListener }
 
@@ -10,94 +10,38 @@ async function AddToCartButtonEventListener() {
 async function AddListener(button) {
     button.addEventListener("click", async () => {
         await fetchAddProductToCart(button.getAttribute("data-id"));
-        RefreshCart();
     })
-}
+};
+
+async function UpdateListener(button, quantity) {
+    await fetchUpdateProductToCart(button.getAttribute("data-id"), quantity);
+};
 
 function AddCartPageButtonEventListener() {
-    const removeOneButtons = document.querySelectorAll('.remove_one_button');
-    const addOneButtons = document.querySelectorAll('.add_one_button');
-    const removeAllButtons = document.querySelectorAll('.remove_all_button');
-    const removeCartButtons = document.querySelectorAll('.remove_cart_button');
-    addOneButtons.forEach((button) => AddListener(button));
-    removeOneButtons.forEach((button) => RemoveOneListener(button));
-    removeAllButtons.forEach((button) => RemoveAllListener(button));
-    removeCartButtons.forEach((button) => RemoveCartListener(button));
-}
+    addOneButtons.forEach((button) => AddListener(button));//fel
+    removeOneButtons.forEach((button) => RemoveOneListener(button));//le
+    removeAllButtons.forEach((button) => RemoveAllListener(button));//törlmind
+    removeCartButtons.forEach((button) => RemoveCartListener(button));// egész
+};
 
 async function RemoveOneListener(button) {
-    button.addEventListener("click", async () => {
-        await fetchRemoveOneProductFromCart(button.getAttribute("data-id"));
-        
-    })
-}
+    await fetchRemoveOneProductFromCart(button.getAttribute("data-id"));
+};
 
 async function RemoveAllListener(button) {
-    button.addEventListener("click", async () => {
-        await fetchRemoveAllProductFromCart(button.getAttribute("data-id"));
-        RefreshCart();
-    })
-}
+    await fetchRemoveAllProductFromCart(button.getAttribute("data-id"));
+};
 
 async function RemoveCartListener(button) {
     button.addEventListener("click", async () => {
         await fetchRemoveCart();
         RefreshCart();
     })
-}
+};
 
-async function RefreshCart() {
-    const container = await document.querySelector('#cart_container');
-    container.innerHTML = "";
-
-    var cart = await fetchCart();
-    console.log(cart);
-
-    if (Object.keys(cart).length == 0) {
-        const message = await document.createElement('p');
-        message.innerText = "There is nothing in your cart.";
-        await container.appendChild(message);
-    }
-    else {
-        const table = await TableFactory();
-
-        await container.appendChild(table);
-
-        const tablebody = await document.querySelector("#shopping_cart--body");
-
-        let totalprice = 0;
-
-        for (var item in cart) {
-            let currentItem = JSON.parse(item);
-            let itemid = await currentItem.Id;
-            let itemname = await currentItem.Name;
-            let itemcurrency = await currentItem.Currency;
-            let itemprice = await currentItem.DefaultPrice;
-            let quantity = await cart[item];
-            
-            var tablerow = await TableRowFactory(itemid, itemname, itemprice, itemcurrency, quantity);
-            tablebody.appendChild(tablerow);
-            totalprice += cart[item] * currentItem.DefaultPrice;
-        }
-
-        const total = document.createElement('div');
-        total.innerHTML = `<strong>Total: ${totalprice}</strong>`;
-        container.appendChild(total);
-
-        const footer = FooterFactory();
-
-        container.appendChild(footer);
-
-        AddCartPageButtonEventListener();
-
-    }
-}
-
-RefreshCart();
 
 /* Set values + misc */
-var promoCode;
-var promoPrice;
+
 var fadeTime = 300;
 
 /* Assign actions */
@@ -106,7 +50,7 @@ $('.quantity input').change(function () {
 });
 
 $('.remove button').click(function () {
-    RemoveOneListener(this);
+    RemoveAllListener(this);
     removeItem(this);
 });
 
@@ -174,6 +118,7 @@ function updateSumItems() {
     var sumItems = 0;
     $('.quantity input').each(function () {
         sumItems += parseInt($(this).val());
+        UpdateListener(this, sumItems)
     });
     $('.total-items').text(sumItems);
     //TODO: update dao with new amount
