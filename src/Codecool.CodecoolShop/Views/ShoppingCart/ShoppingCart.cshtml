@@ -81,7 +81,7 @@
           <div class="total-value final-value" id="basket-total">@totalPrice</div>
         </div>
         <div class="summary-checkout">
-          <button class="checkout-cta">Go to Secure Checkout</button>
+          <button type="button" class="checkout-cta" onclick="location.href='@Url.Action("Index", "CheckOut")'" > Go to Secure Checkout </button>
         </div>
       </div>
     </aside>
