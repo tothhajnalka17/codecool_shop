@@ -11,7 +11,12 @@ namespace Codecool.CodecoolShop.Sql
     public static class Queries
     {
         // Orders
+        // Insert
+        // Update switching tables
         // ShoppingCarts
+        // Insert 
+        // Update
+        // Update switching tables
 
         // Users
         // Insert user
