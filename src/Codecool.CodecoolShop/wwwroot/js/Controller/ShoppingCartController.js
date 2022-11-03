@@ -1,6 +1,6 @@
-﻿import { fetchUpdateProductToCart ,fetchAddProductToCart, fetchRemoveOneProductFromCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart } from "../Model/ShoppingCartModel.js"
-import { TableFactory, TableRowFactory, FooterFactory } from "../View/ShoppingCartView.js"
-export { AddToCartButtonEventListener, AddListener }
+﻿import { fetchUpdateProductToCart ,fetchAddProductToCart, fetchRemoveAllProductFromCart, fetchRemoveCart, fetchCart } from "../Model/ShoppingCartModel.js"
+export { AddToCartButtonEventListener, AddListener };
+
 
 async function AddToCartButtonEventListener() {
     const addToCartButtons = await document.querySelectorAll('.cart')
@@ -17,36 +17,26 @@ async function UpdateListener(button, quantity) {
     await fetchUpdateProductToCart(button.getAttribute("data-id"), quantity);
 };
 
-function AddCartPageButtonEventListener() {
-    addOneButtons.forEach((button) => AddListener(button));//fel
-    removeOneButtons.forEach((button) => RemoveOneListener(button));//le
-    removeAllButtons.forEach((button) => RemoveAllListener(button));//törlmind
-    removeCartButtons.forEach((button) => RemoveCartListener(button));// egész
-};
-
-async function RemoveOneListener(button) {
-    await fetchRemoveOneProductFromCart(button.getAttribute("data-id"));
-};
-
 async function RemoveAllListener(button) {
     await fetchRemoveAllProductFromCart(button.getAttribute("data-id"));
+    window.location = "/ShoppingCart"
 };
 
 async function RemoveCartListener(button) {
     button.addEventListener("click", async () => {
         await fetchRemoveCart();
-        RefreshCart();
     })
 };
 
 
 /* Set values + misc */
-
 var fadeTime = 300;
 
 /* Assign actions */
+
 $('.quantity input').change(function () {
     updateQuantity(this);
+    UpdateListener(this, this.value)
 });
 
 $('.remove button').click(function () {
@@ -54,9 +44,9 @@ $('.remove button').click(function () {
     removeItem(this);
 });
 
-$(document).ready(function () {
-    updateSumItems();
-});
+//$(document).ready(function () {
+//    updateSumItems();
+//});
 
 /* Recalculate cart */
 function recalculateCart(onlyTotal) {
@@ -118,7 +108,7 @@ function updateSumItems() {
     var sumItems = 0;
     $('.quantity input').each(function () {
         sumItems += parseInt($(this).val());
-        UpdateListener(this, sumItems)
+        
     });
     $('.total-items').text(sumItems);
     //TODO: update dao with new amount
