@@ -34,6 +34,18 @@ namespace Codecool.CodecoolShop.Controllers.Api
             return cartDictionary.ToJson();
         }
 
+        [Route("Update")]
+        public void Update(Dictionary<int,int> dict)
+        {
+            var products = AllProduct.GetAll().Where(x => dict.ContainsKey(x.Id));
+            Dictionary<Product, int> countedProducts = products.GroupBy(x => x)
+                .ToDictionary(k => k.Key, v => v.Count());
+            if(countedProducts.Values.First() > dict.Values.First())
+            {
+                UserShoppingCart.Remove(dict.Keys.First());
+            }
+        }
+            
         [Route("Add")]
         public void Add(Dictionary<string, int> dict)
         {
