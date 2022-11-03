@@ -35,7 +35,7 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             </div>
-            <div class="col-4">
+            <div class="col-4" id="billing">
             <div class="form-group">
                 <label asp-for="BillingCountry" class="control-label"></label>
                 <input asp-for="BillingCountry" class="form-control" />
@@ -51,13 +51,15 @@
                 <input asp-for="BillingZipCode" class="form-control" />
                 <span asp-validation-for="BillingZipCode" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BillingAddress" class="control-label"></label>
-                <input asp-for="BillingAddress" class="form-control" />
-                <span asp-validation-for="BillingAddress" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="BillingAddress" class="control-label"></label>
+                    <input asp-for="BillingAddress" class="form-control" />
+                    <span asp-validation-for="BillingAddress" class="text-danger"></span>
+                </div>
+                <label for="isShippingBilling">Does the Billing Address match the Shipping Address?</label>
+                <input type="checkbox" id="isShippingBilling" />
             </div>
-            </div>
-            <div class="col-4">
+        <div class="col-4" id="shipping">
             <div class="form-group">
                 <label asp-for="ShippingCountry" class="control-label"></label>
                 <input asp-for="ShippingCountry" class="form-control" />
